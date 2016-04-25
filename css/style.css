@@ -5,9 +5,10 @@
 }
 
 body {
-  font-family: Roboto, sans-serif;
+  font-family: Lato, sans-serif;
+  padding: 0px;
+  margin: 0px;
 }
-
 
 input         {
   font-size:20px;
@@ -17,15 +18,186 @@ input         {
   border:none;
 }
 
-.drop {
-  display: inline-block;
-  width: 100%;
-  padding: 1em 20px
-  box-sizing: border-box;
+.dropbtn {
+    background-color: #4CAF50;
+    color: white;
+    padding: 16px;
+    font-size: 16px;
+    border: none;
+    cursor: pointer;
+}
+.panel_container {
+  transition-duration: 0.5s;
+}
+/* The container <div> - needed to position the dropdown content */
+.dropdown {
+    position: relative;
+    display: inline-block;
+    margin: 10px;
+}
+
+/* Dropdown Content (Hidden by Default) */
+ .dropdown-content {
+    display: none;
+    position: absolute;
+    background-color: #f9f9f9;
+    min-width: 160px;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+}
+
+/* Links inside the dropdown */
+ .dropdown-content p {
+    color: black;
+    cursor: pointer;
+    padding: 20px 20px;
+    text-decoration: none;
+    display: block;
+}
+
+/* Change color of dropdown links on hover */
+ .dropdown-content p:hover {background-color: #f1f1f1}
+
+/* Show the dropdown menu on hover */
+.dropdown:hover .dropdown-content {
+    display: block;
+}
+
+.dropdown p {
+  padding: 20px 20px;
+  margin:  20px;
+  text-decoration: none;
+  display: block;
+}
+
+/* Change the background color of the dropdown button when the dropdown content is shown */
+.dropdown:hover .dropbtn {
+    background-color: #3e8e41;
 }
 
 input:focus     {
   outline:none;
+}
+/* SIDE NAVIGATION BAR ======================================*/
+.navigation-drawer {
+  background: #00bbd4;
+  position: fixed;
+  width: 25%;
+  margin-top: 90px;
+  height: 100%;
+  font-weight: 900;
+  top: 0;
+  z-index: 1000;
+}
+
+.navigation-drawer h1 {
+  color: #afdefa;
+	font-size: 1.9em;
+	padding: 20px;
+	margin: 0;
+	background: #008091;
+}
+
+.navigation-drawer span {
+  display: block;
+	color: #afdefa;
+  cursor: pointer;
+  list-style-type: none;
+  background: #00bbd4;
+	font-size: 1.1em;
+  text-decoration: none;
+  border-bottom: 2px solid #afdefa;
+  padding: 1em;
+}
+
+.navigation-drawer span:hover {
+  background: #008091;
+  box-shadow: 0px 0px 3px rgba(0,0,0,0.3);
+  transition:0.3s ease all;
+}
+
+.navigation span:active {
+  background: #008091;
+	color: #47a3da;
+}
+
+
+input[type=text] {
+  border: 2px solid #008091;
+  border-radius: 1em;
+  width: 70%;
+}
+
+input:invalid {
+  border: 2px solid #FF5722;
+  border-radius: 1em;
+  width: 70%;
+}
+
+input:valid {
+  border: 2px solid #8BC34A;
+  border-radius: 1em;
+  width: 70%;
+}
+
+
+
+.panels .panel_content {
+  padding: 15px;
+}
+
+/* FORM INTRO ===============================*/
+.form_intro {
+  margin-bottom: 30px;
+}
+/* NAVIGATION BAR ======================================= */
+.top-bar {
+  background-color: #ffffff;
+  box-shadow: 0px 0px 10px rgba(0,0,0,0.5);
+  padding: 0px;
+  font-weight: 900;
+  border-radius: 0px;
+  cursor: pointer;
+  list-style-type: none;
+  margin: 0px;
+  height: 90px;
+  width: 100%;
+  overflow: hidden;
+  position: fixed;
+  z-index: 1000;
+}
+
+.top-bar li {
+  height: auto;
+  float: right;
+  display: inline;
+  font-size: 20px;
+  padding: 0px;
+}
+
+.top-bar ul {
+  padding: 0px;
+}
+.top-bar a {
+  display: block;
+  color: #008091;
+  height: inherit;
+  text-align: center;
+  padding: 30px 25px ;
+  height: 100%;
+  text-decoration: none;
+}
+
+.top-bar a:hover {
+  color: #FFFFFF;
+  background-color: #008091;
+  display: block;
+  padding: 30px 25px;
+  height: inherit;
+  transition: 0.4s ease all;
+}
+
+.last {
+  padding-right: 40px;
 }
 
 /* LABEL ======================================= */
@@ -42,35 +214,43 @@ label          {
 
 /* active state */
 input:focus ~ label, input:valid ~ label input:visited ~ label    {
-  top:-20px;
-  font-size:18px;
-  color:#008091;
+  top:-25px;
+  font-size:20px;
+  color:#999;
 }
 
 /* HIGHLIGHTER ================================== */
 .highlight {
   position:absolute;
-  height:60%;
-  width:100px;
-  top:25%;
+  height:40%;
+  width:70%;
+  top:18%;
   left:0;
   pointer-events:none;
-  opacity:0.5;
+  opacity:0.4;*/
 }
 
 /* active state */
+
 input:focus ~ .highlight {
   animation:inputHighlighter 0.3s ease;
 }
 
 /* ANIMATIONS ================ */
+
 @keyframes inputHighlighter {
-  from  { background:#008091; }
+  from  { background:#00bbd4; }
   to    { width:0; background:transparent; }
 }
 
 /* BOTTOM BARS ================================= */
-.bar  { position:relative; display:block; width:400px; }
+
+/*.bar  {
+  position:relative;
+  display:block;
+  width:70%;
+}
+
 .bar:before, .bar:after   {
   content:'';
   height:2px;
@@ -88,18 +268,49 @@ input:focus ~ .highlight {
   right:50%;
 }
 
-/* active state */
 input:focus ~ .bar:before, input:focus ~ .bar:after {
   width:50%;
-}
+}*/
 
 .hours        {
   position:relative;
   margin-bottom:45px;
 }
 
-p:first-child {
+.hours p:first-child {
+  color:#999;
+  font-size:22px;
+  font-weight:normal;
+  margin-bottom:2px;
+  position:relative;
+  pointer-events:none;
+}
+
+.group:first-child {
   top:-15px;
   font-size:18px;
   color:#008091;
 }
+
+/** Main panel **/
+
+.panels {
+  position: absolute;
+  width: 60%;
+  margin-left: 35%;
+  padding-top: 130px;
+  padding-bottom: 50px;
+}
+
+.panels h1 {
+  color: #999;
+}
+
+@media screen and (max-height: 26.375em){
+
+	.navigation-drawer {
+		font-size: 90%;
+		width: 30px;
+	}
+
+/* PANEL Container ====================================/
