@@ -67,20 +67,20 @@
 
                             <div class="group">
                               <input name="museumStreet" type="text"
-                              ng-model="museum.street"
+                              ng-model="museum.museumStreet"
                               ng-required="true">
                                   <span class="highlight"></span>
                                   <span class="bar"></span>
                                   <label>Street address</label>
                                   <p class="error validationerror"
-                                  ng-show="museumForm.street.$invalid &&
-                                  museumForm.street.$touched">
+                                  ng-show="museumForm.museumStreet.$invalid &&
+                                  museumForm.museumStreet.$touched">
                                   You must enter a street address.</p>
                             </div>
 
                             <div class="group">
                               <input name="museumStreetSecondLine" type="text"
-                              ng-model="museum.secondStreet">
+                              ng-model="museum.museumStreetSecondLine">
                                 <span class="highlight"></span>
                                 <span class="bar"></span>
                                 <label>Suite/Floor</label>
@@ -88,38 +88,38 @@
 
                             <div class="group">
                               <input name="museumCity" type="text"
-                              ng-model="museum.city"
+                              ng-model="museum.museumCity"
                               ng-required="true">
                                 <span class="highlight"></span>
                                 <span class="bar"></span>
                                 <label>City</label>
                                 <p class="error validationerror"
-                                ng-show="museumForm.city.$invalid &&
-                                museumForm.city.$touched">You must enter a city.</p>
+                                ng-show="museumForm.museumCity.$invalid &&
+                                museumForm.museumCity.$touched">You must enter a city.</p>
                             </div>
 
                             <div class="group">
                               <input name="museumState" type="text"
-                               ng-model="museum.state"
+                               ng-model="museum.museumState"
                                ng-required="true">
                                 <span class="highlight"></span>
                                 <span class="bar"></span>
                                 <label>State</label>
                                 <p class="error validationerror"
-                                ng-show="museumForm.state.$invalid &&
-                                museumForm.state.$touched">You must enter a state.</p>
+                                ng-show="museumForm.museumState.$invalid &&
+                                museumForm.museumState.$touched">You must enter a state.</p>
                             </div>
 
                             <div class="group">
                               <input name="museumZipcode" type="text"
-                               ng-model="museum.zipcode"
+                               ng-model="museum.museumZipcode"
                                ng-required="true">
                               <span class="highlight"></span>
                               <span class="bar"></span>
                               <label>Zipcode</label>
                               <p class="error validationerror"
-                              ng-show="museumForm.zipcode.$invalid &&
-                              museumForm.zipcode.$touched">You must enter a zipcode.</p>
+                              ng-show="museumForm.museumZipcode.$invalid &&
+                              museumForm.museumZipcode.$touched">You must enter a zipcode.</p>
                             </div>
 
                             <!--Museum Hours-->
@@ -188,7 +188,7 @@
                                 ng-model="museum.image">
                               </div>
 
-                              <input type="submit" value="Add museum">
+                              <input class="btn" type="submit" value="Add museum">
                             </div> <!--End of General Museum Hours -->
                           </form> <!--End of Form-->
                         </div>
@@ -199,7 +199,7 @@
 
                   <div class="panel gallery">
                     <div class="pnl_content">
-                        <form>
+                        <form name="galleryForm">
                           <div class="form_intro">
                             <h1>Gallery Information</h1>
                             <p>Please fill out gallery information.</p>
@@ -217,22 +217,31 @@
                         <div id="pnl_gallery">
                               <div class="group">
                                 <input name="galleryTitle" type="text"
-                                ng-model="Gallery.title">
+                                ng-model="Gallery.galleryTitle"
+                                ng-required="true">
 
                                   <span class="highlight"></span>
                                   <span class="bar"></span>
                                   <label>Gallery Title</label>
-                                  <p>You must fill out the name of the gallery</p>
+                                  <p
+                                  class="error validationerror"
+                                  ng-show="galleryForm.galleryTitle.$invalid &&
+                                  galleryForm.galleryTitle.$touched">
+                                  You must fill out the name of the gallery</p>
                               </div>
 
                                  <div class="group">
                                    <input name="galleryDescription" type="text"
-                                   ng-model="Gallery.description">
+                                   ng-model="Gallery.galleryDescription"
+                                   ng-required="true">
 
                                      <span class="highlight"></span>
                                      <span class="bar"></span>
                                      <label>Gallery Description</label>
-                                     <p>You must fill out the description of the gallery</p>
+                                     <p
+                                     class="error validationerror"
+                                     ng-show="galleryForm.galleryDescription.$invalid &&
+                                     galleryForm.galleryDescription.$touched">You must fill out the description of the gallery</p>
                                   </div>
 
                                   <div class="picture">
@@ -241,7 +250,7 @@
                                   </div>
                             </div> <!--end of gallery_panel-->
 
-                            <input type="submit" value="Add Gallery" />
+                            <input class="btn" type="submit" value="Add Gallery" />
                           </form>
                         </div>
                     </div><!--end of gallery content-->
@@ -250,7 +259,7 @@
                     <!--Exhibit Content-->
                   <div class="panel exhibit">
                     <div class="pnl_content">
-                    <form>
+                    <form name="exhibitForm">
                       <div class="form_intro">
                         <h1>Exhibit Information</h1>
                         <p>Please fill out information about each exhibit.</p>
@@ -275,21 +284,31 @@
                           <div id="pnl_inner_exhibit">
                                 <div class="group">
                                   <input name="exhibitTitle" type="text"
-                                  ng-model="Exhibit.title">
+                                  ng-model="Exhibit.exhibitTitle"
+                                  ng-required="true">
 
                                     <span class="highlight"></span>
                                     <span class="bar"></span>
                                     <label>Exhibit Title</label>
-                                    <p>You must enter a title</p>
+                                    <p
+                                    class="error validationerror"
+                                    ng-show="exhibitForm.exhibitTitle.$invalid &&
+                                     exhbibitForm.exhibitTitle.$touched">You must enter a title</p>
                                  </div>
 
                                  <div class="group">
                                    <input name="exhibitDescription" type="text"
-                                   ng-model="Exhibit.description">
+                                   ng-model="Exhibit.exhibitDescription"
+                                   ng-required="true">
+
                                      <span class="highlight"></span>
                                      <span class="bar"></span>
                                      <label>Exhibit Description</label>
-                                     <p>You must enter content description</p>
+                                     <p
+                                     class="error validationerror"
+                                     ng-show="exhibitForm.exhibitDescription.$invalid &&
+                                      exhbibitForm.exhibitDescription.$touched">
+                                      You must enter content description</p>
                                   </div>
 
                                 <div id="dl_content" class="dropdown">
@@ -304,20 +323,31 @@
                               <div class="pnl_content">
                                   <div class="group">
                                     <input name="contentTitle" type="text"
-                                     ng-model="Content.title">
+                                     ng-model="Content.contentTitle"
+                                     ng-required="true">
+
                                       <span class="highlight"></span>
                                       <span class="bar"></span>
                                       <label>Content Title</label>
-                                      <p>You must enter a title for the content</p>
+                                      <p
+                                      class="error validationerror"
+                                      ng-show="exhibitForm.contentTitle.$invalid &&
+                                       exhbibitForm.contentTitle.$touched">
+                                       You must enter a title for the content</p>
                                  </div>
 
                                  <div class="group">
                                    <input name="contentDescription" type="text"
-                                   ng-model="Content.description">
+                                   ng-model="Content.contentDescription"
+                                   ng-required="true">
                                      <span class="highlight"></span>
                                      <span class="bar"></span>
                                      <label>Content Description</label>
-                                     <p>You must enter a content description.</p>
+                                     <p
+                                     class="error validationerror"
+                                     ng-show="exhibitForm.contentDescription.$invalid &&
+                                      exhbibitForm.contentDescription.$touched">
+                                      You must enter a content description.</p>
                                  </div>
 
                                 <div class="picture">
@@ -325,10 +355,10 @@
                                    ng-mode="Content.image">
                                  </div>
 
-                                 <input type="submit" value="Add Content">
+                                 <input class="btn" type="submit" value="Add Content">
                               </div> <!--Closes the content-->
 
-                              <input type="submit" value="Add Exhibit">
+                              <input class="btn" type="submit" value="Add Exhibit">
                             </div><!--Close panel-->
                           </form>
                     </div><!--panel content-->
@@ -337,7 +367,7 @@
         <!--Event Content-->
           <div class="panel event">
              <div class="pnl_content">
-                <form>
+                <form name="eventForm">
                   <div class="form_intro">
                     <h1>Event Information</h1>
                     <p>Please fill out information about event.</p>
@@ -353,77 +383,127 @@
 
               <div id="pnl_event_inner">
                 <div class="group">
-                    <input name="eventTitle" type="text" ng-model="Event.title">
+                    <input name="eventTitle" type="text"
+                    ng-model="Event.eventTitle"
+                    ng-required="true">
 
                       <span class="highlight"></span>
                       <span class="bar"></span>
                       <label>Event Title</label>
-                      <p>You must enter an event title</p>
+                      <p
+                      class="error validationerror"
+                      ng-show="eventForm.eventTitle.$invalid &&
+                       eventForm.eventTitle.$touched">You must enter an event title</p>
                    </div>
 
 
                    <div class="hours">
                      <p>Hours: </p><br>
-                     <input name="startTime" type="time" ng-model="Event.startTime">
+                     <input name="startTime" type="time"
+                     ng-model="Event.startTime"
+                     ng-required="true">
 
-                     <input name="endTime" type="time" ng-model="Event.endTime">
-                     <p>Must enter both a start and stop time.</p>
+                     <input name="endTime" type="time" ng-model="Event.endTime"
+                     ng-required="true">
+
+                     <p
+                     class="error validationerror"
+                     ng-show="eventForm.startTime.$invalid &&
+                      eventForm.startTime.$touched && eventFrom.endTime.$invalid
+                      && eventForm.endTime.$touched">
+                      Must enter both a start and stop time.</p>
                    </div>
 
                    <div class="hours">
                      <p>Date: </p><br>
-                     <input name="event_date" type="datetime-local" ng-model="Event.date">
-                     <p>Must enter a date.</p>
+                     <input name="date" type="date"
+                     ng-model="Event.date"
+                     ng-required="true">
+
+                     <p
+                     class="error validationerror"
+                     ng-show="eventForm.date.$invalid &&
+                      eventForm.date.$touched">
+                      Must enter a date.</p>
                    </div>
 
                    <div class="group">
-                     <input name="eventDescription" type="text" ng-model="Event.description">
+                     <input name="eventDescription" type="text"
+                     ng-model="Event.eventDescription"
+                     ng-required="true">
                        <span class="highlight"></span>
                        <span class="bar"></span>
                        <label>Event Description</label>
-                       <p>You must enter content description</p>
+                       <p
+                       class="error validationerror"
+                       ng-show="eventForm.eventDescription.$invalid &&
+                       eventForm.eventDescription.$touched">
+                       You must enter event description</p>
                     </div>
                  </div>
 
 
               <div class="group">
-                <input name="museumStreet" type="text" ng-model="Event.street">
+                <input name="eventStreet" type="text"
+                ng-model="Event.eventStreet"
+                ng-required="true">
                     <span class="highlight"></span>
                     <span class="bar"></span>
                     <label>Street address</label>
-                    <p>You must enter a street address.</p>
+                    <p
+                    class="error validationerror"
+                    ng-show="eventForm.eventStreet.$invalid &&
+                    eventForm.eventStreet.$touched">You must enter a street address.</p>
               </div>
 
               <div class="group">
-                <input name="museumStreetSecondLine" type="text" ng-model="Event.secondStreet">
+                <input name="eventStreetSecondLine" type="text"
+                ng-model="Event.eventStreetSecondLine">
                   <span class="highlight"></span>
                   <span class="bar"></span>
                   <label>Suite/Floor</label>
               </div>
 
               <div class="group">
-                <input name="museumCity" type="text" ng-model="Event.city">
+                <input name="eventCity" type="text"
+                ng-model="Event.eventCity"
+                ng-required="true">
                   <span class="highlight"></span>
                   <span class="bar"></span>
                   <label>City</label>
-                  <p>You must enter a city.</p>
+                  <p
+                  class="error validationerror"
+                  ng-show="eventForm.eventCity.$invalid &&
+                  eventForm.eventCity.$touched">You must enter a city.</p>
               </div>
 
               <div class="group">
-                <input name="museumState" type="text" ng-model="Event.state">
+                <input name="eventState" type="text"
+                ng-model="Event.eventState"
+                ng-required="true">
                   <span class="highlight"></span>
                   <span class="bar"></span>
                   <label>State</label>
-                  <p>You must enter a state.</p>
+                  <p
+                  class="error validationerror"
+                  ng-show="eventForm.eventState.$invalid &&
+                  eventForm.eventState.$touched">You must enter a state.</p>
               </div>
 
               <div class="group">
-                <input name="museumZipcode" type="text" ng-model="Event.zipcode">
+                <input name="eventZipcode" type="text"
+                ng-model="Event.eventZipcode"
+                ng-required="true">
                 <span class="highlight"></span>
                 <span class="bar"></span>
                 <label>Zipcode</label>
-                <p>You must enter a zipcode.</p>
+                <p
+                class="error validationerror"
+                ng-show="eventForm.eventZipcode.$invalid &&
+                eventForm.eventZipcode.$touched">You must enter a zipcode.</p>
               </div>
+
+              <input class="btn" type="submit" value="Add Event">
             </form>
             </div>
           </div>
@@ -431,7 +511,7 @@
   <!--beacon content-->
   <div class="panel beacon">
     <div class="pnl_content">
-      <form>
+      <form name="beaconForm">
 
         <div class="form_intro">
           <h1>Beacon Information</h1>
@@ -464,19 +544,29 @@
 
           <div class="pnl_content">
               <div class="group">
-                <input name="contentTitle" type="text" ng-model="Content.title">
+                <input name="contentTitle" type="text"
+                ng-model="Content.contentTitle"
+                ng-required="true">
                   <span class="highlight"></span>
                   <span class="bar"></span>
                   <label>Content Title</label>
-                  <p>You must enter a title for the content</p>
+                  <p
+                  class="error validationerror"
+                  ng-show="beaconForm.contentTitle.$invalid &&
+                  beaconForm.contentTitle.$touched">You must enter a title for the content</p>
              </div>
 
              <div class="group">
-               <input name="contentDescription" type="text" ng-model="Content.description">
+               <input name="contentDescription" type="text"
+               ng-model="Content.contentDescription"
+               ng-required="true">
                  <span class="highlight"></span>
                  <span class="bar"></span>
                  <label>Content Description</label>
-                 <p>You must enter a content description.</p>
+                 <p
+                 class="error validationerror"
+                 ng-show="beaconForm.contentDescription.$invalid &&
+                 beaconForm.contentDescription.$touched">You must enter a content description.</p>
              </div>
 
                <div class="picture">
@@ -484,10 +574,10 @@
                ng-model="Content.image">
              </div>
 
-             <input type="submit" value="Add Content">
+             <input class="btn" type="submit" value="Add Content">
           </div> <!--Closes the content-->
 
-          <input type="submit" value="Add Beacon">
+          <input class="btn" type="submit" value="Add Beacon">
           </form>
         </div><!--panels content-->
       </div><!--end of beacons content-->

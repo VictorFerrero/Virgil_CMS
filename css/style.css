@@ -122,24 +122,29 @@ input:focus     {
 
 
 input[type=text] {
-  border: 2px solid #008091;
-  border-radius: 1em;
-  width: 70%;
+  border: 1px solid #008091;
+  border-radius: .5em;
+  width: 80%;
 }
 
-input:invalid {
-  border: 2px solid #FF5722;
-  border-radius: 1em;
-  width: 70%;
+input[type=text].ng-invalid.ng-touched {
+  border: 1px solid #FF5722;
+  border-radius: .5em;
+  width: 80%;
 }
 
-input:valid {
-  border: 2px solid #8BC34A;
-  border-radius: 1em;
-  width: 70%;
+input[type=text].ng-valid.ng-touched {
+  border: 1px solid #8BC34A;
+  border-radius: .5em;
+  width: 80%;
 }
 
-
+/* ERROR VALIDATION P ====================================*/
+.error {
+  position: relative;
+  padding-left: 30%;
+  color: #FF5722;
+}
 
 .panels .panel_content {
   padding: 15px;
@@ -201,7 +206,7 @@ input:valid {
 }
 
 /* LABEL ======================================= */
-label          {
+label {
   color:#999;
   font-size:22px;
   font-weight:normal;
@@ -212,6 +217,29 @@ label          {
   transition:0.3s ease all;
 }
 
+/* Button ============================================*/
+.btn {
+  position: relative;
+  margin-left: 30%;
+  margin-top: 30px;
+  color: #ffffff;
+  border-radius: .5em;
+  border: 0;
+  width: auto;
+  padding: 15px;
+}
+
+.ng-invalid .btn {
+  background: gray;
+}
+
+.ng-valid .btn {
+  background: #8BC34A;
+}
+
+.btn:hover {
+  background: #008091;
+}
 /* active state */
 input:focus ~ label, input:valid ~ label input:visited ~ label    {
   top:-25px;
