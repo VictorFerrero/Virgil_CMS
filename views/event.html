@@ -1,0 +1,136 @@
+<div class="pnl_content">
+   <form name="eventForm">
+     <div class="form_intro">
+       <h1>Event Information</h1>
+       <p>Please fill out information about event.</p>
+     </div>
+
+   <div class="dropdown-group">
+     <div id="dl_gallery_event" class="dropdown">
+       <class class="dropbtn">Select Event</button>
+         <div class="dropdown-content">
+           <p>Event</p>
+         </div>
+     </div>
+   </div>
+
+ <div id="pnl_event_inner">
+   <div class="group">
+       <input name="eventTitle" type="text"
+       ng-model="Event.eventTitle"
+       ng-required="true">
+
+         <span class="highlight"></span>
+         <span class="bar"></span>
+         <label>Event Title</label>
+         <p
+         class="error validationerror"
+         ng-show="eventForm.eventTitle.$invalid &&
+          eventForm.eventTitle.$touched">You must enter an event title</p>
+      </div>
+
+
+      <div class="hours">
+        <p>Hours: </p><br>
+        <input name="startTime" type="time"
+        ng-model="Event.startTime"
+        ng-required="true">
+
+        <input name="endTime" type="time" ng-model="Event.endTime"
+        ng-required="true">
+
+        <p
+        class="error validationerror"
+        ng-show="eventForm.startTime.$invalid &&
+         eventForm.startTime.$touched && eventFrom.endTime.$invalid
+         && eventForm.endTime.$touched">
+         Must enter both a start and stop time.</p>
+      </div>
+
+      <div class="hours">
+        <p>Date: </p><br>
+        <input name="date" type="date"
+        ng-model="Event.date"
+        ng-required="true">
+
+        <p
+        class="error validationerror"
+        ng-show="eventForm.date.$invalid &&
+         eventForm.date.$touched">
+         Must enter a date.</p>
+      </div>
+
+      <div class="group">
+        <input name="eventDescription" type="text"
+        ng-model="Event.eventDescription"
+        ng-required="true">
+          <span class="highlight"></span>
+          <span class="bar"></span>
+          <label>Event Description</label>
+          <p
+          class="error validationerror"
+          ng-show="eventForm.eventDescription.$invalid &&
+          eventForm.eventDescription.$touched">
+          You must enter event description</p>
+       </div>
+    </div>
+
+
+ <div class="group">
+   <input name="eventStreet" type="text"
+   ng-model="Event.eventStreet"
+   ng-required="true">
+       <span class="highlight"></span>
+       <span class="bar"></span>
+       <label>Street address</label>
+       <p
+       class="error validationerror"
+       ng-show="eventForm.eventStreet.$invalid &&
+       eventForm.eventStreet.$touched">You must enter a street address.</p>
+ </div>
+
+ <div class="group">
+   <input name="eventCity" type="text"
+   ng-model="Event.eventCity"
+   ng-required="true">
+     <span class="highlight"></span>
+     <span class="bar"></span>
+     <label>City</label>
+     <p
+     class="error validationerror"
+     ng-show="eventForm.eventCity.$invalid &&
+     eventForm.eventCity.$touched">You must enter a city.</p>
+ </div>
+
+ <div class="group">
+   <input name="eventState" type="text"
+   ng-model="Event.eventState"
+   ng-required="true">
+     <span class="highlight"></span>
+     <span class="bar"></span>
+     <label>State</label>
+     <p
+     class="error validationerror"
+     ng-show="eventForm.eventState.$invalid &&
+     eventForm.eventState.$touched">You must enter a state.</p>
+ </div>
+
+ <div class="group">
+   <input name="eventZipcode" type="text"
+   ng-model="Event.eventZipcode"
+   ng-required="true">
+   <span class="highlight"></span>
+   <span class="bar"></span>
+   <label>Zipcode</label>
+   <p
+   class="error validationerror"
+   ng-show="eventForm.eventZipcode.$invalid &&
+   eventForm.eventZipcode.$touched">You must enter a zipcode.</p>
+ </div>
+
+<div class="submit_btn">
+ <input class="btn" type="submit" value="Add Event">
+ <input class="btn" type="submit" value="Delete Event">
+</div>
+</form>
+</div>

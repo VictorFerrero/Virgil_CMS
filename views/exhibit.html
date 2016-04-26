@@ -1,0 +1,63 @@
+<div class="pnl_content">
+<form name="exhibitForm">
+  <div class="form_intro">
+    <h1>Exhibit Information</h1>
+    <p>Please fill out information about each exhibit.</p>
+  </div><!--End of Form Intro-->
+
+<div class="dropdown-group">
+  <div id="dl_gallery_exhibit"  class="dropdown">
+    <button class="dropbtn">Select to Edit Existing Galleries</button>
+      <div class="dropdown-content">
+        <p>Select gallery to edit</p>
+        <p>Select gallery</p>
+      </div>
+  </div>
+
+  <div id="dl_exhibit" class="dropdown">
+    <button class="dropbtn">Select to Edit Existing Exhibits</button>
+        <div class="dropdown-content">
+          <p>Select Exhibit</p>
+          <p>Select exhibit</p>
+        </div>
+      </div> <!--close dropdown-->
+  </div>
+
+      <div id="pnl_inner_exhibit">
+            <div class="group">
+              <input name="exhibitTitle" type="text"
+              ng-model="Exhibit.exhibitTitle"
+              ng-required="true">
+
+                <span class="highlight"></span>
+                <span class="bar"></span>
+                <label>Exhibit Title</label>
+                <p
+                class="error validationerror"
+                ng-show="exhibitForm.exhibitTitle.$invalid &&
+                 exhbibitForm.exhibitTitle.$touched">You must enter a title</p>
+             </div>
+
+             <div class="group">
+               <input name="exhibitDescription" type="text"
+               ng-model="Exhibit.exhibitDescription"
+               ng-required="true">
+
+                 <span class="highlight"></span>
+                 <span class="bar"></span>
+                 <label>Exhibit Description</label>
+                 <p
+                 class="error validationerror"
+                 ng-show="exhibitForm.exhibitDescription.$invalid &&
+                  exhbibitForm.exhibitDescription.$touched">
+                  You must enter content description</p>
+              </div>
+
+        <div class="submit_btn">
+          <input class="btn" type="submit" value="Add Exhibit">
+          <input class="btn" type="submit" value="Delete Exhibit">
+        </div><!--Close panel-->
+
+      </div>
+      </form>
+</div><!--panel content-->
