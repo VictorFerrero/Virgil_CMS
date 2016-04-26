@@ -30,6 +30,7 @@
             <span>Museum Info</span>
             <span>Galleries</span>
             <span>Exhibits</span>
+            <span>Exhibit Content</span>
             <span>Events</span>
             <span>Beacons</span>
           </nav>
@@ -79,14 +80,6 @@
                             </div>
 
                             <div class="group">
-                              <input name="museumStreetSecondLine" type="text"
-                              ng-model="museum.museumStreetSecondLine">
-                                <span class="highlight"></span>
-                                <span class="bar"></span>
-                                <label>Suite/Floor</label>
-                            </div>
-
-                            <div class="group">
                               <input name="museumCity" type="text"
                               ng-model="museum.museumCity"
                               ng-required="true">
@@ -127,58 +120,98 @@
 
                               <div class="hours">
                                 <p>Sunday hours: </p><br>
-                                <input name="museumSundayHoursOpen" type="time">
+                                <input name="museumSundayHoursOpen" type="time"
+                                ng-model="museum.museumSundayHoursOpen">
 
-                                <input name="museumSundayHoursClose" type="time">
-                                <p>Must enter both a start and stop time.</p>
+                                <input name="museumSundayHoursClose" type="time"
+                                ng-model="museum.museumSundayHoursClose">
+
+                                <p class="error validationerror"
+                                ng-show="museumForm.museumSundayHoursOpen.$dirty &&
+                                museumForm.museumSundayHoursClose.$untouched">
+                                Enter both a start and stop time.</p>
                               </div>
 
                               <div class="hours">
                                 <p>Monday hours: </p><br>
-                                <input name="museumMondayHoursOpen" type="time">
+                                <input name="museumMondayHoursOpen" type="time"
+                                ng-model="museum.museumMondayHoursOpen">
 
-                                <input name="museumMondayHoursClose" type="time">
-                                <p>Must enter both a start and stop time.</p>
+                                <input name="museumMondayHoursClose" type="time"
+                                ng-model="museum.museumMondayHoursClose">
+
+                                <p class="error validationerror"
+                                ng-show="museumForm.museumMondayHoursOpen.$dirty &&
+                                museumForm.museumMondayHoursClose.$untouched">
+                                  Enter both a start and stop time.</p>
                               </div>
 
                               <div class="hours">
                                 <p>Tuesday hours: </p><br>
-                                <input name="museumTuesdayHoursOpen" type="time">
+                                <input name="museumTuesdayHoursOpen" type="time"
+                                ng-model="museum.museumTuesdayHoursOpen">
 
-                                <input name="museumTuesdayHoursClose" type="time">
-                                <p>Must enter both a start and stop time.</p>
+                                <input name="museumTuesdayHoursClose" type="time"
+                                ng-model="museum.museumTuesdayHoursClose">
+
+                                <p class="error validationerror"
+                                ng-show="museumForm.museumTuesdayHoursOpen.$dirty &&
+                                museumForm.museumTuesdayHoursClose.$untouched">
+                                  Enter both a start and stop time.</p>
                               </div>
 
                               <div class="hours">
                                 <p>Wednesday hours: </p><br>
-                                <input name="museumWednesdayHoursOpen" type="time">
+                                <input name="museumWednesdayHoursOpen" type="time"
+                                ng-model="museum.museumWednesdayHoursOpen">
 
-                                <input name="museumWednesdayHoursClose" type="time">
-                                <p>Must enter both a start and stop time.</p>
+                                <input name="museumWednesdayHoursClose" type="time"
+                                ng-model="museum.museumWednesdayHoursClose">
+                                <p class="error validationerror"
+                                ng-show="museumForm.museumWednesdayHoursOpen.$dirty &&
+                                museumForm.museumTuesdayHoursClose.$untouched">
+                                Enter both a start and stop time.</p>
                               </div>
 
                               <div class="hours">
                                 <p>Thursday hours: </p><br>
-                                <input name="museumThursdayHoursOpen" type="time">
+                                <input name="museumThursdayHoursOpen" type="time"
+                                ng-model="museum.museumThursdayHoursOpen">
 
-                                <input name="museumThursdayHoursClose" type="time">
-                                <p>Must enter both a start and stop time.</p>
+                                <input name="museumThursdayHoursClose" type="time"
+                                ng-model="museum.museumThursdayHoursClose">
+
+                                <p class="error validationerror"
+                                ng-show="museumForm.museumThursdayHoursOpen.$dirty &&
+                                museumForm.museumThursdayHoursClose.$untouched">
+                                Enter both a start and stop time.</p>
                               </div>
 
                               <div class="hours">
                                 <p>Friday hours: </p><br>
-                                <input name="museumFridayHoursOpen" type="time">
+                                <input name="museumFridayHoursOpen" type="time"
+                                ng-model="museum.museumFridayHoursOpen">
 
-                                <input name="museumFridayHoursClose" type="time">
-                                <p>Must enter both a start and stop time.</p>
+                                <input name="museumFridayHoursClose" type="time"
+                                ng-model="museum.museumFridayHoursClose">
+
+                                <p class="error validationerror"
+                                ng-show="museumForm.museumFridayHoursOpen.$dirty &&
+                                museumForm.museumFridayHoursClose.$untouched">
+                                Enter both a start and stop time.</p>
                               </div>
 
                               <div class="hours">
                                 <p>Saturday hours: </p><br>
-                                <input name="museumSaturdayHoursOpen" type="time">
+                                <input name="museumSaturdayHoursOpen" type="time"
+                                ng-model="museum.museumSaturdayHoursOpen">
 
-                                <input name="museumSaturdayHoursClose" type="time">
-                                <p>Must enter both a start and stop time.</p>
+                                <input name="museumSaturdayHoursClose" type="time"
+                                ng-model="museum.museumSaturdayHoursOpen">
+                                <p class="error validationerror"
+                                ng-show="museumForm.museumSaturdayHoursOpen.$dirty &&
+                                museumForm.museumSaturdayHoursClose.$untouched">
+                                Enter both a start and stop time.</p>
                               </div>
                                <!--End of museum hours-->
 
@@ -199,19 +232,23 @@
 
                   <div class="panel gallery">
                     <div class="pnl_content">
+
                         <form name="galleryForm">
                           <div class="form_intro">
                             <h1>Gallery Information</h1>
                             <p>Please fill out gallery information.</p>
                           </div><!--End of Form Intro-->
 
+                        <div class="dropdown-group">
                           <div  id="dl_gallery" class="dropdown">
-                              <button class="dropbtn">Select gallery to edit</button>
+                              <button class="dropbtn">Select Existing Gallery to Edit</button>
                                 <div class="dropdown-content">
                                   <p>Gallery Here</p>
                                   <p>More Gallery Content</p>
+                                  <p>Gallery</p>
                                 </div>
                           </div>
+                        </div>
 
                         <!--Gallery Name and Content-->
                         <div id="pnl_gallery">
@@ -250,7 +287,11 @@
                                   </div>
                             </div> <!--end of gallery_panel-->
 
+                          <div class="submit_btn">
                             <input class="btn" type="submit" value="Add Gallery" />
+                            <input class="btn" type="submit" value="Delete Gallery" />
+                          </div>
+
                           </form>
                         </div>
                     </div><!--end of gallery content-->
@@ -265,8 +306,9 @@
                         <p>Please fill out information about each exhibit.</p>
                       </div><!--End of Form Intro-->
 
+                    <div class="dropdown-group">
                       <div id="dl_gallery_exhibit"  class="dropdown">
-                        <button class="dropbtn">Gallery</button>
+                        <button class="dropbtn">Select to Edit Existing Galleries</button>
                           <div class="dropdown-content">
                             <p>Select gallery to edit</p>
                             <p>Select gallery</p>
@@ -274,12 +316,13 @@
                       </div>
 
                       <div id="dl_exhibit" class="dropdown">
-                        <button class="dropbtn">Exhibit</button>
+                        <button class="dropbtn">Select to Edit Existing Exhibits</button>
                             <div class="dropdown-content">
                               <p>Select Exhibit</p>
                               <p>Select exhibit</p>
                             </div>
-                      </div> <!--close dropdown-->
+                          </div> <!--close dropdown-->
+                      </div>
 
                           <div id="pnl_inner_exhibit">
                                 <div class="group">
@@ -311,58 +354,97 @@
                                       You must enter content description</p>
                                   </div>
 
-                                <div id="dl_content" class="dropdown">
-                                      <button class="dropbtn">Select content to edit</button>
-                                        <div class="dropdown-content">
-                                          <p>Select content</p>
-                                          <p>Content</p>
-                                        </div>
-                                </div>
-
-
-                              <div class="pnl_content">
-                                  <div class="group">
-                                    <input name="contentTitle" type="text"
-                                     ng-model="Content.contentTitle"
-                                     ng-required="true">
-
-                                      <span class="highlight"></span>
-                                      <span class="bar"></span>
-                                      <label>Content Title</label>
-                                      <p
-                                      class="error validationerror"
-                                      ng-show="exhibitForm.contentTitle.$invalid &&
-                                       exhbibitForm.contentTitle.$touched">
-                                       You must enter a title for the content</p>
-                                 </div>
-
-                                 <div class="group">
-                                   <input name="contentDescription" type="text"
-                                   ng-model="Content.contentDescription"
-                                   ng-required="true">
-                                     <span class="highlight"></span>
-                                     <span class="bar"></span>
-                                     <label>Content Description</label>
-                                     <p
-                                     class="error validationerror"
-                                     ng-show="exhibitForm.contentDescription.$invalid &&
-                                      exhbibitForm.contentDescription.$touched">
-                                      You must enter a content description.</p>
-                                 </div>
-
-                                <div class="picture">
-                                   <input name="museum_image" type="file" accept="image/*"
-                                   ng-mode="Content.image">
-                                 </div>
-
-                                 <input class="btn" type="submit" value="Add Content">
-                              </div> <!--Closes the content-->
-
+                            <div class="submit_btn">
                               <input class="btn" type="submit" value="Add Exhibit">
+                              <input class="btn" type="submit" value="Delete Exhibit">
                             </div><!--Close panel-->
+
+                          </div>
                           </form>
                     </div><!--panel content-->
                   </div><!--end of exhibit content-->
+
+        <!--Exhibit Content-->
+      <div class="panel content">
+        <div class="pnl_content">
+          <form name="contentForm">
+
+        <div class="form_intro">
+          <h1>Exhibit Content Information</h1>
+          <p>Please fill out information about the content of each exhibit.</p>
+        </div><!--End of Form Intro-->
+
+        <div class="dropdown-group">
+
+        <div id="dl_gallery_exhibit"  class="dropdown">
+          <button class="dropbtn">Select to Edit Existing Galleries</button>
+            <div class="dropdown-content">
+              <p>Select gallery to edit</p>
+              <p>Select gallery</p>
+            </div>
+        </div>
+
+        <div id="dl_exhibit" class="dropdown">
+          <button class="dropbtn">Select to Edit Existing Exhibits</button>
+              <div class="dropdown-content">
+                <p>Select Exhibit</p>
+                <p>Select exhibit</p>
+              </div>
+            </div> <!--close dropdown-->
+
+          <div id="dl_content" class="dropdown">
+                <button class="dropbtn">Select to Edit Existing Content</button>
+                  <div class="dropdown-content">
+                    <p>Select content</p>
+                    <p>Select content</p>
+                  </div>
+          </div>
+        </div>
+
+
+        <div class="pnl_content">
+            <div class="group">
+              <input name="contentTitle" type="text"
+               ng-model="Content.contentTitle"
+               ng-required="true">
+
+                <span class="highlight"></span>
+                <span class="bar"></span>
+                <label>Content Title</label>
+                <p
+                class="error validationerror"
+                ng-show="contentForm.contentTitle.$invalid &&
+                 contentForm.contentTitle.$touched">
+                 You must enter a title for the content</p>
+           </div>
+
+           <div class="group">
+             <input name="contentDescription" type="text"
+             ng-model="Content.contentDescription"
+             ng-required="true">
+               <span class="highlight"></span>
+               <span class="bar"></span>
+               <label>Content Description</label>
+               <p
+               class="error validationerror"
+               ng-show="contentForm.contentDescription.$invalid &&
+                contentForm.contentDescription.$touched">
+                You must enter a content description.</p>
+           </div>
+
+          <div class="picture">
+             <input name="museum_image" type="file" accept="image/*"
+             ng-mode="Content.image">
+           </div>
+
+          <div class="submit_btn">
+           <input class="btn" type="submit" value="Add More Content">
+           <input class="btn" type="submit" value="Delete Content">
+         </div>
+        </div> <!--Closes the content-->
+      </form>
+    </div><!--panel content-->
+    </div><!--end of exhibit content-->
 
         <!--Event Content-->
           <div class="panel event">
@@ -373,13 +455,14 @@
                     <p>Please fill out information about event.</p>
                   </div>
 
-
+                <div class="dropdown-group">
                   <div id="dl_gallery_event" class="dropdown">
-                    <class class="dropbtn">Select event</button>
+                    <class class="dropbtn">Select Event</button>
                       <div class="dropdown-content">
                         <p>Event</p>
                       </div>
                   </div>
+                </div>
 
               <div id="pnl_event_inner">
                 <div class="group">
@@ -457,14 +540,6 @@
               </div>
 
               <div class="group">
-                <input name="eventStreetSecondLine" type="text"
-                ng-model="Event.eventStreetSecondLine">
-                  <span class="highlight"></span>
-                  <span class="bar"></span>
-                  <label>Suite/Floor</label>
-              </div>
-
-              <div class="group">
                 <input name="eventCity" type="text"
                 ng-model="Event.eventCity"
                 ng-required="true">
@@ -503,7 +578,10 @@
                 eventForm.eventZipcode.$touched">You must enter a zipcode.</p>
               </div>
 
+            <div class="submit_btn">
               <input class="btn" type="submit" value="Add Event">
+              <input class="btn" type="submit" value="Delete Event">
+            </div>
             </form>
             </div>
           </div>
@@ -518,8 +596,9 @@
           <p>Please fill out beacon information.</p>
         </div><!--End of Form Intro-->
 
+    <div class="dropdown-group">
         <div id="dl_gallery_beacon" class="dropdown">
-          <button class="dropbtn">Gallery</button>
+          <button class="dropbtn">Select Gallery to Edit</button>
             <div class="dropdown-content">
               <p>Gallery</p>
               <p>Gallery Content</p>
@@ -527,7 +606,7 @@
         </div>
 
         <div id="dl_exhibit_beacon" class="dropdown">
-          <button class="dropbtn">Exhibit</button>
+          <button class="dropbtn">Select Exhibit to Edit</button>
             <div class="dropdown-content">
               <p>Exhibit</p>
               <p>Exhibit Content</p>
@@ -535,11 +614,13 @@
         </div>
 
         <div id="dl_content_beacon" class="dropdown">
-          <button class="dropbtn">Beacon</button>
+          <button class="dropbtn">Select Beacon to Edit</button>
             <div class="dropdown-content">
+              <p>Content</p>
               <p>Content</p>
           </div>
         </div>
+      </div>
 
 
           <div class="pnl_content">
@@ -573,11 +654,11 @@
                <input name="museum_image" type="file" accept="image/*"
                ng-model="Content.image">
              </div>
-
-             <input class="btn" type="submit" value="Add Content">
           </div> <!--Closes the content-->
 
+        <div class="submit_btn">
           <input class="btn" type="submit" value="Add Beacon">
+          <input class="btn" type="submit" value="Delete Beacon">
           </form>
         </div><!--panels content-->
       </div><!--end of beacons content-->
