@@ -3,6 +3,8 @@ myApp.controller('MuseumController', ['$scope', '$rootScope', '$http',
       		$rootScope.museum = null;
 
 		  $scope.baseUrl = "http://52.24.10.104/Virgil_Backend_Stage/Virgil_Backend/index.php/museum/";
+		  
+		  
           $scope.add = function() {
 
 		        successCallback = function(response) {
@@ -31,6 +33,16 @@ myApp.controller('MuseumController', ['$scope', '$rootScope', '$http',
 		            // TODO: display error message to the user
 		        }
 		        var data = new Object();
+			  
+			  $scope.museums = [
+				  {museumName:'Science Museum', id:1, city:'Madison'},
+      		 	  {museumName:'Space Museum', id:2, city:'Fitchburg'},
+      		 	  {museumName:'Geology', id:3, city:"Stoughton"}
+    		  ];
+			  
+			  $scope.myMuseums = $scope.museums[2];
+			  
+			  
               data.museumName      = $scope.Museum.museumName;
 			  data.museumAccountId = 1;
 			  data.museumAddress   = $scope.Museum.address;
@@ -54,10 +66,11 @@ myApp.controller('MuseumController', ['$scope', '$rootScope', '$http',
 		  $scope.addHours = function() {
 			  
 		  }; 
+		  
 		 $scope.ajax = 
-     function(var data, var route, var successCallback, var errorCallback) {
+     	function($data, $route, $successCallback, $errorCallback) {
         var baseUrl = "";
         var fullRoute = $scope.baseUrl + route;
-       $http.post(fullRoute, data).then(successCallback, errorCallback);
+       	$http.post(fullRoute, data).then(successCallback, errorCallback);
     }
       }]);

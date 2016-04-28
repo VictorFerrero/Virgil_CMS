@@ -64,14 +64,21 @@
                             </div><!--End of Form Intro-->
 
 							  
-					     <div class="dropdown-group">
+					<!--     <div class="dropdown-group">
                           <div  id="dl_museum" class="dropdown">
                               <button type="button" class="dropbtn">Select to Edit a Museum</button>
                                 <div class="dropdown-content" role="menu">
 									{{ message }}
                                 </div>
                           </div>
-                        </div>
+                        </div> -->
+							  
+							  
+							  
+							  <select ng-model="myMuseums" ng-options="museum.museumName for museum in museums track by museum.id">
+							  </select>
+							  
+							  <p></p>
 							  
  
                             <!--Museum name and address-->
@@ -255,7 +262,7 @@
 
                   <div class="panel gallery" ng-controller="GalleryController">
                     <div class="pnl_content">
-                        <form name="galleryForm" ng-submit="add()" novalidate>
+                        <form name="galleryForm" novalidate>
                           <div class="form_intro">
                             <h1>Gallery Information</h1>
                             <p>Please fill out gallery information.</p>
@@ -311,7 +318,8 @@
                             </div> <!--end of gallery_panel-->
 
                           <div class="submit_btn">
-                            <input class="btn" type="submit" value="Add Gallery" ng-disabled="galleryForm.$invalid"/>
+                            <input class="btn" type="submit" value="Add Gallery" ng-disabled="galleryForm.$invalid"
+						     ng-click="add()" />
                             <input class="btn" type="submit" value="Delete Gallery" />
                           </div>
 
