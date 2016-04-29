@@ -111,10 +111,27 @@ myApp.controller('MuseumController', ['$scope', '$rootScope', '$http',
 			  profileJsonObject.state = $scope.Museum.myMuseums.museumState;
 			  profileJsonObject.city = $scope.Museum.myMuseums.museumCity;
 
+			  // get time
+			  var strMon = $scope.Museum.myMuseums.museumMondayHoursOpen + "-" + $scope.Museum.myMuseums.museumMondayHoursClosed;
+			  var strTue = $scope.Museum.myMuseums.museumTuesdayHoursOpen + "-" + $scope.Museum.myMuseums.museumTuesdayHoursClosed;
+			  var strWed = $scope.Museum.myMuseums.museumWednesdayHoursOpen + "-" + $scope.Museum.myMuseums.museumWednesdayHoursClosed;
+			  var strThur = $scope.Museum.myMuseums.museumThursdayHoursOpen + "-" + $scope.Museum.myMuseums.museumThursdayHoursClosed;
+			  var strFri = $scope.Museum.myMuseums.museumFridayHoursOpen + "-" + $scope.Museum.myMuseums.museumFridayHoursClosed;
+			  var strSat = $scope.Museum.myMuseums.museumSaturdayHoursOpen + "-" + $scope.Museum.myMuseums.museumSaturdayHoursClosed;
+			  var strSun = $scope.Museum.myMuseums.museumSundayHoursOpen + "-" + $scope.Museum.myMuseums.museumSundayHoursClosed;
+
+			  profileJsonObject.Monday = strMon;
+			  profileJSONObject.Tuesday = strTues;
+			  profileJSONObject.Wednesday = strWed;
+			  profileJsonObject.Thursday = strThur;
+			  profileJsonObject.Friday = strFri;
+			  profileJsonObject.Saturday = strSat;
+			  profileJsonObject.Sunday = strSun;
+
 			  data.museumProfileJSON = angular.toJson(profileJsonObject);
-			 // console.log(data);
+			  console.log(data);
 			//  console.log($rootScope.museum);
-			  $scope.ajaxPost(data, "museum/createMuseum", successCallback, errorCallback);
+			//  $scope.ajaxPost(data, "museum/createMuseum", successCallback, errorCallback);
           };
 		  
 		  $scope.update = function() {
