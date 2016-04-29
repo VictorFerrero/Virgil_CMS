@@ -34,13 +34,40 @@ myApp.controller('MuseumController', ['$scope', '$rootScope', '$http',
 		        }
 		        var data = new Object();
 			  
-			  $scope.museums = [
-				  {museumName:'Science Museum', id:1, city:'Madison'},
-      		 	  {museumName:'Space Museum', id:2, city:'Fitchburg'},
-      		 	  {museumName:'Geology', id:3, city:"Stoughton"}
-    		  ];
-			  
-			  $scope.myMuseums = $scope.museums[2];
+			  $scope.Museums = [
+				  {
+				   id:-1,
+				   museumName:"",
+				   museumStreet: "",
+				   museumCity:   "",	  
+				   museumState:  "",
+				   museumZipcode: ""
+				  },
+				  {
+				   id:1,
+				   museumName:"Agricultural Museum",
+				   museumStreet: "205 Derry Hill",
+				   museumCity:   "Uncasville",	  
+				   museumState:  "CT",
+				   museumZipcode: "06382"
+				  },
+      		 	  {
+				   id:2, 	  
+				   museumName:"Space Museum",
+				   museumStreet: "112 Main St",	  
+				   museumCity:"Fitchburg",
+				   museumState: "Wi",
+				   museumZipcode: "53703"
+				  },
+      		 	  {
+					id:3,  
+				    museumName:"Geology",
+		            museumStreet: "303 Some Street",  
+					museumCity:"Stoughton",
+					museumState:"Wi",
+				    museumZipcode: "53706"	  
+				  }
+    		  ]; 
 			  
 			  
               data.museumName      = $scope.Museum.museumName;
@@ -66,6 +93,10 @@ myApp.controller('MuseumController', ['$scope', '$rootScope', '$http',
 		  $scope.addHours = function() {
 			  
 		  }; 
+		  
+		  $scope.change = function() {
+			  $scope.changeEvent = "new value";
+		  };
 		  
 		 $scope.ajax = 
      	function($data, $route, $successCallback, $errorCallback) {
