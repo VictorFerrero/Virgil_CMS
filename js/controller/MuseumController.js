@@ -2,7 +2,7 @@ myApp.controller('MuseumController', ['$scope', '$rootScope', '$http',
       function($scope, $rootScope, $http) {
       		$rootScope.museum = null;
 
-		  $scope.baseUrl = "http://52.24.10.104/Virgil_Backend_Stage/Virgil_Backend/index.php/museum/";
+		  $scope.baseUrl = "http://52.24.10.104/Virgil_Backend_Stage/Virgil_Backend/index.php/";
 		   $scope.Museums = [
 				  {
 				   id:-1,
