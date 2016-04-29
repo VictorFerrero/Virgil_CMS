@@ -123,7 +123,7 @@ myApp.controller('MuseumController', ['$scope', '$rootScope', '$http',
 			  var strFri = $scope.formatAMPM(new Date($scope.Museum.myMuseums.museumFridayHoursOpen)) + 
 			  				"-" + $scope.formatAMPM(new Date($scope.Museum.myMuseums.museumFridayHoursClose));;
 			  var strSat = $scope.formatAMPM(new Date($scope.Museum.myMuseums.museumSaturdayHoursOpen)) + 
-			  				"-" + $scope.formatAMPM((new Date($scope.Museum.myMuseums.museumSaturdayHoursClose));;
+			  				"-" + $scope.formatAMPM(new Date($scope.Museum.myMuseums.museumSaturdayHoursClose));;
 			  var strSun = $scope.formatAMPM(new Date($scope.Museum.myMuseums.museumSundayHoursOpen)) + 
 			  				"-" + $scope.formatAMPM(new Date($scope.Museum.myMuseums.museumSundayHoursClose));;
 
