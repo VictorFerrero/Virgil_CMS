@@ -112,10 +112,9 @@ myApp.controller('MuseumController', ['$scope', '$rootScope', '$http',
 			  profileJsonObject.city = $scope.Museum.myMuseums.museumCity;
 
 			  data.museumProfileJSON = angular.toJson(profileJsonObject);
-			  console.log(data);
-			  console.log($rootScope.museum);
-			//  console.log(data);
-			//  $scope.ajaxPost(data, "museum/createMuseum", successCallback, errorCallback);
+			 // console.log(data);
+			//  console.log($rootScope.museum);
+			  $scope.ajaxPost(data, "museum/createMuseum", successCallback, errorCallback);
           };
 		  
 		  $scope.update = function() {
@@ -152,11 +151,17 @@ myApp.controller('MuseumController', ['$scope', '$rootScope', '$http',
 		            }
 		        }
 		        
+			  // TODO: add logic to only send forms to the server that have been changed 
 		       var data = new Object();
-              data.museumName      = $scope.Museum.myMuseums.museumName;
+			   data.id = $rootScope.museum.id; // ALWAYS get the id for update
+		  //     if($rootScope.museum.museumName != $scope.Museum.myMuseums.museumName){
+              		data.museumName      = $scope.Museum.myMuseums.museumName;
+         // 	   }
 		//	  data.accountId = 1;
-			  data.address   = $scope.Museum.myMuseums.address;
-			  data.id = $scope.Museum.myMuseums.id;
+		//	   if($rootScope.museum.address != $scope.Museum.myMuseums.address)	{
+			   		data.address   = $scope.Museum.myMuseums.address;
+		//	  }
+			  // must always grab everything that will go in profileJSON
 			  var profileJsonObject = Object();
 			  profileJsonObject.zipcode = $scope.Museum.myMuseums.museumZipcode;
 			  profileJsonObject.state = $scope.Museum.myMuseums.museumState;
@@ -164,7 +169,6 @@ myApp.controller('MuseumController', ['$scope', '$rootScope', '$http',
 
 			  data.museumProfileJSON = angular.toJson(profileJsonObject);
 
-			  // TODO: add logic to only send forms to the server that have been changed 
 			//  console.log(data);
 			  $scope.ajaxPost(data, "museum/updateMuseum", successCallback, errorCallback);
           };
@@ -176,7 +180,6 @@ myApp.controller('MuseumController', ['$scope', '$rootScope', '$http',
 		            // also log status codes from server
 		            console.log(response);
 		            console.log(response.data);
-		            // TODO: display error message to the user
 		        }
 
 		        successCallback = function(response) {
@@ -185,7 +188,7 @@ myApp.controller('MuseumController', ['$scope', '$rootScope', '$http',
 		            if(response.data.success == true) {
 		                // we send back the newly created account to the front end
 		                var id = response.data.id; // get the id of the musuem we deleted
-		                var arrMuseums = $scope.Museums;
+		                var arrMuseums = $scope.Museums; // get the array of museums in the drop down
 		                for(i = 0; i < arrMuseums.length; i++) {
 		                	var museum = arrMuseums[i];
 		                	if(museum.id == id) {
