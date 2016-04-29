@@ -260,7 +260,7 @@ myApp.controller('MuseumController', ['$scope', '$rootScope', '$http',
         var fullRoute = $scope.baseUrl + route;
        	$http.post(fullRoute, data).then(successCallback, errorCallback);
     }
-    $scope.formatAMPPM = function(date) {
+    $scope.formatAMPM = function(date) {
 		  var hours = date.getHours();
 		  var minutes = date.getMinutes();
 		  var ampm = hours >= 12 ? 'pm' : 'am';
