@@ -69,8 +69,9 @@ myApp.controller('MuseumController', ['$scope', '$rootScope', '$http',
 		                errorCallback();
 		            }
 		        }
-		        /*
+		        
 		        var data = new Object();
+		        /*
               data.museumName      = $scope.Museum.museumName;
 			  data.museumAccountId = 1;
 			  data.museumAddress   = $scope.Museum.address;
@@ -101,9 +102,9 @@ myApp.controller('MuseumController', ['$scope', '$rootScope', '$http',
 			};
 		  
 		 $scope.ajax = 
-     	function($data, $route, $successCallback, $errorCallback) {
+     	function(data, route, successCallback, errorCallback) {
         var baseUrl = "";
         var fullRoute = $scope.baseUrl + route;
-       	$http.post(fullRoute, data).then(successCallback, errorCallback);
+       	$http.get(fullRoute, data).then(successCallback, errorCallback);
     }
       }]);
