@@ -105,7 +105,7 @@ myApp.controller('MuseumController', ['$scope', '$rootScope', '$http',
 		       var data = new Object();
               data.museumName      = $scope.myMuseums.museumName;
 			  data.accountId = 1;
-			  data.address   = $scope.Museum.address;
+			  data.address   = $scope.myMuseums.address;
 
 			  var profileJsonObject = Object();
 			  profileJsonObject.zipcode = $scope.myMuseums.museumZipcode;
