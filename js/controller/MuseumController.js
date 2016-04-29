@@ -1,6 +1,6 @@
 myApp.controller('MuseumController', ['$scope', '$rootScope', '$http',
       function($scope, $rootScope, $http) {
-      		$http.defaults.headers.post['Content-Type'] = 'application/x-www-form-urlencoded;charset=utf-8';
+      	//	$http.defaults.headers.post['Content-Type'] = 'application/x-www-form-urlencoded;charset=utf-8';
 
       		$rootScope.museum = null;
 
@@ -112,7 +112,7 @@ myApp.controller('MuseumController', ['$scope', '$rootScope', '$http',
 			  profileJsonObject.state = $scope.myMuseums.museumState;
 			  profileJsonObject.city = $scope.myMuseums.museumCity;
 
-			  data.museumProfileJSON = profileJsonObject;
+			  data.museumProfileJSON = angular.toJson(profileJsonObject);
 			  console.log(data);
 			  $scope.ajaxPost(data, "museum/createMuseum", successCallback, errorCallback);
           };
