@@ -65,7 +65,7 @@ myApp.controller('MuseumController', ['$scope', '$rootScope', '$http',
 		            else {
 		                // server did not return error, but something
 		                // went wrong in the php code
-		                errorCallback();
+		                errorCallback(response);
 		            }
 		        }
 		        
