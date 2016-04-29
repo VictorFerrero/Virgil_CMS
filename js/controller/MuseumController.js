@@ -61,7 +61,7 @@ myApp.controller('MuseumController', ['$scope', '$rootScope', '$http',
 		                var arrMuseumObjects = response.data.museums;
 		                var museumObject = arrMuseumObjects[0]; // just choose the first one for now
 		                $scope.Museums = arrMuseumObjects;
-		                $rootScope.museum = museumObject;
+		              //  $rootScope.museum = museumObject;
 		            }
 		            else {
 		                // server did not return error, but something
@@ -102,14 +102,14 @@ myApp.controller('MuseumController', ['$scope', '$rootScope', '$http',
 		        }
 		        
 		       var data = new Object();
-              data.museumName      = $scope.myMuseums.museumName;
+              data.museumName      = $scope.Museum.myMuseums.museumName;
 			  data.accountId = 1;
-			  data.address   = $scope.myMuseums.address;
+			  data.address   = $scope.Museum.myMuseums.address;
 
 			  var profileJsonObject = Object();
-			  profileJsonObject.zipcode = $scope.myMuseums.museumZipcode;
-			  profileJsonObject.state = $scope.myMuseums.museumState;
-			  profileJsonObject.city = $scope.myMuseums.museumCity;
+			  profileJsonObject.zipcode = $scope.Museum.myMuseums.museumZipcode;
+			  profileJsonObject.state = $scope.Museum.myMuseums.museumState;
+			  profileJsonObject.city = $scope.Museum.myMuseums.museumCity;
 
 			  data.museumProfileJSON = angular.toJson(profileJsonObject);
 			  console.log(data);
