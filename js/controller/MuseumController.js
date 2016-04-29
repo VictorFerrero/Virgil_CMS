@@ -131,6 +131,7 @@ myApp.controller('MuseumController', ['$scope', '$rootScope', '$http',
 		            // error occurred
 		            if(response.data.success == true) {
 		                // we send back the newly created account to the front end
+		                console.log(response);
 		                var updateMuseum = response.data.record;
 		                var arr = $scope.Museums;
 		                for(i = 0; i < arr.length; i++) {
