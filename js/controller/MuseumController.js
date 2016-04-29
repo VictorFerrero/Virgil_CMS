@@ -193,6 +193,7 @@ myApp.controller('MuseumController', ['$scope', '$rootScope', '$http',
 		                	var museum = arrMuseums[i];
 		                	if(museum.id == id) {
 		                		arrMuseums.splice(i,1);
+		                		$rootScope.museum = null;
 		                	}
 		                }
 		                $scope.Museums = arrMuseums;
