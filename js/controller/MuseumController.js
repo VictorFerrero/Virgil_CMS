@@ -135,7 +135,6 @@ myApp.controller('MuseumController', ['$scope', '$rootScope', '$http',
 		                var arr = $scope.Museums;
 		                for(i = 0; i < arr.length; i++) {
 		                	var obj = arr[i];
-		                	console.log(obj);
 		                	if(obj.id == updateMuseum.id) {
 		                		arr[i] = updateMuseum;
 		                		$scope.Museum.myMuseums = updateMuseum;
