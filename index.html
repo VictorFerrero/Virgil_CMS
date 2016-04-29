@@ -153,21 +153,20 @@
                             <!--Museum Hours-->
                             <div class="museum_hours">
 
-                              <div class="hours">
+                               <div class="hours">
                                 <p>Sunday hours: </p><br>
                                 <input name="museumSundayHoursOpen" type="time"
                                 ng-model="Museum.myMuseums.museumSundayHoursOpen"
-							    id="museumSundayHoursOpen">
+                  id="museumSundayHoursOpen">
 
                                 <input name="museumSundayHoursClose" type="time"
-                                ng-model="Museum.museumSundayHoursClose"
-							    id="museumSundayHoursClose">
+                                ng-model="Museum.myMuseums.museumSundayHoursClose"
+                  id="museumSundayHoursClose">
 
                                 <p class="error validationerror"
                                 ng-show="museumForm.museumSundayHoursOpen.$dirty &&
                                 museumForm.museumSundayHoursClose.$untouched">
-									
-                                Enter both a start and stop time.</p>
+                                  Enter both a start and stop time.</p>
                               </div>
 
                               <div class="hours">
