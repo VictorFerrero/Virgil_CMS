@@ -103,7 +103,7 @@ myApp.controller('MuseumController', ['$scope', '$rootScope', '$http',
 		        
 		       var data = new Object();
               data.museumName      = $scope.myMuseums.museumName;
-			  data.museumAccountId = 1;
+			  data.accountId = 1;
 			  data.address   = $scope.Museum.address;
 
 			  var profileJsonObject = Object();
