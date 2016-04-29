@@ -192,6 +192,7 @@ myApp.controller('MuseumController', ['$scope', '$rootScope', '$http',
 		                	}
 		                }
 		                $scope.Museums = arrMuseums;
+		            }
 		            else {
 		                // server did not return error, but something
 		                // went wrong in the php code
