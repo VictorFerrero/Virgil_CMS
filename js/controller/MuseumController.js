@@ -114,19 +114,19 @@ myApp.controller('MuseumController', ['$scope', '$rootScope', '$http',
 
 			  // get time 
 			  var strMon = $scope.formatAMPM(new Date($scope.Museum.myMuseums.museumMondayHoursOpen)) + 
-			  				"-" + $scope.formatAMPM(new Date($scope.Museum.myMuseums.museumMondayHoursClose));
+			  				" - " + $scope.formatAMPM(new Date($scope.Museum.myMuseums.museumMondayHoursClose));
 			  var strTue = $scope.formatAMPM(new Date($scope.Museum.myMuseums.museumTuesdayHoursOpen)) + 
-			  				"-" + $scope.formatAMPM(new Date($scope.Museum.myMuseums.museumTuesdayHoursClose));
+			  				" - " + $scope.formatAMPM(new Date($scope.Museum.myMuseums.museumTuesdayHoursClose));
 			  var strWed = $scope.formatAMPM(new Date($scope.Museum.myMuseums.museumWednesdayHoursOpen)) + 
-			  				"-" + $scope.formatAMPM(new Date($scope.Museum.myMuseums.museumWednesdayHoursClose));
+			  				" - " + $scope.formatAMPM(new Date($scope.Museum.myMuseums.museumWednesdayHoursClose));
 			  var strThur = $scope.formatAMPM(new Date($scope.Museum.myMuseums.museumThursdayHoursOpen)) + 
-			  				"-" + $scope.formatAMPM(new Date($scope.Museum.myMuseums.museumThursdayHoursClose));
+			  				" - " + $scope.formatAMPM(new Date($scope.Museum.myMuseums.museumThursdayHoursClose));
 			  var strFri = $scope.formatAMPM(new Date($scope.Museum.myMuseums.museumFridayHoursOpen)) + 
-			  				"-" + $scope.formatAMPM(new Date($scope.Museum.myMuseums.museumFridayHoursClose));
+			  				" - " + $scope.formatAMPM(new Date($scope.Museum.myMuseums.museumFridayHoursClose));
 			  var strSat = $scope.formatAMPM(new Date($scope.Museum.myMuseums.museumSaturdayHoursOpen)) + 
-			  				"-" + $scope.formatAMPM(new Date($scope.Museum.myMuseums.museumSaturdayHoursClose));
+			  				" - " + $scope.formatAMPM(new Date($scope.Museum.myMuseums.museumSaturdayHoursClose));
 			  var strSun = $scope.formatAMPM(new Date($scope.Museum.myMuseums.museumSundayHoursOpen)) + 
-			  				"-" + $scope.formatAMPM(new Date($scope.Museum.myMuseums.museumSundayHoursClose));
+			  				" - " + $scope.formatAMPM(new Date($scope.Museum.myMuseums.museumSundayHoursClose));
 			
 			  profileJsonObject.mon = strMon;
 			  profileJsonObject.tue = strTue;
@@ -288,7 +288,7 @@ myApp.controller('MuseumController', ['$scope', '$rootScope', '$http',
     $scope.formatAMPM = function(date) {
 		  var hours = date.getHours();
 		  var minutes = date.getMinutes();
-		  var ampm = hours >= 12 ? 'pm' : 'am';
+		  var ampm = hours >= 12 ? 'PM' : 'AM';
 		  hours = hours % 12;
 		  hours = hours ? hours : 12; // the hour '0' should be '12'
 		  minutes = minutes < 10 ? '0'+minutes : minutes;
