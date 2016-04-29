@@ -112,8 +112,9 @@ myApp.controller('MuseumController', ['$scope', '$rootScope', '$http',
 			  profileJsonObject.city = $scope.Museum.myMuseums.museumCity;
 
 			  data.museumProfileJSON = angular.toJson(profileJsonObject);
+			  console.log(data);
 			//  console.log(data);
-			  $scope.ajaxPost(data, "museum/createMuseum", successCallback, errorCallback);
+			//  $scope.ajaxPost(data, "museum/createMuseum", successCallback, errorCallback);
           };
 		  
 		  $scope.update = function() {
@@ -161,12 +162,45 @@ myApp.controller('MuseumController', ['$scope', '$rootScope', '$http',
 			  profileJsonObject.city = $scope.Museum.myMuseums.museumCity;
 
 			  data.museumProfileJSON = angular.toJson(profileJsonObject);
+
+			  // TODO: add logic to only send forms to the server that have been changed 
 			//  console.log(data);
 			  $scope.ajaxPost(data, "museum/updateMuseum", successCallback, errorCallback);
           };
 		  
 		  $scope.delete = function() {
-              $scope.message = "Welcome " + $scope.Museum.museumName;
+               errorCallback = function(response) {
+		           // var error = response.data.errors; // this is an array 
+		          //  console.log(error); // see if we have any errors from php script
+		            // also log status codes from server
+		            console.log(response);
+		            console.log(response.data);
+		            // TODO: display error message to the user
+		        }
+
+		        successCallback = function(response) {
+		            // success of call back could still mean that server side 
+		            // error occurred
+		            if(response.data.success == true) {
+		                // we send back the newly created account to the front end
+		                var id = response.data.id; // get the id of the musuem we deleted
+		                var arrMuseums = $scope.Museums;
+		                for(i = 0; i < arrMuseums.length; i++) {
+		                	var museum = arrMuseums[i];
+		                	if(museum.id == id) {
+		                		arrMuseums.splice(i,1);
+		                	}
+		                }
+		                $scope.Museums = arrMuseums;
+		            else {
+		                // server did not return error, but something
+		                // went wrong in the php code
+		                errorCallback(response);
+		            }
+		        }
+		        var data = Object();
+		        data.id = $rootScope.musuem.id;
+		        $scope.ajaxPost(data, "museum/deleteMuseum", successCallback, errorCallback);
           };
 		  
 		  $scope.fetch = function() {
@@ -177,6 +211,7 @@ myApp.controller('MuseumController', ['$scope', '$rootScope', '$http',
 			  
 		  }; 
 		  
+		  // keep our $rootScope.museum variable up to date
 		  $scope.onMuseumSelectChange = function() {
 			  $rootScope.museum = $scope.Museum.myMuseums;	
 			  console.log($rootScope.museum);
