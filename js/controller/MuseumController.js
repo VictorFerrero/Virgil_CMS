@@ -59,9 +59,7 @@ myApp.controller('MuseumController', ['$scope', '$rootScope', '$http',
 		                var museumObject = arrMuseumObjects[0]; // just choose the first one for now
 		                $scope.Museums = arrMuseumObjects;
 		                $scope.myMuseums = museumObject;
-		                // save the accontObj in $scope
-		                $rootScope.museum = museumObj;
-		                $scope.Museum = museumObj;
+		                $rootScope.museum = museumObject;
 		            }
 		            else {
 		                // server did not return error, but something
