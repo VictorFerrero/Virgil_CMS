@@ -41,7 +41,7 @@ myApp.controller('MuseumController', ['$scope', '$rootScope', '$http',
           $scope.add = function() {
 
 		      errorCallback = function(response) {
-		            var error = response.data.errors; // this is an array 
+		           // var error = response.data.errors; // this is an array 
 		            console.log(error); // see if we have any errors from php script
 		            // also log status codes from server
 		            console.log(response.status);
