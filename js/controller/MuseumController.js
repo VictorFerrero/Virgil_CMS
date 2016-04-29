@@ -112,7 +112,7 @@ myApp.controller('MuseumController', ['$scope', '$rootScope', '$http',
 			  profileJsonObject.state = $scope.myMuseums.museumState;
 			  profileJsonObject.city = $scope.myMuseums.museumCity;
 
-			  data.museumProfileJSON = profileJsonObject;
+			  data.museumProfileJSON = angular.toJson(profileJsonObject);
 			  $scope.ajaxPost(data, "museum/createMuseum", successCallback, errorCallback);
           };
 		  
