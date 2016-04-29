@@ -204,7 +204,7 @@ myApp.controller('MuseumController', ['$scope', '$rootScope', '$http',
 		            }
 		        }
 		        var data = Object();
-		        data.id = $rootScope.musuem.id;
+		        data.id = $rootScope.museum.id;
 		        $scope.ajaxPost(data, "museum/deleteMuseum", successCallback, errorCallback);
           };
 		  
