@@ -92,6 +92,7 @@ myApp.controller('MuseumController', ['$scope', '$rootScope', '$http',
 		            if(response.data.success == true) {
 		                // we send back the newly created account to the front end
 		                var newMuseum = response.data.record;
+		                console.log(newMuseum);
 		                $scope.Museums.push(newMuseum);
 		            }
 		            else {
@@ -190,6 +191,30 @@ myApp.controller('MuseumController', ['$scope', '$rootScope', '$http',
 			  profileJsonObject.zipcode = $scope.Museum.myMuseums.museumZipcode;
 			  profileJsonObject.state = $scope.Museum.myMuseums.museumState;
 			  profileJsonObject.city = $scope.Museum.myMuseums.museumCity;
+
+			  // get time 
+			  var strMon = $scope.formatAMPM(new Date($scope.Museum.myMuseums.museumMondayHoursOpen)) + 
+			  				"-" + $scope.formatAMPM(new Date($scope.Museum.myMuseums.museumMondayHoursClose));
+			  var strTue = $scope.formatAMPM(new Date($scope.Museum.myMuseums.museumTuesdayHoursOpen)) + 
+			  				"-" + $scope.formatAMPM(new Date($scope.Museum.myMuseums.museumTuesdayHoursClose));
+			  var strWed = $scope.formatAMPM(new Date($scope.Museum.myMuseums.museumWednesdayHoursOpen)) + 
+			  				"-" + $scope.formatAMPM(new Date($scope.Museum.myMuseums.museumWednesdayHoursClose));
+			  var strThur = $scope.formatAMPM(new Date($scope.Museum.myMuseums.museumThursdayHoursOpen)) + 
+			  				"-" + $scope.formatAMPM(new Date($scope.Museum.myMuseums.museumThursdayHoursClose));
+			  var strFri = $scope.formatAMPM(new Date($scope.Museum.myMuseums.museumFridayHoursOpen)) + 
+			  				"-" + $scope.formatAMPM(new Date($scope.Museum.myMuseums.museumFridayHoursClose));
+			  var strSat = $scope.formatAMPM(new Date($scope.Museum.myMuseums.museumSaturdayHoursOpen)) + 
+			  				"-" + $scope.formatAMPM(new Date($scope.Museum.myMuseums.museumSaturdayHoursClose));
+			  var strSun = $scope.formatAMPM(new Date($scope.Museum.myMuseums.museumSundayHoursOpen)) + 
+			  				"-" + $scope.formatAMPM(new Date($scope.Museum.myMuseums.museumSundayHoursClose));
+			
+			  profileJsonObject.mon = strMon;
+			  profileJsonObject.tue = strTue;
+			  profileJsonObject.wed = strWed;
+			  profileJsonObject.thur = strThur;
+			  profileJsonObject.fri = strFri;
+			  profileJsonObject.sat = strSat;
+			  profileJsonObject.sun = strSun;
 
 			  data.museumProfileJSON = angular.toJson(profileJsonObject);
 
