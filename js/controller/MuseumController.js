@@ -132,7 +132,7 @@ myApp.controller('MuseumController', ['$scope', '$rootScope', '$http',
 			  
 		  }; 
 		  
-		  $scope.change = function() {
+		  $scope.onMuseumSelectChange = function() {
 			  $rootScope.museum = $scope.Museums.myMuseums;	
 			  console.log($rootScope.museum);
 			};
