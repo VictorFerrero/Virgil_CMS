@@ -97,7 +97,7 @@ myApp.controller('MuseumController', ['$scope', '$rootScope', '$http',
 		            else {
 		                // server did not return error, but something
 		                // went wrong in the php code
-		                errorCallback();
+		                errorCallback(response);
 		            }
 		        }
 		        
@@ -117,7 +117,50 @@ myApp.controller('MuseumController', ['$scope', '$rootScope', '$http',
           };
 		  
 		  $scope.update = function() {
-              $scope.message = "Welcome " + $scope.Museum.museumName;
+                  errorCallback = function(response) {
+		           // var error = response.data.errors; // this is an array 
+		          //  console.log(error); // see if we have any errors from php script
+		            // also log status codes from server
+		            console.log(response);
+
+		            // TODO: display error message to the user
+		        }
+
+		        successCallback = function(response) {
+		            // success of call back could still mean that server side 
+		            // error occurred
+		            if(response.data.success == true) {
+		                // we send back the newly created account to the front end
+		                var updateMuseum = response.data.record;
+		                var arr = $scope.Museums;
+		                for(i = 0; i < arr.length; i++) {
+		                	var obj = arr[i];
+		                	if(obj.id == updateMuseum.id) {
+		                		arr[i] = updateMuseum;
+		                		break;
+		                	}
+		                }
+		                $scope.Museums = arr;		            }
+		            else {
+		                // server did not return error, but something
+		                // went wrong in the php code
+		                errorCallback(response);
+		            }
+		        }
+		        
+		       var data = new Object();
+              data.museumName      = $scope.Museum.myMuseums.museumName;
+		//	  data.accountId = 1;
+			  data.address   = $scope.Museum.myMuseums.address;
+			  data.id = $scope.Museum.myMuseums.id;
+			  var profileJsonObject = Object();
+			  profileJsonObject.zipcode = $scope.Museum.myMuseums.museumZipcode;
+			  profileJsonObject.state = $scope.Museum.myMuseums.museumState;
+			  profileJsonObject.city = $scope.Museum.myMuseums.museumCity;
+
+			  data.museumProfileJSON = angular.toJson(profileJsonObject);
+			//  console.log(data);
+			  $scope.ajaxPost(data, "museum/updateMuseum", successCallback, errorCallback);
           };
 		  
 		  $scope.delete = function() {
