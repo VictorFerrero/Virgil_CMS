@@ -138,10 +138,15 @@ myApp.controller('MuseumController', ['$scope', '$rootScope', '$http',
 		                	var obj = arr[i];
 		                	if(obj.id == updateMuseum.id) {
 		                		arr[i] = updateMuseum;
+		                		$scope.Museum.myMuseums = updateMuseum;
+		                		console.log("hello");
+		                		console.log(obj);
+		                		console.log(updateMuseum);
 		                		break;
 		                	}
 		                }
-		                $scope.Museums = arr;		            }
+		                $scope.Museums = arr;	
+		               }
 		            else {
 		                // server did not return error, but something
 		                // went wrong in the php code
