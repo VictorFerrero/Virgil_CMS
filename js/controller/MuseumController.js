@@ -61,7 +61,6 @@ myApp.controller('MuseumController', ['$scope', '$rootScope', '$http',
 		                var arrMuseumObjects = response.data.museums;
 		                var museumObject = arrMuseumObjects[0]; // just choose the first one for now
 		                $scope.Museums = arrMuseumObjects;
-		                $scope.myMuseums = museumObject;
 		                $rootScope.museum = museumObject;
 		            }
 		            else {
