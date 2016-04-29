@@ -3,7 +3,8 @@ myApp.controller('MuseumController', ['$scope', '$rootScope', '$http',
       		$rootScope.museum = null;
 
 		  $scope.baseUrl = "http://52.24.10.104/Virgil_Backend_Stage/Virgil_Backend/index.php/";
-		   $scope.Museums = [
+		   
+		  $scope.Museums = [
 				  {
 				   id:-1,
 				   museumName:"",
@@ -37,6 +38,41 @@ myApp.controller('MuseumController', ['$scope', '$rootScope', '$http',
 				    museumZipcode: "53706"	  
 				  }
     		  ]; 
+		  
+		  $scope.initializeForm = function() {
+			  
+			  errorCallback = function(response) {
+		           // var error = response.data.errors; // this is an array 
+		          //  console.log(error); // see if we have any errors from php script
+		            // also log status codes from server
+		            console.log(response.status);
+		            console.log(response.statusText);
+
+		            // TODO: display error message to the user
+		        }
+
+		        successCallback = function(response) {
+		            // success of call back could still mean that server side 
+		            // error occurred
+		            if(response.data.success == true) {
+		                // we send back the newly created account to the front end
+		                var arrMuseumObjects = response.data.museums;
+		                var museumObject = arrMuseumObjects[0]; // just choose the first one for now
+		                $scope.Museums = arrMuseumObjects;
+		                $scope.myMuseums = museumObject;
+		                $rootScope.museum = museumObject;
+		            }
+		            else {
+		                // server did not return error, but something
+		                // went wrong in the php code
+		                errorCallback();
+		            }
+		        }
+		        
+		        var data = new Object();
+		      $scope.ajax(data, "getAllMuseums", successCallback, errorCallback);
+ 
+		  } 
 		  
           $scope.add = function() {
 

@@ -55,7 +55,7 @@
 				  ">
         <div class="panels">
                   <!--General Museum Content-->
-                  <div class="panel museum" ng-controller="MuseumController">
+                  <div class="panel museum" ng-controller="MuseumController" ng-init="initializeForm()">
                     <div class="pnl_content">
                           <form name="museumForm" novalidate>
                             <div class="form_intro">
@@ -76,7 +76,7 @@
 							  
 							  
 							  <p>Select a museum to edit</p>
-							  <select ng-change="change()" ng-model="Museum.myMuseums" 
+							  <select ng-model="Museum.myMuseums" 
 							   ng-options="Museum.museumName for Museum in Museums track by Museum.id">
 							  </select>
  
