@@ -70,7 +70,7 @@ myApp.controller('MuseumController', ['$scope', '$rootScope', '$http',
 		        }
 		        
 		        var data = new Object();
-		      $scope.ajax(data, "getAllMuseums", successCallback, errorCallback);
+		      $scope.ajaxGet(data, "getAllMuseums", successCallback, errorCallback);
  
 		  } 
 		  
@@ -91,11 +91,8 @@ myApp.controller('MuseumController', ['$scope', '$rootScope', '$http',
 		            // error occurred
 		            if(response.data.success == true) {
 		                // we send back the newly created account to the front end
-		                var arrMuseumObjects = response.data.museums;
-		                var museumObject = arrMuseumObjects[0]; // just choose the first one for now
-		                $scope.Museums = arrMuseumObjects;
-		                $scope.myMuseums = museumObject;
-		                $rootScope.museum = museumObject;
+		                var newMuseum = response.data.record;
+		                $scope.Museums.push(newMuseum);
 		            }
 		            else {
 		                // server did not return error, but something
@@ -104,15 +101,18 @@ myApp.controller('MuseumController', ['$scope', '$rootScope', '$http',
 		            }
 		        }
 		        
-		        var data = new Object();
-		        /*
-              data.museumName      = $scope.Museum.museumName;
+		       var data = new Object();
+              data.museumName      = $scope.myMuseums.museumName;
 			  data.museumAccountId = 1;
-			  data.museumAddress   = $scope.Museum.address;
-			  var museumProfileJSO = $scope.addHours();
-			  data.museumProfileJSON = angular.toJson(museumProfileJSO);
-			  */
-			  $scope.ajax(data, "getAllMuseums", successCallback, errorCallback);
+			  data.address   = $scope.Museum.address;
+
+			  var profileJsonObject = Object();
+			  profileJsonObject.zipcode = $scope.myMuseums.museumZipcode;
+			  profileJsonObject.state = $scope.myMuseums.museumState;
+			  profileJsonObject.city = $scope.myMuseums.museumCity;
+
+			  data.museumProfileJSON = profileJsonObject;
+			  $scope.ajaxPost(data, "museum/createMuseum", successCallback, errorCallback);
           };
 		  
 		  $scope.update = function() {
@@ -132,13 +132,20 @@ myApp.controller('MuseumController', ['$scope', '$rootScope', '$http',
 		  }; 
 		  
 		  $scope.change = function() {
-			  $rootScope.museum = $scope.Museum;	
+			  $rootScope.museum = $scope.myMuseums;	
 			};
 		  
-		 $scope.ajax = 
+		 $scope.ajaxGet = 
      	function(data, route, successCallback, errorCallback) {
         var baseUrl = "";
         var fullRoute = $scope.baseUrl + route;
        	$http.get(fullRoute, data).then(successCallback, errorCallback);
+    }
+
+    $scope.ajaxPost = 
+     	function(data, route, successCallback, errorCallback) {
+        var baseUrl = "";
+        var fullRoute = $scope.baseUrl + route;
+       	$http.post(fullRoute, data).then(successCallback, errorCallback);
     }
       }]);
