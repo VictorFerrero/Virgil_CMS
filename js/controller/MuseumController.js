@@ -121,8 +121,8 @@ myApp.controller('MuseumController', ['$scope', '$rootScope', '$http',
 			  var strSun = $scope.Museum.myMuseums.museumSundayHoursOpen + "-" + $scope.Museum.myMuseums.museumSundayHoursClosed;
 
 			  profileJsonObject.Monday = strMon;
-			  profileJSONObject.Tuesday = strTues;
-			  profileJSONObject.Wednesday = strWed;
+			  profileJsonObject.Tuesday = strTues;
+			  profileJsonObject.Wednesday = strWed;
 			  profileJsonObject.Thursday = strThur;
 			  profileJsonObject.Friday = strFri;
 			  profileJsonObject.Saturday = strSat;
