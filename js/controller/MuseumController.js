@@ -60,7 +60,7 @@ myApp.controller('MuseumController', ['$scope', '$rootScope', '$http',
 		                // we send back the newly created account to the front end
 		                var arrMuseumObjects = response.data.museums;
 		                var museumObject = arrMuseumObjects[0]; // just choose the first one for now
-		                $scope.Museums = arrMuseumObjects;
+		                $scope.Museums.push(arrMuseumObjects);
 		              //  $rootScope.museum = museumObject;
 		            }
 		            else {
@@ -71,6 +71,7 @@ myApp.controller('MuseumController', ['$scope', '$rootScope', '$http',
 		        }
 		        
 		        var data = new Object();
+		        $scope.Museums.push(null);
 		      $scope.ajaxGet(data, "getAllMuseums", successCallback, errorCallback);
  
 		  } 
@@ -133,7 +134,10 @@ myApp.controller('MuseumController', ['$scope', '$rootScope', '$http',
 		  }; 
 		  
 		  $scope.change = function() {
-			  $rootScope.museum = $scope.myMuseums;	
+			  $rootScope.museum = $scope.Museums.myMuseums;	
+			  if($rootScope.museum == null) {
+			  	// change to update mode
+			  }
 			};
 		  
 		 $scope.ajaxGet = 
