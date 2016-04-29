@@ -269,8 +269,8 @@ myApp.controller('MuseumController', ['$scope', '$rootScope', '$http',
 		  // keep our $rootScope.museum variable up to date
 		  $scope.onMuseumSelectChange = function() {
 			  $rootScope.museum = $scope.Museum.myMuseums;	
-			  $scope.Museum.myMuseums.museumSundayHoursOpen = new Date($rootScope.museum.museumSundayHoursOpen);
-			  $scope.Museum.myMuseums.museumSundayHoursOpen = new Date($rootScope.museum.museumSundayHoursClose);
+			  $scope.Museum.myMuseums.museumSundayHoursOpen = Date.parse($rootScope.museum.museumMondayHoursOpen);
+			  $scope.Museum.myMuseums.museumSundayHoursOpen = Date.parse($rootScope.museum.museumMondayHoursClose);
 			  console.log($rootScope.museum);
 			};
 		  
