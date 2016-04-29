@@ -21,15 +21,15 @@
         </div>
 
         <div class="group">
-          <input name="museumStreet" type="text"
-          ng-model="museum.museumStreet"
+          <input name="address" type="text"
+          ng-model="museum.address"
           ng-required="true">
               <span class="highlight"></span>
               <span class="bar"></span>
               <label>Street address</label>
               <p class="error validationerror"
-              ng-show="museumForm.museumStreet.$invalid &&
-              museumForm.museumStreet.$touched">
+              ng-show="museumForm.address.$invalid &&
+              museumForm.address.$touched">
               You must enter a street address.</p>
         </div>
 
