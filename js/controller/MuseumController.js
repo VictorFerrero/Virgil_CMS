@@ -127,18 +127,18 @@ myApp.controller('MuseumController', ['$scope', '$rootScope', '$http',
 			  var strSun = $scope.formatAMPM(new Date($scope.Museum.myMuseums.museumSundayHoursOpen)) + 
 			  				"-" + $scope.formatAMPM(new Date($scope.Museum.myMuseums.museumSundayHoursClose));
 			
-			  profileJsonObject.Monday = strMon;
-			  profileJsonObject.Tuesday = strTue;
-			  profileJsonObject.Wednesday = strWed;
-			  profileJsonObject.Thursday = strThur;
-			  profileJsonObject.Friday = strFri;
-			  profileJsonObject.Saturday = strSat;
-			  profileJsonObject.Sunday = strSun;
+			  profileJsonObject.mon = strMon;
+			  profileJsonObject.tue = strTue;
+			  profileJsonObject.wed = strWed;
+			  profileJsonObject.thur = strThur;
+			  profileJsonObject.fri = strFri;
+			  profileJsonObject.sat = strSat;
+			  profileJsonObject.sun = strSun;
 
 			  data.museumProfileJSON = angular.toJson(profileJsonObject);
-			  console.log(data);
+			//  console.log(data);
 			//  console.log($rootScope.museum);
-			//  $scope.ajaxPost(data, "museum/createMuseum", successCallback, errorCallback);
+			  $scope.ajaxPost(data, "museum/createMuseum", successCallback, errorCallback);
           };
 		  
 		  $scope.update = function() {
