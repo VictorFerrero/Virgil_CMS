@@ -3,7 +3,7 @@ myApp.controller('MuseumController', ['$scope', '$rootScope', '$http',
       		$rootScope.museum = null;
 
 		  $scope.baseUrl = "http://52.24.10.104/Virgil_Backend_Stage/Virgil_Backend/index.php/";
-		   
+		   /*
 		  $scope.Museums = [
 				  {
 				   id:-1,
@@ -38,7 +38,7 @@ myApp.controller('MuseumController', ['$scope', '$rootScope', '$http',
 				    museumZipcode: "53706"	  
 				  }
     		  ]; 
-		  
+		  */
 		  $scope.initializeForm = function() {
 			  
 			  errorCallback = function(response) {
