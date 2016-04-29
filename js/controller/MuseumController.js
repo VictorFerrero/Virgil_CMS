@@ -122,7 +122,7 @@ myApp.controller('MuseumController', ['$scope', '$rootScope', '$http',
 		          //  console.log(error); // see if we have any errors from php script
 		            // also log status codes from server
 		            console.log(response);
-
+		            console.log(response.data);
 		            // TODO: display error message to the user
 		        }
 
@@ -131,9 +131,7 @@ myApp.controller('MuseumController', ['$scope', '$rootScope', '$http',
 		            // error occurred
 		            if(response.data.success == true) {
 		                // we send back the newly created account to the front end
-		                console.log(response);
 		                var updateMuseum = response.data.record;
-		                console.log(updateMuseum);
 		                var arr = $scope.Museums;
 		                for(i = 0; i < arr.length; i++) {
 		                	var obj = arr[i];
@@ -141,9 +139,6 @@ myApp.controller('MuseumController', ['$scope', '$rootScope', '$http',
 		                	if(obj.id == updateMuseum.id) {
 		                		arr[i] = updateMuseum;
 		                		$scope.Museum.myMuseums = updateMuseum;
-		                		console.log("hello");
-		                		console.log(obj);
-		                		console.log(updateMuseum);
 		                		break;
 		                	}
 		                }
