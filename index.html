@@ -278,10 +278,10 @@
 
 								
                               <input class="btn" type="submit" ng-disabled="museumForm.$invalid"
-									 ng-click="addButton ? add() : update()" value="{{ add_or_update }}">
+									 ng-click="add()" value="Add Museum">
 							
 							  <input class="btn" type="submit" ng-disable="museumForm.$invalid"
-									 ng-click="reset()" value="Reset">
+									 ng-click="update()" value="Update Museum">
 								
 							  <input class="btn" type="submit" ng-disabled="museumForm.$invalid" value="Delete museum"
                                      ng-click="delete()">
