@@ -84,8 +84,10 @@ $scope.tmpExhibits = [
                           exhibit.exhibitDescription = profileJSON.description;
                           arrExhibitObjects[i] = exhibit;
                           // only add the exhibits that correspond to the selected gallery AND museum
-                          if(exhibit.galleryId == $rootScope.currGallery.id && exhibit.museumId == $rootScope.currMuseum.id) {
-                            exhibitsInThisGallery.push(exhibit);
+                          if($rootScope.currGallery != null) {
+                            if(exhibit.galleryId == $rootScope.currGallery.id && exhibit.museumId == $rootScope.currMuseum.id) {
+                              exhibitsInThisGallery.push(exhibit);
+                            }
                           }
                         }
                         $scope.allExhibits = arrExhibitObjects;

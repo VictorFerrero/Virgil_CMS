@@ -2,7 +2,7 @@ myApp.controller('MuseumController', ['$scope', '$rootScope', '$http',
       function($scope, $rootScope, $http) {
       	//	$http.defaults.headers.post['Content-Type'] = 'application/x-www-form-urlencoded;charset=utf-8';
 
-      		
+
 
       		$rootScope.currMuseum;
 
@@ -74,7 +74,7 @@ myApp.controller('MuseumController', ['$scope', '$rootScope', '$http',
 		        }
 		        
 		        var data = new Object();
-		      $scope.ajaxGet(data, "getAllMuseums", successCallback, errorCallback);
+		      $scope.ajaxGet(data, "getAllMuseumsForCms", successCallback, errorCallback);
  
 		  } 
 		  
