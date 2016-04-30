@@ -211,11 +211,13 @@ myApp.controller('MuseumController', ['$scope', '$rootScope', '$http',
 		            if(response.data.success == true) {
 		                // we send back the newly created account to the front end
 		                var updateMuseum = response.data.record;
+		                console.log(updateMuseum);
 		                var arr = $scope.Museums;
 		                for(i = 0; i < arr.length; i++) {
 		                	var obj = arr[i];
 		                	if(obj.id == updateMuseum.id) {
-		                		arr[i] = updateMuseum;
+		                		arr.splice(i,1)
+		                		arr.push(updateMuseum);
 		                		break;
 		                	}
 		                }
