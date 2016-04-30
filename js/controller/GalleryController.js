@@ -140,7 +140,7 @@ myApp.controller('GalleryController', ['$scope', '$rootScope', '$http',
 		  			// must select a museum in the Museum panel
 		  			console.log("museum is null");
 		  			$scope.currGallery = $scope.Galleries[0];
-		  			console.log($scioe.currGallery);
+		  			console.log($scope.currGallery);
 		  		}
 		  }
 
