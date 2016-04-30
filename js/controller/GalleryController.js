@@ -102,7 +102,7 @@ myApp.controller('GalleryController', ['$scope', '$rootScope', '$http',
 		                for(i = 0; i < arrGalleries.length; i++) {
 		                	var gallery = arrGalleries[i];
 		                	if(gallery.id == $rootScope.currGallery.id) {
-		                		arrMuseums.splice(i,1);
+		                		arrGalleries.splice(i,1);
 		                		$rootScope.currGallery= null;
 		                	}
 		                }
