@@ -76,7 +76,7 @@ myApp.controller('ExhibitController', ['$scope', '$rootScope', '$http',
                           arrExhibitObjects[i] = exhibit;
                           // only add the exhibits that correspond to the selected gallery AND museum
                           if(exhibit.galleryId == $rootScope.currGallery.id && exhibit.museumId == $rootScope.currMuseum.id) {
-                            exhibitsInThisGallery[] = exhibit;
+                            exhibitsInThisGallery.push(exhibit);
                           }
                         }
                         $scope.allExhibits = arrExhibitObjects;
@@ -104,7 +104,7 @@ myApp.controller('ExhibitController', ['$scope', '$rootScope', '$http',
                           arrExhibitObjects[i] = exhibit;
                           // only add the exhibits that correspond to the selected gallery AND museum
                           if(exhibit.galleryId == $rootScope.currGallery.id && exhibit.museumId == $rootScope.currMuseum.id) {
-                            exhibitsInThisGallery[] = exhibit;
+                            exhibitsInThisGallery.push(exhibit);
                           }
                         }
                         $scope.Exhibits = exhibitsInThisGallery;
