@@ -67,7 +67,7 @@ myApp.controller('GalleryController', ['$scope', '$rootScope', '$http',
 				                errorCallback(response);
 				            }
 				        }
-				       if($rootScope.museum != null) { 
+				       if($rootScope.currMuseum != null) { 
 					       var data = new Object();
 					       data.galleryName = $scope.Gallery.selectedGallery.galleryName;
 					       data.museumId = $rootScope.museum.id;
@@ -97,13 +97,12 @@ myApp.controller('GalleryController', ['$scope', '$rootScope', '$http',
 		  $scope.onGallerySelectChange = function() {
 			  $rootScope.currGallery = $scope.Gallery.selectedGallery;
 			  console.log($rootScope.currGallery);
-			  console.log($rootScope.museum);
+			  console.log($rootScope.currMuseum);
 		  };
 		  
 		  $scope.sync = function() {
 
-		if($rootScope.museum != null) {
-		  	if($rootScope.museum.id != $rootScope.currGallery.museumId) {
+		if($rootScope.currMuseum != null) {
 					// need to make network call 
 					  errorCallback = function(response) {
 				           // var error = response.data.errors; // this is an array 
@@ -139,10 +138,9 @@ myApp.controller('GalleryController', ['$scope', '$rootScope', '$http',
 				        }
 				        
 				       var data = new Object();
-				      $scope.ajaxGet(data, "getEntireMuseum/" + $rootScope.museum.id, successCallback, errorCallback);
+				      $scope.ajaxGet(data, "getEntireMuseum/" + $rootScope.currMuseum.id, successCallback, errorCallback);
 		 		
 		  			}
-				}  
 				else {
 		  			// must select a museum in the Museum panel
 		  			console.log("museum is null");
