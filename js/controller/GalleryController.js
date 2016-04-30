@@ -47,6 +47,7 @@ myApp.controller('GalleryController', ['$scope', '$rootScope', '$http',
 					  
 			  $scope.currGallery = $scope.Gallery.selectedGallery;
 			  console.log($scope.currGallery);
+			  console.log($rootScope.museum);
 		  };
 		  
 		  $scope.initializeGallery = function() {
