@@ -8,23 +8,23 @@ myApp.controller('ExhibitController', ['$scope', '$rootScope', '$http',
           {
            id:-1,
            museumId: -1,
-           exhibitTitle:"",
+           exhibitName:"",
            exhibitDescription: "",
           
           },
           {
            id:1,
-           exhibitTitle:"Yonce",
+           exhibitName:"Yonce",
            exhibitDescription: "Boss Bitch",
           },
               {
            id:2,    
-           exhibitTitle:"Cretaceous Period",
+           exhibitName:"Cretaceous Period",
            exhibitDescription: "I think the T-Rex is actually from this period",
           },
               {
           id:3,  
-           exhibitTitle:"Malcolm X",
+           exhibitName:"Malcolm X",
            exhibitDescription: "By any means necessary.",
           }
           ]; 
@@ -33,14 +33,58 @@ $scope.tmpExhibits = [
           {
            id:-1,
            museumId: -1,
-           exhibitTitle:"",
+           exhibitName:"",
            exhibitDescription: "",
           
           }
           ]; 
 
           $scope.add = function() {
-              $scope.message = "Welcome " + $scope.Exhibit.exhibitTitle;
+              
+            errorCallback = function(response) {
+                   // var error = response.data.errors; // this is an array 
+                  //  console.log(error); // see if we have any errors from php script
+                    // also log status codes from server
+                    console.log(response.status);
+                    console.log(response.statusText);
+
+                    // TODO: display error message to the user
+                }
+
+                successCallback = function(response) {
+                    // success of call back could still mean that server side 
+                    // error occurred
+                    if(response.data.success == true) {
+                        // we send back the newly created account to the front end
+                        console.log(response.data);
+                        var exhibit = response.data.record;
+                        var profileJSON = angular.fromJson(exhibit.galleryProfileJSON);
+                        exhibit.exhibitDescription = profileJSON.description;
+                        $scope.Exhibits.push(exhibit);
+                        $scope.allExhibits.push(exhibit);
+                    }
+                    else {
+                        // server did not return error, but something
+                        // went wrong in the php code
+                        errorCallback(response);
+                    }
+                }
+               if($rootScope.currMuseum != null && $rootScope.currGallery != null) { 
+                    if($rootScope.currMuseum.id > 0 && $rootScope.currGallery.id > 0) {
+                     var data = new Object();
+                     data.museumId = $rootScope.currMuseum.id;
+                     data.galleryId = $rootScope.currGallery.id;
+                     data.exhibitName = $scope.Exhibit.exhibitName;
+                     var profileJSONobject = Object();
+                     profileJSONobject.description = $scope.Exhibit.exhibitDescription;
+                     data.exhibitProfileJSON = angular.toJson(profileJSONobject);
+                     console.log(data);
+                   // $scope.ajaxPost(data, "exhibit/createExhibit", successCallback, errorCallback);
+                  }
+             }
+             else {
+              console.log("museum is null");
+             }
           };
 		  
 		  $scope.update = function() {
@@ -124,11 +168,29 @@ $scope.tmpExhibits = [
             // must select a museum in the Museum panel
             console.log("museum is null");
             $scope.Exhibit = $scope.tmpExhibits[0];
+            $scope.currExhibit = $scope.tmpExhibits[0];
             console.log($rootScope.currExhibit);
           }
           }
        $scope.onExhibitSelectChange = function() {
           $scope.currExhibit = $scope.Exhibit;
           console.log($scope.currExhibit);
-       }   
+       };
+
+        $scope.ajaxGet = function(data, route, successCallback, errorCallback) {
+        var baseUrl = "";
+        var fullRoute = $scope.baseUrl + route;
+        $http.get(fullRoute, data).then(successCallback, errorCallback);
+      };
+
+
+
+    $scope.ajaxPost = function(data, route, successCallback, errorCallback) {
+        var baseUrl = "";
+        var fullRoute = $scope.baseUrl + route;
+        $http.post(fullRoute, data).then(successCallback, errorCallback);
+      };
+
+
+
       }]);
