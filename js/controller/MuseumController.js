@@ -203,9 +203,9 @@ myApp.controller('MuseumController', ['$scope', '$rootScope', '$http',
 		  
           $scope.uploadFile = function(files) {
           	$scope.fd = new FormData();
-    //Take the first selected file
-    	fd.append("museumMap", files[0]);
-    };
+    		//Take the first selected file
+    		$scope.fd.append("museumMap", files[0]);
+    	};
 
 		  $scope.update = function() {
                   errorCallback = function(response) {
