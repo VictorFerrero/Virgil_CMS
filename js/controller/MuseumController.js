@@ -1,35 +1,3 @@
-myApp.directive('fileModel', ['$parse', function ($parse) {
-            return {
-               restrict: 'A',
-               link: function(scope, element, attrs) {
-                  var model = $parse(attrs.fileModel);
-                  var modelSetter = model.assign;
-                  
-                  element.bind('change', function(){
-                     scope.$apply(function(){
-                        modelSetter(scope, element[0].files[0]);
-                     });
-                  });
-               }
-            };
-         
-      
-         myApp.service('fileUpload', ['$http', function ($http) {
-            this.uploadFileToUrl = function(file, uploadUrl){
-               var fd = new FormData();
-               fd.append('file', file);
-            
-               $http.post(uploadUrl, fd, {
-                  transformRequest: angular.identity,
-                  headers: {'Content-Type': undefined}
-               })
-            
-               .success(function(){
-               })
-            
-               .error(function(){
-               });
-            }
 myApp.controller('MuseumController', ['$scope', '$rootScope', '$http', 'fileUpload',
       function($scope, $rootScope, $http, fileUpload) {
       	//	$http.defaults.headers.post['Content-Type'] = 'application/x-www-form-urlencoded;charset=utf-8';
@@ -75,6 +43,10 @@ myApp.controller('MuseumController', ['$scope', '$rootScope', '$http', 'fileUplo
     		  ]; 
 		 */
 
+		 $scope.onFileSelect = function(file) {
+    if (!file) return;
+     $scope.imageToUpload = file;
+  };
 		  $scope.initializeForm = function() {
 			  
 			  //sets the submit button as add museum
@@ -112,7 +84,7 @@ myApp.controller('MuseumController', ['$scope', '$rootScope', '$http', 'fileUplo
 		        var data = new Object();
 		      $scope.ajaxGet(data, "getAllMuseums", successCallback, errorCallback);
  
-		  }; 
+		  } 
 		  
           $scope.add = function() {
 
@@ -223,16 +195,9 @@ myApp.controller('MuseumController', ['$scope', '$rootScope', '$http', 'fileUplo
 
 			  	data.contentProfileJSON = contentProfileJson;
 			  	console.log(data);
-			  	var file = $scope.thumbnail;
-               
-               console.log('file is ' );
-               console.dir(file);
-               console.log(file);
-               //var uploadUrl = "/fileUpload";
-               //fileUpload.uploadFileToUrl(file, uploadUrl);
 			  //	$scope.ajaxPost(data, "content/createContent", successCallback, errorCallback);
 
-          };
+          }
 		  
 		  $scope.update = function() {
                   errorCallback = function(response) {
@@ -366,14 +331,14 @@ myApp.controller('MuseumController', ['$scope', '$rootScope', '$http', 'fileUplo
         var baseUrl = "";
         var fullRoute = $scope.baseUrl + route;
        	$http.get(fullRoute, data).then(successCallback, errorCallback);
-    };
+    }
 
     $scope.ajaxPost = 
      	function(data, route, successCallback, errorCallback) {
         var baseUrl = "";
         var fullRoute = $scope.baseUrl + route;
        	$http.post(fullRoute, data).then(successCallback, errorCallback);
-    };
+    }
     $scope.formatAMPM = function(date) {
 		  var hours = date.getHours();
 		  var minutes = date.getMinutes();
@@ -383,5 +348,5 @@ myApp.controller('MuseumController', ['$scope', '$rootScope', '$http', 'fileUplo
 		  minutes = minutes < 10 ? '0'+minutes : minutes;
 		  var strTime = hours + ':' + minutes + ' ' + ampm;
 		  return strTime;
-		};
-	}]);
+		}
+      }]);
