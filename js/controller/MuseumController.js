@@ -5,7 +5,7 @@ myApp.controller('MuseumController', ['$scope', '$rootScope', '$http',
       		$rootScope.museum = null;
 
 		  $scope.baseUrl = "http://52.24.10.104/Virgil_Backend_Stage/Virgil_Backend/index.php/";
-		   /*
+		   
 		  $scope.Museums = [
 				  {
 				   id:-1,
@@ -40,8 +40,13 @@ myApp.controller('MuseumController', ['$scope', '$rootScope', '$http',
 				    museumZipcode: "53706"	  
 				  }
     		  ]; 
-		  */
+		 
 		  $scope.initializeForm = function() {
+			  
+			  //sets the submit button as add museum
+			  $scope.add_or_update = "Add Museum";			  
+			  $scope.addButton = true;
+			  $scope.message = $scope.Museum.myMuseums.id; 
 			  
 			  errorCallback = function(response) {
 		           // var error = response.data.errors; // this is an array 
@@ -262,15 +267,61 @@ myApp.controller('MuseumController', ['$scope', '$rootScope', '$http',
               $scope.message = "Welcome " + $scope.Museum.museumName;
           };
 		  
-		  $scope.addHours = function() {
-			  
-		  }; 
-		  
 		  // keep our $rootScope.museum variable up to date
 		  $scope.onMuseumSelectChange = function() {
+			  
+			  if ($scope.Museum.myMuseums.id >= 0) {
+			  	$scope.add_or_update = "Update Museum"
+			  	$scope.addButton = false;
+			  	$scope.message = $scope.Museum.myMuseums.id;
+			  
+			  } else {
+				  
+				$scope.add_or_update = "Add Museum"
+			  	$scope.addButton = true;
+			  	$scope.message = $scope.Museum.myMuseums.id;  
+			  	 
+			  }
+			  
 			  $rootScope.museum = $scope.Museum.myMuseums;	
 			  console.log($rootScope.museum);
 			};
+		  
+		  $scope.reset = function() {
+			  
+			$scope.add_or_update = "Add Museum"
+			$scope.addButton = true;
+			  	  
+			$scope.Museum.myMuseums.id = -1;
+			$scope.Museum.myMuseums.museumName = "";
+			$scope.Museum.myMuseums.address = "";  
+			$scope.Museum.myMuseums.museumCity = "";
+			$scope.Museum.myMuseums.museumState = "";
+			$scope.Museum.myMuseums.museumZipcode = "";
+			  
+			$scope.Museum.myMuseums.museumSundayHoursOpen = null;
+			$scope.Museum.myMuseums.museumSundayHoursClose = null;
+			
+			$scope.Museum.myMuseums.museumMondayHoursOpen = null;
+			$scope.Museum.myMuseums.museumMondayHoursClose = null;
+			  
+			$scope.Museum.myMuseums.museumTuesdayHoursOpen = null;
+			$scope.Museum.myMuseums.museumTuesdayHoursClose = null;  
+			  
+			$scope.Museum.myMuseums.museumWednesdayHoursOpen = null;
+			$scope.Museum.myMuseums.museumWednesdayHoursClose = null;
+			
+			$scope.Museum.myMuseums.museumThursdayHoursOpen = null;
+			$scope.Museum.myMuseums.museumThursdayHoursClose = null;  
+			
+			$scope.Museum.myMuseums.museumFridayHoursOpen = null;
+			$scope.Museum.myMuseums.museumFridayHoursClose = null;  
+			      
+			$scope.Museum.myMuseums.museumSaturdayHoursOpen = null;
+			$scope.Museum.myMuseums.museumSaturdayHoursClose = null;  
+			
+			$scope.message = $scope.Museum.myMuseums.id;    
+		  };
 		  
 		 $scope.ajaxGet = 
      	function(data, route, successCallback, errorCallback) {

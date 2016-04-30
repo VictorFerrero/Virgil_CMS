@@ -78,7 +78,7 @@
 							  <p>Select a museum to edit</p>
 							  <select ng-model="Museum.myMuseums" 
 							   ng-options="Museum.museumName for Museum in Museums track by Museum.id"
-                 ng-change="onMuseumSelectChange()">
+                 ng-change="onMuseumSelectChange()" class="dropSelect">
 							  </select>
  
                             <!--Museum name and address-->
@@ -154,30 +154,30 @@
                             <div class="museum_hours">
 
                                <div class="hours">
-                                <p>Sunday hours: </p><br>
-                                <input name="museumSundayHoursOpen" type="time"
+                               <p>Sunday hours: </p><br>
+                                <input name="museumSundayHoursOpen" type="text"
                                 ng-model="Museum.myMuseums.museumSundayHoursOpen"
-                  id="museumSundayHoursOpen">
-
-                                <input name="museumSundayHoursClose" type="time"
+							    id="museumSundayHoursOpen" class="first">
+                             	
+                                <input name="museumSundayHoursClose" type="text"
                                 ng-model="Museum.myMuseums.museumSundayHoursClose"
-                  id="museumSundayHoursClose">
+                                id="museumSundayHoursClose" class="second">
 
                                 <p class="error validationerror"
                                 ng-show="museumForm.museumSundayHoursOpen.$dirty &&
                                 museumForm.museumSundayHoursClose.$untouched">
-                                  Enter both a start and stop time.</p>
+                                  Enter both a start and stop time.</p>	
                               </div>
 
                               <div class="hours">
                                 <p>Monday hours: </p><br>
-                                <input name="museumMondayHoursOpen" type="time"
+                                <input name="museumMondayHoursOpen" type="text"
                                 ng-model="Museum.myMuseums.museumMondayHoursOpen"
-							    id="museumMondayHoursOpen">
+							    id="museumMondayHoursOpen" class="first">
 
-                                <input name="museumMondayHoursClose" type="time"
+                                <input name="museumMondayHoursClose" type="text"
                                 ng-model="Museum.myMuseums.museumMondayHoursClose"
-							    id="museumMondayHoursClose">
+							    id="museumMondayHoursClose" class="second">
 
                                 <p class="error validationerror"
                                 ng-show="museumForm.museumMondayHoursOpen.$dirty &&
@@ -187,12 +187,13 @@
 
                               <div class="hours">
                                 <p>Tuesday hours: </p><br>
-                                <input name="museumTuesdayHoursOpen" type="time"
+                                <input name="museumTuesdayHoursOpen" type="text"
                                 ng-model="Museum.myMuseums.museumTuesdayHoursOpen"
-							    id="museumTuesdayHoursOpen">
+							    id="museumTuesdayHoursOpen" class="first">
 
-                                <input name="museumTuesdayHoursClose" type="time"
-                                ng-model="Museum.myMuseums.museumTuesdayHoursClose">
+                                <input name="museumTuesdayHoursClose" type="text"
+                                ng-model="Museum.myMuseums.museumTuesdayHoursClose"
+								class="second">
 
                                 <p class="error validationerror"
                                 ng-show="museumForm.museumTuesdayHoursOpen.$dirty &&
@@ -202,11 +203,13 @@
 
                               <div class="hours">
                                 <p>Wednesday hours: </p><br>
-                                <input name="museumWednesdayHoursOpen" type="time"
-                                ng-model="Museum.myMuseums.museumWednesdayHoursOpen">
+                                <input name="museumWednesdayHoursOpen" type="text"
+                                ng-model="Museum.myMuseums.museumWednesdayHoursOpen"
+							    class="first">
 
-                                <input name="museumWednesdayHoursClose" type="time"
-                                ng-model="Museum.myMuseums.museumWednesdayHoursClose">
+                                <input name="museumWednesdayHoursClose" type="text"
+                                ng-model="Museum.myMuseums.museumWednesdayHoursClose"
+							    class="second">
                                 <p class="error validationerror"
                                 ng-show="museumForm.museumWednesdayHoursOpen.$dirty &&
                                 museumForm.museumTuesdayHoursClose.$untouched">
@@ -215,11 +218,13 @@
 
                               <div class="hours">
                                 <p>Thursday hours: </p><br>
-                                <input name="museumThursdayHoursOpen" type="time"
-                                ng-model="Museum.myMuseums.museumThursdayHoursOpen">
+                                <input name="museumThursdayHoursOpen" type="text"
+                                ng-model="Museum.myMuseums.museumThursdayHoursOpen"
+							    class="first">
 
-                                <input name="museumThursdayHoursClose" type="time"
-                                ng-model="Museum.myMuseums.museumThursdayHoursClose">
+                                <input name="museumThursdayHoursClose" type="text"
+                                ng-model="Museum.myMuseums.museumThursdayHoursClose"
+							    class="second">
 
                                 <p class="error validationerror"
                                 ng-show="museumForm.museumThursdayHoursOpen.$dirty &&
@@ -229,11 +234,13 @@
 
                               <div class="hours">
                                 <p>Friday hours: </p><br>
-                                <input name="museumFridayHoursOpen" type="time"
-                                ng-model="Museum.myMuseums.museumFridayHoursOpen">
+                                <input name="museumFridayHoursOpen" type="text"
+                                ng-model="Museum.myMuseums.museumFridayHoursOpen"
+							    class="first">
 
-                                <input name="museumFridayHoursClose" type="time"
-                                ng-model="Museum.myMuseums.museumFridayHoursClose">
+                                <input name="museumFridayHoursClose" type="text"
+                                ng-model="Museum.myMuseums.museumFridayHoursClose"
+							    class="second">
 
                                 <p class="error validationerror"
                                 ng-show="museumForm.museumFridayHoursOpen.$dirty &&
@@ -243,11 +250,13 @@
 
                               <div class="hours">
                                 <p>Saturday hours: </p><br>
-                                <input name="museumSaturdayHoursOpen" type="time"
-                                ng-model="Museum.myMuseums.museumSaturdayHoursOpen">
+                                <input name="museumSaturdayHoursOpen" type="text"
+                                ng-model="Museum.myMuseums.museumSaturdayHoursOpen"
+							    class="first">
 
-                                <input name="museumSaturdayHoursClose" type="time"
-                                ng-model="Museum.myMuseums.museumSaturdayHoursClose">
+                                <input name="museumSaturdayHoursClose" type="text"
+                                ng-model="Museum.myMuseums.museumSaturdayHoursClose"
+							    class="second">
                                 <p class="error validationerror"
                                 ng-show="museumForm.museumSaturdayHoursOpen.$dirty &&
                                 museumForm.museumSaturdayHoursClose.$untouched">
@@ -257,16 +266,26 @@
 
 
                               <div class="picture">
-                                <input name="museum_image" type="file" accept="image/*"
-                                ng-model="Museum.myMuseums.image">
+                                <input name="museumMap" type="file" accept="image/*"
+                                ng-model="Museum.myMuseums.museumMap">
                               </div>
 
-                              <input class="btn" type="submit" ng-disabled="museumForm.$invalid" value="Add museum"
-							   ng-click="add()">
+								
+                              <div class="picture">
+                                <input name="museumThumbnail" type="file" accept="image/*"
+                                ng-model="Museum.myMuseums.museumThumbnail">
+                              </div>
+
+								
+                              <input class="btn" type="submit" ng-disabled="museumForm.$invalid"
+									 ng-click="addButton ? add() : update()" value="{{ add_or_update }}">
+							
+							  <input class="btn" type="submit" ng-disable="museumForm.$invalid"
+									 ng-click="reset()" value="Reset">
+								
 							  <input class="btn" type="submit" ng-disabled="museumForm.$invalid" value="Delete museum"
-                  ng-click="delete()">
-                 <input class="btn" type="submit" ng-disabled="museumForm.$invalid" value="Update museum"
-                 ng-click="update()">	
+                                     ng-click="delete()">
+                 
                             </div> <!--End of General Museum Hours -->
                           </form> <!--End of Form-->
                         </div>
@@ -275,31 +294,29 @@
 
                     <!--Gallery Content-->
 
-                  <div class="panel gallery" ng-controller="GalleryController">
+			
+                  <div class="panel gallery" ng-controller="GalleryController" ng-init="initializeGallery()">
                     <div class="pnl_content">
                         <form name="galleryForm" novalidate>
                           <div class="form_intro">
                             <h1>Gallery Information</h1>
-                            <p>Please fill out gallery information.</p>
-							<p ng-show="message">{{ message }}</p>  
+                            <p>Please fill out gallery information.</p> 
                           </div><!--End of Form Intro-->
-
-                        <div class="dropdown-group">
-                          <div  id="dl_gallery" class="dropdown">
-                              <button class="dropbtn">Select Existing Gallery to Edit</button>
-                                <div class="dropdown-content">
-                                  <p>Gallery Here</p>
-                                  <p>More Gallery Content</p>
-                                  <p>Gallery</p>
-                                </div>
-                          </div>
-                        </div>
+							
+						 <p>Select a Gallery to edit</p>	
+						
+	
+						<select ng-model="Gallery.selectedGallery" 
+							   ng-options="Gallery.galleryTitle for Gallery in Galleries track by Gallery.id"
+								ng-change="onSelectChange()" class="dropSelect">
+							  </select>	
 
                         <!--Gallery Name and Content-->
                         <div id="pnl_gallery">
                               <div class="group">
+								  
                                 <input name="galleryTitle" type="text"
-                                ng-model="Gallery.galleryTitle"
+                                ng-model="Gallery.selectedGallery.galleryTitle"
                                 ng-required="true">
 
                                   <span class="highlight"></span>
@@ -314,7 +331,7 @@
 
                                  <div class="group">
                                    <input name="galleryDescription" type="text"
-                                   ng-model="Gallery.galleryDescription"
+                                   ng-model="Gallery.selectedGallery.galleryDescription"
                                    ng-required="true">
 
                                      <span class="highlight"></span>
@@ -328,16 +345,19 @@
 
                                   <div class="picture">
                                     <input name="gallery_image" type="file" accept="image/*"
-                                    ng-model="Gallery.image">
+                                    ng-model="Gallery.selectedGallery.image">
                                   </div>
                             </div> <!--end of gallery_panel-->
 
-                          <div class="submit_btn">
-                            <input class="btn" type="submit" value="Add Gallery" ng-disabled="galleryForm.$invalid"
-						     ng-click="add()" />
-                            <input class="btn" type="submit" value="Delete Gallery" />
-                          </div>
-
+                 		
+                              <input class="btn" type="submit" ng-disabled="galleryForm.$invalid"
+									 ng-click="addButton ? addGallery() : updateGallery()" value="{{ add_update }}">
+							
+							  <input class="btn" type="submit" ng-disable="galleryForm.$invalid"
+									 ng-click="resetGallery()" value="Reset">
+								
+							  <input class="btn" type="submit" ng-disabled="galleryForm.$invalid" value="Delete Gallery" ng-click="deleteGallery()">
+                 
                           </form>
                         </div>
                   </div><!--end of gallery content-->

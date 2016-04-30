@@ -139,13 +139,6 @@ input:focus     {
 	color: #47a3da;
 }
 
-input[type=time] {
-  display: inline-block;
-  border: 1px solid #008091;
-  border-radius: .5em;
-  width: 35%;
-}
-
 
 input[type=time].ng-invalid.ng-touched {
   border: 1px solid #FF5722;
@@ -306,34 +299,6 @@ input:focus ~ .highlight {
   to    { width:0; background:transparent; }
 }
 
-/* BOTTOM BARS ================================= */
-
-/*.bar  {
-  position:relative;
-  display:block;
-  width:70%;
-}
-
-.bar:before, .bar:after   {
-  content:'';
-  height:2px;
-  width:0;
-  bottom:1px;
-  position:absolute;
-  background:#008091;
-  transition:0.3s ease all;
-}
-
-.bar:before {
-  left:50%;
-}
-.bar:after {
-  right:50%;
-}
-
-input:focus ~ .bar:before, input:focus ~ .bar:after {
-  width:50%;
-}*/
 
 .hours        {
   position:relative;
@@ -349,11 +314,40 @@ input:focus ~ .bar:before, input:focus ~ .bar:after {
   pointer-events:none;
 }
 
-.group:first-child {
-  top:-15px;
-  font-size:18px;
-  color:#008091;
+.hours input {
+  display: inline-block;
+  border: 1px solid #008091;
+  border-radius: .5em;
+  width: 37%;
 }
+
+
+.dropSelect {
+	margin-bottom: 30px;
+	width: 50%;
+}
+
+.hours input.ng-invalid.ng-touched {
+  border: 1px solid #FF5722;
+  border-radius: .5em;
+  width: 37%;
+}
+
+.hours input.ng-valid.ng-touched {
+  border: 1px solid #8BC34A;
+  border-radius: .5em;
+  width: 37%;
+}
+
+.first {
+	margin-right: 3%;
+}
+
+
+.second {
+	margin-left: 3%;
+}
+
 
 /** Main panel **/
 
