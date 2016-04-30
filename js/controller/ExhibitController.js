@@ -1,5 +1,5 @@
-myApp.controller('ExhibitController', ['$scope',
-      function($scope) {
+myApp.controller('ExhibitController', ['$scope', '$rootScope', '$http',
+      function($scope, $rootScope, $http) {
           
         $scope.Exhibits = [
           {
@@ -26,7 +26,7 @@ myApp.controller('ExhibitController', ['$scope',
           }
           ]; 
 
-
+          $scope.currExhibit = null;
 
           $scope.add = function() {
               $scope.message = "Welcome " + $scope.Exhibit.exhibitTitle;
@@ -43,4 +43,8 @@ myApp.controller('ExhibitController', ['$scope',
 		  $scope.fetch = function() {
               $scope.message = "Welcome " + $scope.Exhibit.exhibitTitle;
           };
+       $scope.onExhibitSelectChange = function() {
+          $scope.currExhibit = $scope.Exhibit;
+          console.log($scope/currExhibit);
+       }   
       }]);
