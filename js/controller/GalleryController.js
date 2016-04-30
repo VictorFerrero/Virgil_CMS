@@ -4,6 +4,7 @@ myApp.controller('GalleryController', ['$scope', '$rootScope', '$http',
 		  $scope.Galleries = [
 				  {
 				   id:-1,
+				   museumId: -1,
 				   galleryName:"",
 				   galleryDescription: "",
 				  
@@ -25,7 +26,6 @@ myApp.controller('GalleryController', ['$scope', '$rootScope', '$http',
 				  }
     		  ]; 
 		 
-    		  $scope.currGallery = null;
 
           $scope.addGallery = function() {
               
@@ -46,6 +46,8 @@ myApp.controller('GalleryController', ['$scope', '$rootScope', '$http',
 				                // we send back the newly created account to the front end
 				                console.log(response.data);
 				                var gallery = response.data.record;
+				                var profileJSON = angular.fromJson(gallery.galleryProfileJSON);
+				                gallery.galleryDescription = profileJSON.description;
 				                $scope.Galleries.push(gallery);
 				            }
 				            else {
@@ -82,7 +84,11 @@ myApp.controller('GalleryController', ['$scope', '$rootScope', '$http',
           };
 		  
 		  $scope.onGallerySelectChange = function() {
-					  
+				
+				if($rootScope.museum.id != $scope.currGallery.museumId) {
+					// need to make network call 
+					$scope.initializeGallery;
+				}		  
 			  $scope.currGallery = $scope.Gallery.selectedGallery;
 			  console.log($scope.currGallery);
 			  console.log($rootScope.museum);
@@ -113,8 +119,10 @@ myApp.controller('GalleryController', ['$scope', '$rootScope', '$http',
 				                	var gallery = arrGalleryObjects[i];
 				                	var profileJSON = angular.fromJson(gallery.galleryProfileJSON);
 				                	gallery.galleryDescription = profileJSON.description;
-				                	$scope.Galleries.push(gallery);
+				                	//$scope.Galleries.push(gallery);
+				                	arrGalleryObjects[i] = gallery;
 				                }
+				                $scope.Galleries = arrGalleryObjects;
 				            }
 				            else {
 				                // server did not return error, but something
@@ -130,6 +138,7 @@ myApp.controller('GalleryController', ['$scope', '$rootScope', '$http',
 		  		else {
 		  			// must select a museum in the Museum panel
 		  			console.log("museum is null");
+		  			$scope.currGallery = $scope.Galleries[0];
 		  		}
 		  }
 
