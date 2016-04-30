@@ -164,7 +164,9 @@ myApp
 
 			  data.museumProfileJSON = angular.toJson(profileJsonObject);
 
-			  data.image = $scope.Museum.myMuseums.image;
+			  data.hasImage = true;
+			  data.submit = "settt";
+			  data.imageToUpload = $scope.formdata;
 			 console.log(data);
 			 console.log($scope.formdata);
 			//  console.log($rootScope.museum);
