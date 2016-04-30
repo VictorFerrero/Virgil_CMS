@@ -326,20 +326,21 @@ myApp.controller('MuseumController', ['$scope', '$rootScope', '$http', 'fileUplo
 			  console.log($rootScope.museum);
 			};
 		  
-		 $scope.ajaxGet = 
-     	function(data, route, successCallback, errorCallback) {
+		 $scope.ajaxGet = function(data, route, successCallback, errorCallback) {
         var baseUrl = "";
         var fullRoute = $scope.baseUrl + route;
        	$http.get(fullRoute, data).then(successCallback, errorCallback);
-    }
+    	};
 
-    $scope.ajaxPost = 
-     	function(data, route, successCallback, errorCallback) {
+
+
+    $scope.ajaxPost = function(data, route, successCallback, errorCallback) {
         var baseUrl = "";
         var fullRoute = $scope.baseUrl + route;
        	$http.post(fullRoute, data).then(successCallback, errorCallback);
-    }
-    $scope.formatAMPM = function(date) {
+    	};
+
+    	$scope.formatAMPM = function(date) {
 		  var hours = date.getHours();
 		  var minutes = date.getMinutes();
 		  var ampm = hours >= 12 ? 'PM' : 'AM';
@@ -348,6 +349,5 @@ myApp.controller('MuseumController', ['$scope', '$rootScope', '$http', 'fileUplo
 		  minutes = minutes < 10 ? '0'+minutes : minutes;
 		  var strTime = hours + ':' + minutes + ' ' + ampm;
 		  return strTime;
-		}
-	}
-      }]);
+		};
+		]);
