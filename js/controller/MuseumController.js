@@ -164,14 +164,54 @@ myApp
 
 			  data.museumProfileJSON = angular.toJson(profileJsonObject);
 
-			  data.hasImage = true;
-			  data.submit = "settt";
-			  data.imageToUpload = $scope.formdata;
 			 console.log(data);
 			 console.log($scope.formdata);
 			//  console.log($rootScope.museum);
 			//  $scope.ajaxPost(data, "museum/createMuseum", successCallback, errorCallback);
           };
+
+          $scope.addContent = function() {
+
+                  errorCallback = function(response) {
+		           // var error = response.data.errors; // this is an array 
+		          //  console.log(error); // see if we have any errors from php script
+		            // also log status codes from server
+		            console.log(response);
+		            console.log(response.data);
+		            // TODO: display error message to the user
+		        }
+
+		        successCallback = function(response) {
+		            // success of call back could still mean that server side 
+		            // error occurred
+		            if(response.data.success == true) {
+		                // we send back the newly created account to the front end
+		                console.log("success");
+		               	console.log(response);
+		               }
+		            else {
+		                // server did not return error, but something
+		                // went wrong in the php code
+		                errorCallback(response);
+		            }
+		        }
+
+		        var data = Object();
+		        data.museumId = $scope.museum.id;
+		        data.galleryId = 0;
+		        data.exhibitId = 0;
+		        data.description = "";
+		        data.imageToUpload = $scope.formdata;
+		        data.hasImage = true;
+			  	data.submit = "settt";
+
+			  	var contentProfileJson = Object();
+			  	contentProfileJson.isMap = false;
+
+			  	data.contentProfileJSON = contentProfileJson;
+			  	$scope.ajaxPost(data, "content/createContent", successCallback, errorCallback);
+
+          }
 		  
 		  $scope.update = function() {
                   errorCallback = function(response) {
