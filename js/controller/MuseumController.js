@@ -191,7 +191,7 @@ myApp.controller('MuseumController', ['$scope', '$rootScope', '$http',
 			  	data.contentProfileJSON = contentProfileJson;
 			  	console.log(data);
 			  	
-			  	 var f = document.getElementById('file').files[0];
+			  	 var f = document.getElementById('museumMap').files[0];
 
 			  	console.log(f);
 			  //	$scope.ajaxPost(data, "content/createContent", successCallback, errorCallback);
