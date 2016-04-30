@@ -23,7 +23,7 @@ myApp
 			$scope.formdata = new FormData();
             $scope.getTheFiles = function ($files) {
                 angular.forEach($files, function (value, key) {
-                    formdata.append(key, value);
+                    $scope.formdata.append(key, value);
                 });
             };
 
