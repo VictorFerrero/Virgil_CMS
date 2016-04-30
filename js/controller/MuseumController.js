@@ -166,7 +166,7 @@ myApp
 
 			  data.image = $scope.Museum.myMuseums.image;
 			 console.log(data);
-			 console.log()
+			 console.log($scope.formdata);
 			//  console.log($rootScope.museum);
 			//  $scope.ajaxPost(data, "museum/createMuseum", successCallback, errorCallback);
           };
