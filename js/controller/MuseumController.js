@@ -5,7 +5,6 @@ myApp.controller('MuseumController', ['$scope', '$rootScope', '$http',
       		$rootScope.museum = null;
 
 		  $scope.baseUrl = "http://52.24.10.104/Virgil_Backend_Stage/Virgil_Backend/index.php/";
-		  $scope.imageFile = null;
 
 		 /* $scope.Museums = [
 				  {
@@ -186,7 +185,7 @@ myApp.controller('MuseumController', ['$scope', '$rootScope', '$http',
 		        data.galleryId = 0;
 		        data.exhibitId = 0;
 		        data.description = "";
-		        data.imageToUpload = $scope.imageFile;
+		        data.imageToUpload = $scope.fd;
 		        data.hasImage = true;
 			  	data.submit = "settt";
 
