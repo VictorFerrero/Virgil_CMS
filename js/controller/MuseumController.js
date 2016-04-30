@@ -386,4 +386,3 @@ myApp.controller('MuseumController', ['$scope', '$rootScope', '$http', 'fileUplo
 		  return strTime;
 		}
 	}
-      }]);
