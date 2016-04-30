@@ -267,14 +267,13 @@
 
                               <div class="picture">
                                 <input name="museumMap" type="file" accept="image/*"
-                                file-model = "thumbnail">
+                                ng-model="Museum.myMuseums.museumMap">
                               </div>
 
 								
                               <div class="picture">
                                 <input name="museumThumbnail" type="file" accept="image/*"
-                                ng-model="Museum.myMuseums.museumThumbnail"
-                                onchange="angular.element(this).scope().uploadedThumbnailImage(this)">
+                                ng-model="Museum.myMuseums.museumThumbnail">
                               </div>
 
 								
