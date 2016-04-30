@@ -1,6 +1,6 @@
 myApp.controller('GalleryController', ['$scope', '$rootScope', '$http',
       function($scope, $rootScope, $http) {
-          
+          $scope.baseUrl = "http://52.24.10.104/Virgil_Backend_Stage/Virgil_Backend/index.php/";
 		  $scope.Galleries = [
 				  {
 				   id:-1,
@@ -62,7 +62,7 @@ myApp.controller('GalleryController', ['$scope', '$rootScope', '$http',
 					       profileJSONobject.description = $scope.Gallery.selectedGallery.galleryDescription;
 					       data.galleryProfileJSON = angular.toJson(profileJSONobject);
 					       console.log(data);
-					     // $scope.ajaxPost(data, "gallery/createGallery", successCallback, errorCallback);
+					      $scope.ajaxPost(data, "gallery/createGallery", successCallback, errorCallback);
 		 			   }
 		 			   else {
 		 			   	console.log("museum is null");
