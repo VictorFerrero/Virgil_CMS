@@ -3,7 +3,7 @@ myApp.controller('ExhibitController', ['$scope', '$rootScope', '$http',
           $scope.baseUrl = "http://52.24.10.104/Virgil_Backend_Stage/Virgil_Backend/index.php/";
         $rootScope.currExhibit;  
         $scope.allExhibits = null;
-
+/*
         $scope.Exhibits = [
           {
            id:-1,
@@ -28,7 +28,16 @@ myApp.controller('ExhibitController', ['$scope', '$rootScope', '$http',
            exhibitDescription: "By any means necessary.",
           }
           ]; 
-
+*/
+$scope.tmpExhibits = [
+          {
+           id:-1,
+           museumId: -1,
+           exhibitTitle:"",
+           exhibitDescription: "",
+          
+          }
+          ]; 
 
           $scope.add = function() {
               $scope.message = "Welcome " + $scope.Exhibit.exhibitTitle;
@@ -112,8 +121,8 @@ myApp.controller('ExhibitController', ['$scope', '$rootScope', '$http',
         else {
             // must select a museum in the Museum panel
             console.log("museum is null");
-            $rootScope.currGallery = $scope.Galleries[0];
-            console.log($rootScope.currGallery);
+            $scope.Exhibit = $scope.tmpExhibits[0];
+            console.log($rootScope.currExhibit);
           }
           }
        $scope.onExhibitSelectChange = function() {
