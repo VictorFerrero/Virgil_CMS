@@ -385,4 +385,5 @@ myApp.controller('MuseumController', ['$scope', '$rootScope', '$http', 'fileUplo
 		  var strTime = hours + ':' + minutes + ' ' + ampm;
 		  return strTime;
 		}
+	}
       }]);
