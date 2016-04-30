@@ -84,20 +84,16 @@ myApp.controller('GalleryController', ['$scope', '$rootScope', '$http',
           };
 		  
 		  $scope.onGallerySelectChange = function() {
-				
-				if($rootScope.museum.id != $scope.currGallery.museumId) {
-					// need to make network call 
-					$scope.initializeGallery();
-				}  
 			  $scope.currGallery = $scope.Gallery.selectedGallery;
 			  console.log($scope.currGallery);
 			  console.log($rootScope.museum);
 		  };
 		  
-		  $scope.initializeGallery = function() {
-			  
-		  		if($rootScope.museum != null) {
+		  $scope.sync = function() {
 
+		if($rootScope.museum != null) {
+		  	if($rootScope.museum.id != $scope.currGallery.museumId) {
+					// need to make network call 
 					  errorCallback = function(response) {
 				           // var error = response.data.errors; // this is an array 
 				          //  console.log(error); // see if we have any errors from php script
@@ -134,14 +130,19 @@ myApp.controller('GalleryController', ['$scope', '$rootScope', '$http',
 				        
 				       var data = new Object();
 				      $scope.ajaxGet(data, "getEntireMuseum/" + $rootScope.museum.id, successCallback, errorCallback);
-		 
-		  		}
-		  		else {
+		 		
+		  			}
+				}  
+				else {
 		  			// must select a museum in the Museum panel
 		  			console.log("museum is null");
 		  			$scope.currGallery = $scope.Galleries[0];
 		  			console.log($scope.currGallery);
 		  		}
+		  };
+
+		  $scope.initializeGallery = function() {
+			  $scope.currGallery = $scope.Galleries[0];
 		  }
 
 		$scope.ajaxGet = function(data, route, successCallback, errorCallback) {
