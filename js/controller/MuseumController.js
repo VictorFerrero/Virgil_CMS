@@ -1,32 +1,13 @@
+angular.module('myApp', ['ngFileUpload']);
 myApp
-.directive('ngFiles', ['$parse', function ($parse) {
-
-            function fn_link(scope, element, attrs) {
-                var onChange = $parse(attrs.ngFiles);
-                element.on('change', function (event) {
-                    onChange(scope, { $files: event.target.files });
-                });
-            };
-
-            return {
-                link: fn_link
-            }
-        } ])
-.controller('MuseumController', ['$scope', '$rootScope', '$http',
-      function($scope, $rootScope, $http) {
+.controller('MuseumController', ['$scope', '$rootScope', '$http', 'Upload',
+      function($scope, $rootScope, $http, Upload) {
       	//	$http.defaults.headers.post['Content-Type'] = 'application/x-www-form-urlencoded;charset=utf-8';
 
       		$rootScope.museum = null;
 
 		  $scope.baseUrl = "http://52.24.10.104/Virgil_Backend_Stage/Virgil_Backend/index.php/";
-		   
-			$scope.formdata = new FormData();
-            $scope.getTheFiles = function ($files) {
-                angular.forEach($files, function (value, key) {
-                    $scope.formdata.append(key, value);
-                });
-            };
-
+		  $scope.imageFile = null;
 		 /* $scope.Museums = [
 				  {
 				   id:-1,
@@ -62,6 +43,11 @@ myApp
 				  }
     		  ]; 
 		 */
+
+		 $scope.onFileSelect = function(file) {
+    if (!file) return;
+     $scope.imageToUpload = file;
+  };
 		  $scope.initializeForm = function() {
 			  
 			  //sets the submit button as add museum
@@ -201,7 +187,7 @@ myApp
 		        data.galleryId = 0;
 		        data.exhibitId = 0;
 		        data.description = "";
-		        data.imageToUpload = $scope.formdata;
+		        data.imageToUpload = $scope.imageFile;
 		        data.hasImage = true;
 			  	data.submit = "settt";
 
@@ -209,7 +195,8 @@ myApp
 			  	contentProfileJson.isMap = false;
 
 			  	data.contentProfileJSON = contentProfileJson;
-			  	$scope.ajaxPost(data, "content/createContent", successCallback, errorCallback);
+			  	console.log(data);
+			  //	$scope.ajaxPost(data, "content/createContent", successCallback, errorCallback);
 
           }
 		  
