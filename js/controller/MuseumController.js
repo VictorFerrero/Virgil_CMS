@@ -1,5 +1,5 @@
-myApp.controller('MuseumController', ['$scope', '$rootScope', '$http', 'fileUpload',
-      function($scope, $rootScope, $http, fileUpload) {
+myApp.controller('MuseumController', ['$scope', '$rootScope', '$http',
+      function($scope, $rootScope, $http) {
       	//	$http.defaults.headers.post['Content-Type'] = 'application/x-www-form-urlencoded;charset=utf-8';
 
       		$rootScope.museum = null;
