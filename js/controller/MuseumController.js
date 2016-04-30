@@ -1,4 +1,18 @@
-myApp.controller('MuseumController', ['$scope', '$rootScope', '$http',
+myApp
+.directive('ngFiles', ['$parse', function ($parse) {
+
+            function fn_link(scope, element, attrs) {
+                var onChange = $parse(attrs.ngFiles);
+                element.on('change', function (event) {
+                    onChange(scope, { $files: event.target.files });
+                });
+            };
+
+            return {
+                link: fn_link
+            }
+        } ])
+.controller('MuseumController', ['$scope', '$rootScope', '$http',
       function($scope, $rootScope, $http) {
       	//	$http.defaults.headers.post['Content-Type'] = 'application/x-www-form-urlencoded;charset=utf-8';
 
@@ -6,7 +20,14 @@ myApp.controller('MuseumController', ['$scope', '$rootScope', '$http',
 
 		  $scope.baseUrl = "http://52.24.10.104/Virgil_Backend_Stage/Virgil_Backend/index.php/";
 		   
-		  $scope.Museums = [
+			$scope.formdata = new FormData();
+            $scope.getTheFiles = function ($files) {
+                angular.forEach($files, function (value, key) {
+                    formdata.append(key, value);
+                });
+            };
+
+		 /* $scope.Museums = [
 				  {
 				   id:-1,
 				   museumName:"",
@@ -40,7 +61,7 @@ myApp.controller('MuseumController', ['$scope', '$rootScope', '$http',
 				    museumZipcode: "53706"	  
 				  }
     		  ]; 
-		 
+		 */
 		  $scope.initializeForm = function() {
 			  
 			  //sets the submit button as add museum
@@ -145,6 +166,7 @@ myApp.controller('MuseumController', ['$scope', '$rootScope', '$http',
 
 			  data.image = $scope.Museum.myMuseums.image;
 			 console.log(data);
+			 console.log()
 			//  console.log($rootScope.museum);
 			//  $scope.ajaxPost(data, "museum/createMuseum", successCallback, errorCallback);
           };
