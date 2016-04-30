@@ -83,11 +83,92 @@ myApp.controller('GalleryController', ['$scope', '$rootScope', '$http',
           };
 		  
 		  $scope.deleteGallery = function() {
-              $scope.message = "Welcome " + $scope.Gallery.galleryTitle;
+              
+               errorCallback = function(response) {
+		           // var error = response.data.errors; // this is an array 
+		          //  console.log(error); // see if we have any errors from php script
+		            // also log status codes from server
+		            console.log(response);
+		            console.log(response.data);
+		        }
+
+		        successCallback = function(response) {
+		            // success of call back could still mean that server side 
+		            // error occurred
+		            if(response.data.success == true) {
+		                // we send back the newly created account to the front end
+		                var id = response.data.id; // get the id of the musuem we deleted
+		                var arrGalleries = $scope.Galleries; // get the array of museums in the drop down
+		                for(i = 0; i < arrGalleries.length; i++) {
+		                	var gallery = arrGalleries[i];
+		                	if(gallery.id == $rootScope.currGallery.id) {
+		                		arrMuseums.splice(i,1);
+		                		$rootScope.currGallery= null;
+		                	}
+		                }
+		                $scope.Galleries = arrGalleries;
+		            }
+		            else {
+		                // server did not return error, but something
+		                // went wrong in the php code
+		                errorCallback(response);
+		            }
+		        }
+		        var data = Object();
+		        data.id = $rootScope.currGallery.id;
+		        $scope.ajaxPost(data, "gallery/deleteGallery", successCallback, errorCallback);
           };
 		  
 		  $scope.updateGallery = function() {
-              $scope.message = "Welcome " + $scope.Gallery.galleryTitle;
+              
+					  errorCallback = function(response) {
+				           // var error = response.data.errors; // this is an array 
+				          //  console.log(error); // see if we have any errors from php script
+				            // also log status codes from server
+				            console.log(response.status);
+				            console.log(response.statusText);
+
+				            // TODO: display error message to the user
+				        }
+
+				        successCallback = function(response) {
+				            // success of call back could still mean that server side 
+				            // error occurred
+				            if(response.data.success == true) {
+				                // we send back the newly created account to the front end
+				                console.log(response.data);
+				                var gallery = response.data.record;
+				                var profileJSON = angular.fromJson(gallery.galleryProfileJSON);
+				                gallery.galleryDescription = profileJSON.description;
+				                var arrGalleries = $scope.Galleries;
+				                for(i = 0; i < arrGalleries.length; i++) {
+				                	var tmp = arrGalleries[i];
+				                	if(tmp.id = gallery.id) {
+				                		arrGalleries.splice(i, 1, gallery);
+				                	}
+				                }
+				                $scope.Galleries = arrGalleries;
+				            }
+				            else {
+				                // server did not return error, but something
+				                // went wrong in the php code
+				                errorCallback(response);
+				            }
+				        }
+				       if($rootScope.currMuseum != null) { 
+					       var data = new Object();
+					       data.galleryName = $scope.Gallery.selectedGallery.galleryName;
+					       data.museumId = $rootScope.museum.id;
+					       data.id = $rootScope.currGallery.id;
+					       var profileJSONobject = Object();
+					       profileJSONobject.description = $scope.Gallery.selectedGallery.galleryDescription;
+					       data.galleryProfileJSON = angular.toJson(profileJSONobject);
+					       console.log(data);
+					      $scope.ajaxPost(data, "gallery/updateGallery", successCallback, errorCallback);
+		 			   }
+		 			   else {
+		 			   	console.log("museum is null");
+		 			   }
           };
 		  
 		  $scope.fetchGallery = function() {

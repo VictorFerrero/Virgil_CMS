@@ -79,7 +79,7 @@ $scope.tmpExhibits = [
                      profileJSONobject.description = $scope.Exhibit.exhibitDescription;
                      data.exhibitProfileJSON = angular.toJson(profileJSONobject);
                      console.log(data);
-                   // $scope.ajaxPost(data, "exhibit/createExhibit", successCallback, errorCallback);
+                    $scope.ajaxPost(data, "exhibit/createExhibit", successCallback, errorCallback);
                   }
              }
              else {
@@ -102,7 +102,7 @@ $scope.tmpExhibits = [
           $scope.sync = function() {
             // grab exhibits based on museum and gallery
             
-      if($rootScope.currMuseum != null && $scope.allExhibits == null) {
+      if($rootScope.currMuseum != null) {
           // need to make network call 
             errorCallback = function(response) {
                    // var error = response.data.errors; // this is an array 
