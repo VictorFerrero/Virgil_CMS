@@ -143,7 +143,7 @@ myApp.controller('GalleryController', ['$scope', '$rootScope', '$http',
 				                var arrGalleries = $scope.Galleries;
 				                for(i = 0; i < arrGalleries.length; i++) {
 				                	var tmp = arrGalleries[i];
-				                	if(tmp.id = gallery.id) {
+				                	if(tmp.id == gallery.id) {
 				                		arrGalleries[i] = gallery;
 				                	}
 				                }
