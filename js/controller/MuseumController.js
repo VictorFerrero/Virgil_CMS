@@ -216,8 +216,7 @@ myApp.controller('MuseumController', ['$scope', '$rootScope', '$http',
 		                for(i = 0; i < arr.length; i++) {
 		                	var obj = arr[i];
 		                	if(obj.id == updateMuseum.id) {
-		                		arr.splice(i,1)
-		                		arr.push(updateMuseum);
+		                		arr[i] = updateMuseum;
 		                		break;
 		                	}
 		                }
