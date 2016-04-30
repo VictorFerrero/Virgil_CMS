@@ -119,7 +119,6 @@ myApp.controller('GalleryController', ['$scope', '$rootScope', '$http',
 				                	arrGalleryObjects[i] = gallery;
 				                }
 				                $scope.Galleries = arrGalleryObjects;
-				                $scope.Gallery.selectedGallery = $scope.Galleries[0];
 				            }
 				            else {
 				                // server did not return error, but something
