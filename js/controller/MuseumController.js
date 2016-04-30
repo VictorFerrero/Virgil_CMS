@@ -30,7 +30,6 @@ myApp.directive('fileModel', ['$parse', function ($parse) {
                .error(function(){
                });
             }
-            }]);
 myApp.controller('MuseumController', ['$scope', '$rootScope', '$http', 'fileUpload',
       function($scope, $rootScope, $http, fileUpload) {
       	//	$http.defaults.headers.post['Content-Type'] = 'application/x-www-form-urlencoded;charset=utf-8';
@@ -386,3 +385,4 @@ myApp.controller('MuseumController', ['$scope', '$rootScope', '$http', 'fileUplo
 		  return strTime;
 		}
 	}
+      }]);
