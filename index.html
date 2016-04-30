@@ -267,7 +267,8 @@
 
                               <div class="picture">
                                 <input name="museumMap" type="file" accept="image/*"
-                                ng-model="Museum.myMuseums.museumMap">
+                                ng-model="Museum.myMuseums.museumMap"
+                                 onchange="angular.element(this).scope().uploadFile(this)">
                               </div>
 
 								
