@@ -90,6 +90,7 @@ myApp.controller('GalleryController', ['$scope', '$rootScope', '$http',
 		  		}
 		  		else {
 		  			// must select a museum in the Museum panel
+		  			console.log("museum is null");
 		  		}
 		  }
 
