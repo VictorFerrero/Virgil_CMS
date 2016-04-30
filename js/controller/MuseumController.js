@@ -2,7 +2,7 @@ myApp.controller('MuseumController', ['$scope', '$rootScope', '$http',
       function($scope, $rootScope, $http) {
       	//	$http.defaults.headers.post['Content-Type'] = 'application/x-www-form-urlencoded;charset=utf-8';
 
-      		$rootScope.museum = null;
+      		$rootScope.currMuseum;
 
 		  $scope.baseUrl = "http://52.24.10.104/Virgil_Backend_Stage/Virgil_Backend/index.php/";
 
@@ -62,7 +62,7 @@ myApp.controller('MuseumController', ['$scope', '$rootScope', '$http',
 		                var arrMuseumObjects = response.data.museums;
 		                var museumObject = arrMuseumObjects[0]; // just choose the first one for now
 		                $scope.Museums = arrMuseumObjects;
-		              //  $rootScope.museum = museumObject;
+		              //  $rootScope.currMuseum = museumObject;
 		            }
 		            else {
 		                // server did not return error, but something
@@ -142,7 +142,7 @@ myApp.controller('MuseumController', ['$scope', '$rootScope', '$http',
 
 			 console.log(data);
 			 console.log($scope.formdata);
-			//  console.log($rootScope.museum);
+			//  console.log($rootScope.currMuseum);
 			//  $scope.ajaxPost(data, "museum/createMuseum", successCallback, errorCallback);
           };
 
@@ -226,12 +226,12 @@ myApp.controller('MuseumController', ['$scope', '$rootScope', '$http',
 		        
 			  // TODO: add logic to only send forms to the server that have been changed 
 		       var data = new Object();
-			   data.id = $rootScope.museum.id; // ALWAYS get the id for update
-		  //     if($rootScope.museum.museumName != $scope.Museum.myMuseums.museumName){
+			   data.id = $rootScope.currMuseum.id; // ALWAYS get the id for update
+		  //     if($rootScope.currMuseum.museumName != $scope.Museum.myMuseums.museumName){
               		data.museumName      = $scope.Museum.myMuseums.museumName;
          // 	   }
 		//	  data.accountId = 1;
-		//	   if($rootScope.museum.address != $scope.Museum.myMuseums.address)	{
+		//	   if($rootScope.currMuseum.address != $scope.Museum.myMuseums.address)	{
 			   		data.address   = $scope.Museum.myMuseums.address;
 		//	  }
 			  // must always grab everything that will go in profileJSON
@@ -290,7 +290,7 @@ myApp.controller('MuseumController', ['$scope', '$rootScope', '$http',
 		                	var museum = arrMuseums[i];
 		                	if(museum.id == id) {
 		                		arrMuseums.splice(i,1);
-		                		$rootScope.museum = null;
+		                		$rootScope.currMuseum = null;
 		                	}
 		                }
 		                $scope.Museums = arrMuseums;
@@ -302,7 +302,7 @@ myApp.controller('MuseumController', ['$scope', '$rootScope', '$http',
 		            }
 		        }
 		        var data = Object();
-		        data.id = $rootScope.museum.id;
+		        data.id = $rootScope.currMuseum.id;
 		        $scope.ajaxPost(data, "museum/deleteMuseum", successCallback, errorCallback);
           };
 		  
@@ -310,11 +310,11 @@ myApp.controller('MuseumController', ['$scope', '$rootScope', '$http',
               $scope.message = "Welcome " + $scope.Museum.museumName;
           };
 		  
-		  // keep our $rootScope.museum variable up to date
+		  // keep our $rootScope.currMuseum variable up to date
 		  $scope.onMuseumSelectChange = function() {
 			  
-			  $rootScope.museum = $scope.Museum.myMuseums;	
-			  console.log($rootScope.museum);
+			  $rootScope.currMuseum = $scope.Museum.myMuseums;	
+			  console.log($rootScope.currMuseum);
 			};
 		  
 		 $scope.ajaxGet = function(data, route, successCallback, errorCallback) {

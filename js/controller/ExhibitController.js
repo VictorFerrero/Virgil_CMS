@@ -1,6 +1,8 @@
 myApp.controller('ExhibitController', ['$scope', '$rootScope', '$http',
       function($scope, $rootScope, $http) {
-          
+          $scope.baseUrl = "http://52.24.10.104/Virgil_Backend_Stage/Virgil_Backend/index.php/";
+        $rootScope.currExhibit;  
+
         $scope.Exhibits = [
           {
            id:-1,
@@ -26,7 +28,6 @@ myApp.controller('ExhibitController', ['$scope', '$rootScope', '$http',
           }
           ]; 
 
-          $scope.currExhibit = null;
 
           $scope.add = function() {
               $scope.message = "Welcome " + $scope.Exhibit.exhibitTitle;
@@ -43,6 +44,11 @@ myApp.controller('ExhibitController', ['$scope', '$rootScope', '$http',
 		  $scope.fetch = function() {
               $scope.message = "Welcome " + $scope.Exhibit.exhibitTitle;
           };
+
+          $scope.sync = function() {
+            // grab exhibits based on museum and gallery
+            if($rootScope.currMuseum != null)
+          }
        $scope.onExhibitSelectChange = function() {
           $scope.currExhibit = $scope.Exhibit;
           console.log($scope.currExhibit);

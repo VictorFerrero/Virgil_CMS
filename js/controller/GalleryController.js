@@ -1,6 +1,8 @@
 myApp.controller('GalleryController', ['$scope', '$rootScope', '$http',
       function($scope, $rootScope, $http) {
           $scope.baseUrl = "http://52.24.10.104/Virgil_Backend_Stage/Virgil_Backend/index.php/";
+          $rootScope.currGallery;
+
 		 /* $scope.Galleries = [
 				  {
 				   id:-1,
@@ -93,15 +95,15 @@ myApp.controller('GalleryController', ['$scope', '$rootScope', '$http',
           };
 		  
 		  $scope.onGallerySelectChange = function() {
-			  $scope.currGallery = $scope.Gallery.selectedGallery;
-			  console.log($scope.currGallery);
+			  $rootScope.currGallery = $scope.Gallery.selectedGallery;
+			  console.log($rootScope.currGallery);
 			  console.log($rootScope.museum);
 		  };
 		  
 		  $scope.sync = function() {
 
 		if($rootScope.museum != null) {
-		  	if($rootScope.museum.id != $scope.currGallery.museumId) {
+		  	if($rootScope.museum.id != $rootScope.currGallery.museumId) {
 					// need to make network call 
 					  errorCallback = function(response) {
 				           // var error = response.data.errors; // this is an array 
@@ -144,13 +146,13 @@ myApp.controller('GalleryController', ['$scope', '$rootScope', '$http',
 				else {
 		  			// must select a museum in the Museum panel
 		  			console.log("museum is null");
-		  			$scope.currGallery = $scope.Galleries[0];
-		  			console.log($scope.currGallery);
+		  			$rootScope.currGallery = $scope.Galleries[0];
+		  			console.log($rootScope.currGallery);
 		  		}
 		  };
 
 		  $scope.initializeGallery = function() {
-			  $scope.currGallery = $scope.tmpGalleries[0];
+			  $rootScope.currGallery = $scope.tmpGalleries[0];
 		  }
 
 		$scope.ajaxGet = function(data, route, successCallback, errorCallback) {
