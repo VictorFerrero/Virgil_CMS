@@ -311,16 +311,16 @@
 						
 	
 						<select ng-model="Gallery.selectedGallery" 
-							   ng-options="Gallery.galleryTitle for Gallery in Galleries track by Gallery.id"
-								ng-change="onSelectChange()" class="dropSelect">
+							   ng-options="Gallery.galleryName for Gallery in Galleries track by Gallery.id"
+								ng-change="onGallerySelectChange()" class="dropSelect">
 							  </select>	
 
                         <!--Gallery Name and Content-->
                         <div id="pnl_gallery">
                               <div class="group">
 								  
-                                <input name="galleryTitle" type="text"
-                                ng-model="Gallery.selectedGallery.galleryTitle"
+                                <input name="galleryName" type="text"
+                                ng-model="Gallery.selectedGallery.galleryName"
                                 ng-required="true">
 
                                   <span class="highlight"></span>
@@ -328,8 +328,8 @@
                                   <label>Gallery Title</label>
                                   <p
                                   class="error validationerror"
-                                  ng-show="galleryForm.galleryTitle.$invalid &&
-                                  galleryForm.galleryTitle.$touched">
+                                  ng-show="galleryForm.galleryName.$invalid &&
+                                  galleryForm.galleryName.$touched">
                                   You must fill out the name of the gallery</p>
                               </div>
 
@@ -355,10 +355,10 @@
 
                  		
                               <input class="btn" type="submit" ng-disabled="galleryForm.$invalid"
-									 ng-click="addButton ? addGallery() : updateGallery()" value="{{ add_update }}">
+									 ng-click="addGallery()" value="Add Gallery">
 							
 							  <input class="btn" type="submit" ng-disable="galleryForm.$invalid"
-									 ng-click="resetGallery()" value="Reset">
+									 ng-click="updateGallery()" value="Update Gallery">
 								
 							  <input class="btn" type="submit" ng-disabled="galleryForm.$invalid" value="Delete Gallery" ng-click="deleteGallery()">
                  

@@ -44,11 +44,6 @@ myApp.controller('MuseumController', ['$scope', '$rootScope', '$http',
 
 		  $scope.initializeForm = function() {
 			  
-			  //sets the submit button as add museumfaddConent
-			  $scope.add_or_update = "Add Museum";			  
-			  $scope.addButton = true;
-			//  $scope.message = $scope.Museum.myMuseums.id; 
-			  
 			  errorCallback = function(response) {
 		           // var error = response.data.errors; // this is an array 
 		          //  console.log(error); // see if we have any errors from php script
