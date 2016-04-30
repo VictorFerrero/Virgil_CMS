@@ -1,4 +1,4 @@
-angular.module('virgil', ['ngFileUpload']);
+myApp.module('virgil', ['ngFileUpload']);
 myApp
 .controller('MuseumController', ['$scope', '$rootScope', '$http', 'Upload',
       function($scope, $rootScope, $http, Upload) {
