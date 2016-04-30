@@ -132,9 +132,9 @@ myApp.controller('MuseumController', ['$scope', '$rootScope', '$http',
 			  				"-" + $scope.Museum.myMuseums.museumFridayHoursClose;
 			  var strSat = $scope.Museum.myMuseums.museumSaturdayHoursOpen + 
 			  				"-" + $scope.Museum.myMuseums.museumSaturdayHoursClose;
-			  var strSun = scope.Museum.myMuseums.museumSundayHoursOpen + 
+			  var strSun = $scope.Museum.myMuseums.museumSundayHoursOpen + 
 			  				"-" + $scope.Museum.myMuseums.museumSundayHoursClose;
-			  				
+
 			  profileJsonObject.mon = strMon;
 			  profileJsonObject.tue = strTue;
 			  profileJsonObject.wed = strWed;
@@ -258,7 +258,7 @@ myApp.controller('MuseumController', ['$scope', '$rootScope', '$http',
 			  				"-" + $scope.Museum.myMuseums.museumFridayHoursClose;
 			  var strSat = $scope.Museum.myMuseums.museumSaturdayHoursOpen + 
 			  				"-" + $scope.Museum.myMuseums.museumSaturdayHoursClose;
-			  var strSun = scope.Museum.myMuseums.museumSundayHoursOpen + 
+			  var strSun = $scope.Museum.myMuseums.museumSundayHoursOpen + 
 			  				"-" + $scope.Museum.myMuseums.museumSundayHoursClose;
 			
 			  profileJsonObject.mon = strMon;
