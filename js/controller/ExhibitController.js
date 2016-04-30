@@ -45,6 +45,6 @@ myApp.controller('ExhibitController', ['$scope', '$rootScope', '$http',
           };
        $scope.onExhibitSelectChange = function() {
           $scope.currExhibit = $scope.Exhibit;
-          console.log($scope/currExhibit);
+          console.log($scope.currExhibit);
        }   
       }]);
