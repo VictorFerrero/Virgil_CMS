@@ -195,11 +195,18 @@ myApp.controller('MuseumController', ['$scope', '$rootScope', '$http',
 
 			  	data.contentProfileJSON = contentProfileJson;
 			  	console.log(data);
-			  	console.log($scope.myMuseums.museumMap);
+			  	
+			  	console.log($scope.fd);
 			  //	$scope.ajaxPost(data, "content/createContent", successCallback, errorCallback);
 
-          }
+          };
 		  
+          $scope.uploadFile = function(files) {
+          	$scope.fd = new FormData();
+    //Take the first selected file
+    	fd.append("museumMap", files[0]);
+    };
+
 		  $scope.update = function() {
                   errorCallback = function(response) {
 		           // var error = response.data.errors; // this is an array 
