@@ -42,13 +42,9 @@ myApp.controller('MuseumController', ['$scope', '$rootScope', '$http',
     		  ]; 
 		 */
 
-		 $scope.onFileSelect = function(file) {
-    if (!file) return;
-     $scope.imageToUpload = file;
-  };
 		  $scope.initializeForm = function() {
 			  
-			  //sets the submit button as add museum
+			  //sets the submit button as add museumfaddConent
 			  $scope.add_or_update = "Add Museum";			  
 			  $scope.addButton = true;
 			//  $scope.message = $scope.Museum.myMuseums.id; 
@@ -195,7 +191,9 @@ myApp.controller('MuseumController', ['$scope', '$rootScope', '$http',
 			  	data.contentProfileJSON = contentProfileJson;
 			  	console.log(data);
 			  	
-			  	console.log($scope.fd);
+			  	var f = document.getElementById('museumMap').files[0],
+
+			  	console.log(f);
 			  //	$scope.ajaxPost(data, "content/createContent", successCallback, errorCallback);
 
           };
