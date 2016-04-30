@@ -181,7 +181,7 @@ myApp.controller('MuseumController', ['$scope', '$rootScope', '$http',
 		        data.galleryId = 0;
 		        data.exhibitId = 0;
 		        data.description = "";
-		        data.imageToUpload = $scope.fd;
+		        data.imageToUpload = null;
 		        data.hasImage = true;
 			  	data.submit = "settt";
 
@@ -190,20 +190,10 @@ myApp.controller('MuseumController', ['$scope', '$rootScope', '$http',
 
 			  	data.contentProfileJSON = contentProfileJson;
 			  	console.log(data);
-			  	
-			  	 var f = document.getElementById('museumMap').files[0];
-
-			  	console.log(f);
 			  //	$scope.ajaxPost(data, "content/createContent", successCallback, errorCallback);
 
           };
 		  
-          $scope.uploadFile = function(files) {
-          	$scope.fd = new FormData();
-    		//Take the first selected file
-    		$scope.fd.append("museumMap", files[0]);
-    	};
-
 		  $scope.update = function() {
                   errorCallback = function(response) {
 		           // var error = response.data.errors; // this is an array 
