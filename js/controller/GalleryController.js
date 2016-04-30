@@ -1,7 +1,7 @@
 myApp.controller('GalleryController', ['$scope', '$rootScope', '$http',
       function($scope, $rootScope, $http) {
           $scope.baseUrl = "http://52.24.10.104/Virgil_Backend_Stage/Virgil_Backend/index.php/";
-		  $scope.Galleries = [
+		 /* $scope.Galleries = [
 				  {
 				   id:-1,
 				   museumId: -1,
@@ -25,7 +25,16 @@ myApp.controller('GalleryController', ['$scope', '$rootScope', '$http',
 				   galleryDescription: "By any means necessary.",
 				  }
     		  ]; 
-		 
+    		  */
+		 $scope.tmpGalleries = [
+				  {
+				   id:-1,
+				   museumId: -1,
+				   galleryName:"",
+				   galleryDescription: "",
+				  
+				  }
+    		  ]; 
 
           $scope.addGallery = function() {
               
@@ -141,7 +150,7 @@ myApp.controller('GalleryController', ['$scope', '$rootScope', '$http',
 		  };
 
 		  $scope.initializeGallery = function() {
-			  $scope.currGallery = $scope.Galleries[0];
+			  $scope.currGallery = $scope.tmpGalleries[0];
 		  }
 
 		$scope.ajaxGet = function(data, route, successCallback, errorCallback) {
