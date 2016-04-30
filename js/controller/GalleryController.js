@@ -45,13 +45,8 @@ myApp.controller('GalleryController', ['$scope', '$rootScope', '$http',
 				            if(response.data.success == true) {
 				                // we send back the newly created account to the front end
 				                console.log(response.data);
-				                var arrGalleryObjects = response.data.galleries;
-				                for(i = 0; i < arrGalleryObjects.length; i++) {
-				                	var gallery = arrGalleryObjects[i];
-				                	var profileJSON = angular.fromJson(gallery.galleryProfileJSON);
-				                	gallery.galleryDescription = profileJSON.description;
-				                	$scope.Galleries.splice(i, 1, gallery);
-				                }
+				                var gallery = response.data.record;
+				                $scope.Galleries.push(gallery);
 				            }
 				            else {
 				                // server did not return error, but something
