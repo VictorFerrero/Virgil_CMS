@@ -144,7 +144,7 @@ myApp.controller('GalleryController', ['$scope', '$rootScope', '$http',
 				                for(i = 0; i < arrGalleries.length; i++) {
 				                	var tmp = arrGalleries[i];
 				                	if(tmp.id = gallery.id) {
-				                		arrGalleries.splice(i, 1, gallery);
+				                		arrGalleries[i] = gallery;
 				                	}
 				                }
 				                $scope.Galleries = arrGalleries;
