@@ -378,13 +378,10 @@
                       </div><!--End of Form Intro-->
 
                     <div class="dropdown-group">
-                      <div id="dl_gallery_exhibit"  class="dropdown">
-                        <button class="dropbtn">Select to Edit Existing Galleries</button>
-                          <div class="dropdown-content">
-                            <p>Select gallery to edit</p>
-                            <p>Select gallery</p>
-                          </div>
-                      </div>
+                      <select ng-model="Exhibit" 
+                 ng-options="Exhibit.exhibitName for Exhibit in Exhibits track by Exhibit.id"
+                ng-change="onExhibitSelectChange()" class="dropSelect">
+                </select> 
 
                       <div id="dl_exhibit" class="dropdown">
                         <button class="dropbtn">Select to Edit Existing Exhibits</button>
