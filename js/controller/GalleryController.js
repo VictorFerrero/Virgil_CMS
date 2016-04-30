@@ -70,7 +70,7 @@ myApp.controller('GalleryController', ['$scope', '$rootScope', '$http',
 				       if($rootScope.currMuseum != null) { 
 					       var data = new Object();
 					       data.galleryName = $scope.Gallery.selectedGallery.galleryName;
-					       data.museumId = $rootScope.museum.id;
+					       data.museumId = $rootScope.currMuseum.id;
 					       var profileJSONobject = Object();
 					       profileJSONobject.description = $scope.Gallery.selectedGallery.galleryDescription;
 					       data.galleryProfileJSON = angular.toJson(profileJSONobject);
@@ -158,7 +158,7 @@ myApp.controller('GalleryController', ['$scope', '$rootScope', '$http',
 				       if($rootScope.currMuseum != null) { 
 					       var data = new Object();
 					       data.galleryName = $scope.Gallery.selectedGallery.galleryName;
-					       data.museumId = $rootScope.museum.id;
+					       data.museumId = $rootScope.currMuseum.id;
 					       data.id = $rootScope.currGallery.id;
 					       var profileJSONobject = Object();
 					       profileJSONobject.description = $scope.Gallery.selectedGallery.galleryDescription;
