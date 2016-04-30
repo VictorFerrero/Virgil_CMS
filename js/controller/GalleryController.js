@@ -56,10 +56,10 @@ myApp.controller('GalleryController', ['$scope', '$rootScope', '$http',
 				        }
 				       if($rootScope.museum != null) { 
 					       var data = new Object();
-					       data.galleryName = $scope.Galleries.selectedGallery.galleryName;
+					       data.galleryName = $scope.Gallery.selectedGallery.galleryName;
 					       data.museumId = $rootScope.museum.id;
 					       var profileJSONobject = Object();
-					       profileJSONobject.description = $scope.Galleries.selectedGallery.galleryDescription;
+					       profileJSONobject.description = $scope.Gallery.selectedGallery.galleryDescription;
 					       data.galleryProfileJSON = angular.toJson(profileJSONobject);
 					       console.log(data);
 					     // $scope.ajaxPost(data, "gallery/createGallery", successCallback, errorCallback);
