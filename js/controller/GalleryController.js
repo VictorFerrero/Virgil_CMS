@@ -88,7 +88,7 @@ myApp.controller('GalleryController', ['$scope', '$rootScope', '$http',
 				if($rootScope.museum.id != $scope.currGallery.museumId) {
 					// need to make network call 
 					$scope.initializeGallery();
-				}		  
+				}  
 			  $scope.currGallery = $scope.Gallery.selectedGallery;
 			  console.log($scope.currGallery);
 			  console.log($rootScope.museum);
@@ -123,6 +123,7 @@ myApp.controller('GalleryController', ['$scope', '$rootScope', '$http',
 				                	arrGalleryObjects[i] = gallery;
 				                }
 				                $scope.Galleries = arrGalleryObjects;
+				                $scope.Gallery.selectedGallery = $scope.Galleries[0];
 				            }
 				            else {
 				                // server did not return error, but something
@@ -139,6 +140,7 @@ myApp.controller('GalleryController', ['$scope', '$rootScope', '$http',
 		  			// must select a museum in the Museum panel
 		  			console.log("museum is null");
 		  			$scope.currGallery = $scope.Galleries[0];
+		  			console.log($scioe.currGallery);
 		  		}
 		  }
 
