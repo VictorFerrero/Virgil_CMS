@@ -21,9 +21,6 @@
   	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
     <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
 
-    <script src="http://github.com/danialfarid/ng-file-upload-shim.min.js"></script>
-    <script src="http://github.com/danialfarid/ng-file-upload.min.js"></script>
-  
 </head>
 
 <!--Navigation Drawer -->
@@ -270,9 +267,7 @@
 
                               <div class="picture">
                                 <input name="museumMap" type="file" accept="image/*"
-                                ng-model="Museum.myMuseums.museumMap"
-                                  ngf-select="onFileSelect($file)" ngf-pattern="'image/*'" ngf-max-size="2M"
-                                >
+                                file-model = "thumbnail">
                               </div>
 
 								

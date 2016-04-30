@@ -1,12 +1,45 @@
-myApp
-.controller('MuseumController', ['$scope', '$rootScope', '$http', 'Upload',
-      function($scope, $rootScope, $http, Upload) {
+myApp.directive('fileModel', ['$parse', function ($parse) {
+            return {
+               restrict: 'A',
+               link: function(scope, element, attrs) {
+                  var model = $parse(attrs.fileModel);
+                  var modelSetter = model.assign;
+                  
+                  element.bind('change', function(){
+                     scope.$apply(function(){
+                        modelSetter(scope, element[0].files[0]);
+                     });
+                  });
+               }
+            };
+         
+      
+         myApp.service('fileUpload', ['$http', function ($http) {
+            this.uploadFileToUrl = function(file, uploadUrl){
+               var fd = new FormData();
+               fd.append('file', file);
+            
+               $http.post(uploadUrl, fd, {
+                  transformRequest: angular.identity,
+                  headers: {'Content-Type': undefined}
+               })
+            
+               .success(function(){
+               })
+            
+               .error(function(){
+               });
+            }
+            }]);
+myApp.controller('MuseumController', ['$scope', '$rootScope', '$http', 'fileUpload',
+      function($scope, $rootScope, $http, fileUpload) {
       	//	$http.defaults.headers.post['Content-Type'] = 'application/x-www-form-urlencoded;charset=utf-8';
 
       		$rootScope.museum = null;
 
 		  $scope.baseUrl = "http://52.24.10.104/Virgil_Backend_Stage/Virgil_Backend/index.php/";
 		  $scope.imageFile = null;
+
 		 /* $scope.Museums = [
 				  {
 				   id:-1,
@@ -43,10 +76,6 @@ myApp
     		  ]; 
 		 */
 
-		 $scope.onFileSelect = function(file) {
-    if (!file) return;
-     $scope.imageToUpload = file;
-  };
 		  $scope.initializeForm = function() {
 			  
 			  //sets the submit button as add museum
@@ -195,6 +224,13 @@ myApp
 
 			  	data.contentProfileJSON = contentProfileJson;
 			  	console.log(data);
+			  	var file = $scope.thumbnail;
+               
+               console.log('file is ' );
+               console.dir(file);
+               console.log(file);
+               //var uploadUrl = "/fileUpload";
+               //fileUpload.uploadFileToUrl(file, uploadUrl);
 			  //	$scope.ajaxPost(data, "content/createContent", successCallback, errorCallback);
 
           }
