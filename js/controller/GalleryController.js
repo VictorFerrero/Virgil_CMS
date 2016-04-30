@@ -87,7 +87,7 @@ myApp.controller('GalleryController', ['$scope', '$rootScope', '$http',
 				
 				if($rootScope.museum.id != $scope.currGallery.museumId) {
 					// need to make network call 
-					$scope.initializeGallery;
+					$scope.initializeGallery();
 				}		  
 			  $scope.currGallery = $scope.Gallery.selectedGallery;
 			  console.log($scope.currGallery);
