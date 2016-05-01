@@ -121,6 +121,8 @@ $scope.tmpExhibits = [
                           }
                         }
                         $rootScope.currExhibit = exhibit;
+                        $scope.Exhibit = exhibit;
+                        // this should force the model to update
                         $scope.Exhibit.exhibitName.trim();
                         $scope.Exhibit.exhibitName = $scope.Exhibit.exhibitName + " ";
                     }
