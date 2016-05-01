@@ -294,6 +294,7 @@ myApp.controller('MuseumController', ['$scope', '$rootScope', '$http',
 		                	if(museum.id == $rootScope.currMuseum.id) {
 		                		$scope.Museums.splice(i,1);
 		                		$rootScope.currMuseum = null;
+		                		break;
 		                	}
 		                }
 		            }

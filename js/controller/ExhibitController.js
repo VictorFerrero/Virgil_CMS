@@ -130,6 +130,7 @@ $scope.tmpExhibits = [
                if($rootScope.currMuseum != null && $rootScope.currGallery != null) { 
                     if($rootScope.currMuseum.id > 0 && $rootScope.currGallery.id > 0) {
                      var data = new Object();
+                     data.id = $rootScope.currExhibit.id; // id of this record for updating
                      data.museumId = $rootScope.currMuseum.id;
                      data.galleryId = $rootScope.currGallery.id;
                      data.exhibitName = $scope.Exhibit.exhibitName;

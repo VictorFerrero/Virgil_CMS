@@ -107,6 +107,7 @@ myApp.controller('GalleryController', ['$scope', '$rootScope', '$http',
 		                	if(gallery.id == $rootScope.currGallery.id) {
 		                		$scope.Galleries.splice(i,1);
 		                		$rootScope.currGallery= null;
+		                		break;
 		                	}
 		                }
 		                $scope.Galleries = arrGalleries;
