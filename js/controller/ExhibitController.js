@@ -193,10 +193,7 @@ $scope.tmpExhibits = [
           };
 
           $scope.sync = function() {
-            // grab exhibits based on museum and gallery
-            
-      if($rootScope.currMuseum != null && $rootScope.currGallery != null) {
-          // need to make network call 
+            // grab exhibits based on museum and gallery 
             errorCallback = function(response) {
                    // var error = response.data.errors; // this is an array 
                   //  console.log(error); // see if we have any errors from php script
@@ -235,7 +232,8 @@ $scope.tmpExhibits = [
                         errorCallback(response);
                     }
                 }
-
+      if($rootScope.currMuseum != null && $rootScope.currGallery != null) {
+          // need to make network call
                    var data = new Object();
                     $scope.ajaxGet(data, "getEntireMuseum/" + $rootScope.currMuseum.id, successCallback, errorCallback); 
                 } 
@@ -246,7 +244,7 @@ $scope.tmpExhibits = [
             $rootScope.currExhibit = null;
             console.log($rootScope.currExhibit);
           }
-          }
+        };
        $scope.onExhibitSelectChange = function() {
           $rootScope.currExhibit = $scope.Exhibit;
           console.log($rootScope.currExhibit);
