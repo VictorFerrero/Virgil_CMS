@@ -214,14 +214,17 @@ myApp.controller('MuseumController', ['$scope', '$rootScope', '$http',
 		                for(i = 0; i < $scope.Museums.length; i++) {
 		                	var obj = $scope.Museums[i];
 		                	if(obj.id == updateMuseum.id) {
+		                		console.log("Museums before");
+		                		console.log($scope.Museums);
 		                		$scope.Museums.splice(i,1);
 		                		$scope.Museums.splice(i,0,updateMuseum);
+		                		console.log($scope.Museums);
 		                		break;
 		                	}
 		                }
 		                $scope.Museums.myMuseums = updateMuseum;
 		                $rootScope.currMuseum = updateMuseum;
-		                $scope.$apply();
+		                $rootScope.apply();
 		               }
 		            else {
 		                // server did not return error, but something
