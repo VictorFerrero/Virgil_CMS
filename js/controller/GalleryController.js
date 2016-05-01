@@ -144,7 +144,9 @@ myApp.controller('GalleryController', ['$scope', '$rootScope', '$http',
 				                for(i = 0; i < arrGalleries.length; i++) {
 				                	var tmp = arrGalleries[i];
 				                	if(tmp.id == gallery.id) {
-				                		arrGalleries[i] = gallery;
+				                		//arrGalleries[i] = gallery;
+				                		arrGalleries.splice(i, 1, gallery);
+		                				break;
 				                	}
 				                }
 				                $scope.Galleries = arrGalleries;
@@ -225,13 +227,13 @@ myApp.controller('GalleryController', ['$scope', '$rootScope', '$http',
 				else {
 		  			// must select a museum in the Museum panel
 		  			console.log("museum is null");
-		  			$rootScope.currGallery = $scope.tmpGalleries[0];
+		  			$rootScope.currGallery = null;
 		  			console.log($rootScope.currGallery);
 		  		}
 		  };
 
 		  $scope.initializeGallery = function() {
-			  $rootScope.currGallery = $scope.tmpGalleries[0];
+			  $rootScope.currGallery = null;
 		  }
 
 		$scope.ajaxGet = function(data, route, successCallback, errorCallback) {
