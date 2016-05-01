@@ -63,7 +63,14 @@ myApp.controller('GalleryController', ['$scope', '$rootScope', '$http',
 				                var gallery = response.data.record;
 				                var profileJSON = angular.fromJson(gallery.galleryProfileJSON);
 				                gallery.galleryDescription = profileJSON.description;
-				                $scope.Galleries.push(gallery);
+				                if($scope.Galleries == null) {
+					                var arrGalleries = [];
+					                arrGalleries.push(gallery);
+					                $scope.Galleries = arrGalleries;
+				            	}
+				            	else {
+				                	$scope.Galleries.push(gallery);
+				            	}
 				            }
 				            else {
 				                // server did not return error, but something

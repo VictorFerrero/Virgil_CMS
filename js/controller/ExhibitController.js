@@ -64,9 +64,14 @@ $scope.tmpExhibits = [
                         var exhibit = response.data.record;
                         var profileJSON = angular.fromJson(exhibit.exhibitProfileJSON);
                         exhibit.exhibitDescription = profileJSON.description;
-                        var arrExhibits = [];
-                        arrExhibits.push(exhibit);
-                        $scope.Exhibits = arrExhibits;
+                        if($scope.Exhibits == null) {
+                          var arrExhibits = [];
+                          arrExhibits.push(exhibit);
+                          $scope.Exhibits = arrExhibits;
+                        }
+                        else {
+                          $scope.Exhibits.push(exhibit);
+                        }
                     }
                     else {
                         // server did not return error, but something
