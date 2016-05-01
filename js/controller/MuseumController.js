@@ -216,8 +216,12 @@ myApp.controller('MuseumController', ['$scope', '$rootScope', '$http',
 		                	if(obj.id == updateMuseum.id) {
 		                		console.log("Museums before");
 		                		console.log($scope.Museums);
-		                		$scope.Museums.splice(i,1);
-		                		$scope.Museums.splice(i,0,updateMuseum);
+		                		$timeout(function () {
+			                			
+			                		$scope.Museums.splice(i,1);
+			                		$scope.Museums.splice(i,0,updateMuseum);
+
+		                		});
 		                		console.log($scope.Museums);
 		                		break;
 		                	}
