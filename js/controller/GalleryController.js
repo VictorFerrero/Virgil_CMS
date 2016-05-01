@@ -163,7 +163,10 @@ myApp.controller('GalleryController', ['$scope', '$rootScope', '$http',
 				                		arrGalleries.splice(i, 1); // remove the old one
 				                		$scope.Galleries.splice(i,1);
 				                		arrGalleries.splice(i, 0, gallery);
+				                		console.log("arrGalleries");
 				                		console.log(arrGalleries);
+				                		console.log("$scope.Galleries");
+				                		console.log($scope.Galleries);
 		                				break;
 				                	}
 				                }
