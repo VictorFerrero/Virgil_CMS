@@ -150,6 +150,7 @@ myApp.controller('GalleryController', ['$scope', '$rootScope', '$http',
 				                // we send back the newly created account to the front end
 				                console.log(response.data);
 				                var gallery = response.data.record;
+				                console.log("gallery:");
 				                console.log(gallery);
 				                var profileJSON = angular.fromJson(gallery.galleryProfileJSON);
 				                gallery.galleryDescription = profileJSON.description;
@@ -162,6 +163,7 @@ myApp.controller('GalleryController', ['$scope', '$rootScope', '$http',
 				                		arrGalleries.splice(i, 1); // remove the old one
 				                		$scope.Galleries.splice(i,1);
 				                		arrGalleries.splice(i, 0, gallery);
+				                		console.log(arrGalleries);
 		                				break;
 				                	}
 				                }
