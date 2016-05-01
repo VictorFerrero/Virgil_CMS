@@ -98,6 +98,7 @@ myApp.controller('MuseumController', ['$scope', '$rootScope', '$http',
 		                var newMuseum = response.data.record;
 		                console.log(newMuseum);
 		                $scope.Museums.push(newMuseum);
+		                $scope.$apply;
 		            }
 		            else {
 		                // server did not return error, but something
@@ -220,6 +221,7 @@ myApp.controller('MuseumController', ['$scope', '$rootScope', '$http',
 		                }
 		                $scope.Museums.myMuseums = updateMuseum;
 		                $rootScope.currMuseum = updateMuseum;
+		                $scope.$apply();
 		               }
 		            else {
 		                // server did not return error, but something
@@ -297,6 +299,7 @@ myApp.controller('MuseumController', ['$scope', '$rootScope', '$http',
 		                		break;
 		                	}
 		                }
+		                $scope.$apply();
 		            }
 		            else {
 		                // server did not return error, but something
