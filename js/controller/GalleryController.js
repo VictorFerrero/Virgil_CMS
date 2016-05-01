@@ -114,6 +114,7 @@ myApp.controller('GalleryController', ['$scope', '$rootScope', '$http',
 		                	var gallery = arrGalleries[i];
 		                	if(gallery.id == $rootScope.currGallery.id) {
 		                		arrGalleries.splice(i,1);
+		                		$scope.Galleries.splice(i,1);
 		                		$rootScope.currGallery= null;
 		                	}
 		                }
@@ -156,12 +157,15 @@ myApp.controller('GalleryController', ['$scope', '$rootScope', '$http',
 				                	var tmp = arrGalleries[i];
 				                	if(tmp.id == gallery.id) {
 				                		//arrGalleries[i] = gallery;
-				                		arrGalleries.splice(i, 1, gallery);
+				                		arrGalleries.splice(i, 1); // remove the old one
+				                		$scope.Galleries.splice(i,1);
+				                		arrGalleries.push(i, 0, gallery);
 		                				break;
 				                	}
 				                }
 				                $scope.Galleries = arrGalleries;
 				                $rootScope.currGallery = gallery;
+				                $scope.Gallery.selectedGallery = gallery;
 				            }
 				            else {
 				                // server did not return error, but something

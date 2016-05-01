@@ -122,7 +122,9 @@ $scope.tmpExhibits = [
                         for(i = 0; i < arrExhibits.length; i++) {
                           var tmp = arrExhibits[i];
                           if(tmp.id == exhibit.id) {
-                            arrExhibits.splice(i, 1, updateMuseum);
+                            arrExhibits.splice(i, 1);
+                            $scope.Exhibits.splice(i,1);
+                            arrExhibits.splice(i,0,exhibit);
                             break;
                           }
                         }
@@ -172,6 +174,7 @@ $scope.tmpExhibits = [
                       var gallery = arrGalleries[i];
                       if(gallery.id == $rootScope.currGallery.id) {
                         arrGalleries.splice(i,1);
+                        $scope.Galleries.splice(i,1);
                         $rootScope.currGallery= null;
                       }
                     }

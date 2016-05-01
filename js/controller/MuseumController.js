@@ -214,7 +214,6 @@ myApp.controller('MuseumController', ['$scope', '$rootScope', '$http',
 		                for(i = 0; i < arr.length; i++) {
 		                	var obj = arr[i];
 		                	if(obj.id == updateMuseum.id) {
-		                		console.log("TRUE");
 		                		arr.splice(i, 1);
 		                		$scope.Museums.splice(i,1);
 		                		arr.splice(i,0,updateMuseum);
@@ -296,8 +295,9 @@ myApp.controller('MuseumController', ['$scope', '$rootScope', '$http',
 		                var arrMuseums = $scope.Museums; // get the array of museums in the drop down
 		                for(i = 0; i < arrMuseums.length; i++) {
 		                	var museum = arrMuseums[i];
-		                	if(museum.id == id) {
+		                	if(museum.id == $rootScope.currMuseum.id) {
 		                		arrMuseums.splice(i,1);
+		                		$scope.Museums.splice(i,1);
 		                		$rootScope.currMuseum = null;
 		                	}
 		                }
