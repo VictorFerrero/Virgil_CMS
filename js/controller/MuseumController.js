@@ -210,11 +210,10 @@ myApp.controller('MuseumController', ['$scope', '$rootScope', '$http',
 		                // we send back the newly created account to the front end
 		                var updateMuseum = response.data.record;
 		                console.log(updateMuseum);
-		                var arr = $scope.Museums;
 		                for(i = 0; i < $scope.Museums.length; i++) {
 		                	var obj = $scope.Museums[i];
 		                	if(obj.id == updateMuseum.id) {
-		                		$scope.Museums.splice(i,1, updateMuseum);
+		                		$scope.Museums.splice(i,1);
 		                		break;
 		                	}
 		                }
