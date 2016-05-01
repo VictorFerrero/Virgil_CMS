@@ -159,7 +159,7 @@ myApp.controller('GalleryController', ['$scope', '$rootScope', '$http',
 				                		//arrGalleries[i] = gallery;
 				                		arrGalleries.splice(i, 1); // remove the old one
 				                		$scope.Galleries.splice(i,1);
-				                		arrGalleries.push(i, 0, gallery);
+				                		arrGalleries.splice(i, 0, gallery);
 		                				break;
 				                	}
 				                }
