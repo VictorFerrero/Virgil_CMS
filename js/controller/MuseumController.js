@@ -1,5 +1,5 @@
-myApp.controller('MuseumController', ['$scope', '$rootScope', '$http',
-      function($scope, $rootScope, $http) {
+myApp.controller('MuseumController', ['$scope', '$rootScope', '$http',  '$timeout',
+      function($scope, $rootScope, $http, $timeout) {
       	//	$http.defaults.headers.post['Content-Type'] = 'application/x-www-form-urlencoded;charset=utf-8';
 
 
@@ -217,7 +217,7 @@ myApp.controller('MuseumController', ['$scope', '$rootScope', '$http',
 		                		console.log("Museums before");
 		                		console.log($scope.Museums);
 		                		$timeout(function () {
-			                			
+
 			                		$scope.Museums.splice(i,1);
 			                		$scope.Museums.splice(i,0,updateMuseum);
 
