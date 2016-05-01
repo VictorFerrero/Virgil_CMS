@@ -76,7 +76,7 @@
 							  
 							  
 							  <p>Select a museum to edit</p>
-							  <select ng-model="Museum.myMuseums" ng-model-options="{updateOn: 'updateMuseum'"
+							  <select ng-model="Museum.myMuseums" 
 							   ng-options="Museum.museumName for Museum in Museums track by Museum.id"
                  ng-change="onMuseumSelectChange()" class="dropSelect">
 							  </select>
