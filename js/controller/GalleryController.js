@@ -157,6 +157,7 @@ myApp.controller('GalleryController', ['$scope', '$rootScope', '$http',
 				                	var tmp = arrGalleries[i];
 				                	if(tmp.id == gallery.id) {
 				                		//arrGalleries[i] = gallery;
+				                		console.log("TRUE" + tmp.id + " " + gallery.id);
 				                		arrGalleries.splice(i, 1); // remove the old one
 				                		$scope.Galleries.splice(i,1);
 				                		arrGalleries.splice(i, 0, gallery);
