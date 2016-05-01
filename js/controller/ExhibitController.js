@@ -43,7 +43,7 @@ $scope.tmpExhibits = [
           }
           ]; 
 
-          $scope.add = function() {
+          $scope.addExhibit = function() {
               
             errorCallback = function(response) {
                    // var error = response.data.errors; // this is an array 
@@ -89,7 +89,7 @@ $scope.tmpExhibits = [
                      profileJSONobject.description = $scope.Exhibit.exhibitDescription;
                      data.exhibitProfileJSON = angular.toJson(profileJSONobject);
                      console.log(data);
-                    $scope.ajaxPost(data, "exhibit/createExhibit", successCallback, errorCallback);
+                    $rootScope.ajaxPost(data, "exhibit/createExhibit", successCallback, errorCallback);
                   }
              }
              else {
@@ -97,7 +97,7 @@ $scope.tmpExhibits = [
              }
           };
 		  
-		  $scope.update = function() {
+		  $scope.updateExhibit = function() {
               
             errorCallback = function(response) {
                    // var error = response.data.errors; // this is an array 
@@ -144,7 +144,7 @@ $scope.tmpExhibits = [
                      profileJSONobject.description = $scope.Exhibit.exhibitDescription;
                      data.exhibitProfileJSON = angular.toJson(profileJSONobject);
                      console.log(data);
-                    $scope.ajaxPost(data, "exhibit/updateExhibit", successCallback, errorCallback);
+                    $rootScope.ajaxPost(data, "exhibit/updateExhibit", successCallback, errorCallback);
                   }
              }
              else {
@@ -152,7 +152,7 @@ $scope.tmpExhibits = [
              }
           };
 		  
-		  $scope.delete = function() {
+		  $scope.deleteExhibit = function() {
              
                errorCallback = function(response) {
                // var error = response.data.errors; // this is an array 
@@ -185,14 +185,14 @@ $scope.tmpExhibits = [
             }
             var data = Object();
             data.id = $rootScope.currExhibit.id;
-            $scope.ajaxPost(data, "exhibit/deleteExhibit", successCallback, errorCallback);
+            $rootScope.ajaxPost(data, "exhibit/deleteExhibit", successCallback, errorCallback);
           };
 		  
 		  $scope.fetch = function() {
               $scope.message = "Welcome " + $scope.Exhibit.exhibitTitle;
           };
 
-          $scope.sync = function() {
+          $scope.syncExhibit = function() {
             // grab exhibits based on museum and gallery 
             errorCallback = function(response) {
                    // var error = response.data.errors; // this is an array 
@@ -235,7 +235,7 @@ $scope.tmpExhibits = [
       if($rootScope.currMuseum != null && $rootScope.currGallery != null) {
           // need to make network call
                    var data = new Object();
-                    $scope.ajaxGet(data, "getEntireMuseum/" + $rootScope.currMuseum.id, successCallback, errorCallback); 
+                    $rootScope.ajaxGet(data, "getEntireMuseum/" + $rootScope.currMuseum.id, successCallback, errorCallback); 
                 } 
         else {
             // must select a museum in the Museum panel
@@ -249,17 +249,5 @@ $scope.tmpExhibits = [
           $rootScope.currExhibit = $scope.Exhibit;
           console.log($rootScope.currExhibit);
        };
-
-        $scope.ajaxGet = function(data, route, successCallback, errorCallback) {
-        var baseUrl = "";
-        var fullRoute = $scope.baseUrl + route;
-        $http.get(fullRoute, data).then(successCallback, errorCallback);
-      };
-
-    $scope.ajaxPost = function(data, route, successCallback, errorCallback) {
-        var baseUrl = "";
-        var fullRoute = $scope.baseUrl + route;
-        $http.post(fullRoute, data).then(successCallback, errorCallback);
-      };
 
       }]);

@@ -279,16 +279,16 @@
 
 								
                               <input class="btn" type="submit" ng-disabled="museumForm.$invalid"
-									 ng-click="$scope.add()" value="Add Museum">
+									 ng-click="addMuseum()" value="Add Museum">
 							
 							  <input class="btn" type="submit" ng-disable="museumForm.$invalid"
-									 ng-click="$scope.update()" value="Update Museum">
+									 ng-click="updateMuseum()" value="Update Museum">
 								
 							  <input class="btn" type="submit" ng-disabled="museumForm.$invalid" value="Delete museum"
-                                     ng-click="$scope.delete()">
+                                     ng-click="deleteMuseum()">
 
                 <input class="btn" type="submit" ng-disabled="museumForm.$invalid" value="Add museum map or thumbnail"
-                                     ng-click="$scope.addContent()" >
+                                     ng-click="addContentForMuseum()" >
                  
                             </div> <!--End of General Museum Hours -->
                           </form> <!--End of Form-->
@@ -361,7 +361,7 @@
 									 ng-click="updateGallery()" value="Update Gallery">
 								
 							  <input class="btn" type="submit" ng-disabled="galleryForm.$invalid" value="Delete Gallery" ng-click="deleteGallery()">
-                 <input class="btn" type="submit" value="Sync Gallery" ng-click="sync()">
+                 <input class="btn" type="submit" value="Sync Gallery" ng-click="syncGallery()">
                           </form>
                         </div>
                   </div><!--end of gallery content-->
@@ -423,10 +423,10 @@
                                   </div>
 
                             <div class="submit_btn">
-                              <input class="btn" type="submit" value="Add Exhibit" ng-click="add()" ng-disabled="exhibitForm.$invalid">
-                              <input class="btn" type="submit" value="Update Exhibit" ng-click="update()">
-                             <input class="btn" type="submit" value="Delete Exhibit" ng-click="delete()">
-                              <input class="btn" type="submit" value="Sync Exhibit" ng-click="sync()">
+                              <input class="btn" type="submit" value="Add Exhibit" ng-click="addExhibit()" ng-disabled="exhibitForm.$invalid">
+                              <input class="btn" type="submit" value="Update Exhibit" ng-click="updateExhibit()">
+                             <input class="btn" type="submit" value="Delete Exhibit" ng-click="deleteExhibit()">
+                              <input class="btn" type="submit" value="Sync Exhibit" ng-click="syncExhibit()">
                             </div><!--Close panel-->
 
                           </div>

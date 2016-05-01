@@ -86,7 +86,7 @@ myApp.controller('GalleryController', ['$scope', '$rootScope', '$http',
 					       profileJSONobject.description = $scope.Gallery.selectedGallery.galleryDescription;
 					       data.galleryProfileJSON = angular.toJson(profileJSONobject);
 					       console.log(data);
-					      $scope.ajaxPost(data, "gallery/createGallery", successCallback, errorCallback);
+					      $rootScope.ajaxPost(data, "gallery/createGallery", successCallback, errorCallback);
 		 			   }
 		 			   else {
 		 			   	console.log("museum is null");
@@ -127,7 +127,7 @@ myApp.controller('GalleryController', ['$scope', '$rootScope', '$http',
 		        }
 		        var data = Object();
 		        data.id = $rootScope.currGallery.id;
-		        $scope.ajaxPost(data, "gallery/deleteGallery", successCallback, errorCallback);
+		        $rootScope.ajaxPost(data, "gallery/deleteGallery", successCallback, errorCallback);
           };
 		  
 		  $scope.updateGallery = function() {
@@ -178,7 +178,7 @@ myApp.controller('GalleryController', ['$scope', '$rootScope', '$http',
 					       profileJSONobject.description = $scope.Gallery.selectedGallery.galleryDescription;
 					       data.galleryProfileJSON = angular.toJson(profileJSONobject);
 					       console.log(data);
-					      $scope.ajaxPost(data, "gallery/updateGallery", successCallback, errorCallback);
+					      $rootScope.ajaxPost(data, "gallery/updateGallery", successCallback, errorCallback);
 		 			   }
 		 			   else {
 		 			   	console.log("museum is null");
@@ -195,7 +195,7 @@ myApp.controller('GalleryController', ['$scope', '$rootScope', '$http',
 			  console.log($rootScope.currMuseum);
 		  };
 		  
-		  $scope.sync = function() {
+		  $scope.syncGallery = function() {
 
 		if($rootScope.currMuseum != null) {
 					// need to make network call 
@@ -233,7 +233,7 @@ myApp.controller('GalleryController', ['$scope', '$rootScope', '$http',
 				        }
 				        
 				       var data = new Object();
-				      $scope.ajaxGet(data, "getEntireMuseum/" + $rootScope.currMuseum.id, successCallback, errorCallback);
+				      $rootScope.ajaxGet(data, "getEntireMuseum/" + $rootScope.currMuseum.id, successCallback, errorCallback);
 		 		
 		  			}
 				else {
@@ -243,20 +243,4 @@ myApp.controller('GalleryController', ['$scope', '$rootScope', '$http',
 		  			console.log($rootScope.currGallery);
 		  		}
 		  };
-
-		$scope.ajaxGet = function(data, route, successCallback, errorCallback) {
-        var baseUrl = "";
-        var fullRoute = $scope.baseUrl + route;
-       	$http.get(fullRoute, data).then(successCallback, errorCallback);
-    	};
-
-
-
-    $scope.ajaxPost = function(data, route, successCallback, errorCallback) {
-        var baseUrl = "";
-        var fullRoute = $scope.baseUrl + route;
-       	$http.post(fullRoute, data).then(successCallback, errorCallback);
-    	};
-
-
       }]);

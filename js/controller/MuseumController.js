@@ -75,11 +75,11 @@ myApp.controller('MuseumController', ['$scope', '$rootScope', '$http',
 		        
 		        var data = new Object();
 		        $rootScope.currMuseum = null;
-		      $scope.ajaxGet(data, "getAllMuseumsForCms", successCallback, errorCallback);
+		      $rootScope.ajaxGet(data, "getAllMuseumsForCms", successCallback, errorCallback);
  
 		  } 
 		  
-          $scope.add = function() {
+          $scope.addMuseum = function() {
 
 		      errorCallback = function(response) {
 		           // var error = response.data.errors; // this is an array 
@@ -144,9 +144,9 @@ myApp.controller('MuseumController', ['$scope', '$rootScope', '$http',
 			  data.museumProfileJSON = angular.toJson(profileJsonObject);
 
 			 console.log(data);
-			 console.log($scope.formdata);
-			//  console.log($rootScope.currMuseum);
-			//  $scope.ajaxPost(data, "museum/createMuseum", successCallback, errorCallback);
+			// console.log($scope.formdata);
+			  console.log($rootScope.currMuseum);
+			  $rootScope.ajaxPost(data, "museum/createMuseum", successCallback, errorCallback);
           };
 
           $scope.addContent = function() {
@@ -189,11 +189,11 @@ myApp.controller('MuseumController', ['$scope', '$rootScope', '$http',
 
 			  	data.contentProfileJSON = contentProfileJson;
 			  	console.log(data);
-			  //	$scope.ajaxPost(data, "content/createContent", successCallback, errorCallback);
+			  //	$rootScope.ajaxPost(data, "content/createContent", successCallback, errorCallback);
 
           };
 		  
-		  $scope.update = function() {
+		  $scope.updateMuseum = function() {
                   errorCallback = function(response) {
 		           // var error = response.data.errors; // this is an array 
 		          //  console.log(error); // see if we have any errors from php script
@@ -270,10 +270,10 @@ myApp.controller('MuseumController', ['$scope', '$rootScope', '$http',
 			  data.museumProfileJSON = angular.toJson(profileJsonObject);
 
 			//  console.log(data);
-			  $scope.ajaxPost(data, "museum/updateMuseum", successCallback, errorCallback);
+			  $rootScope.ajaxPost(data, "museum/updateMuseum", successCallback, errorCallback);
           };
 		  
-		  $scope.delete = function() {
+		  $scope.deleteMuseum = function() {
                errorCallback = function(response) {
 		           // var error = response.data.errors; // this is an array 
 		          //  console.log(error); // see if we have any errors from php script
@@ -306,7 +306,7 @@ myApp.controller('MuseumController', ['$scope', '$rootScope', '$http',
 		        }
 		        var data = Object();
 		        data.id = $rootScope.currMuseum.id;
-		        $scope.ajaxPost(data, "museum/deleteMuseum", successCallback, errorCallback);
+		        $rootScope.ajaxPost(data, "museum/deleteMuseum", successCallback, errorCallback);
           };
 		  
 		  $scope.fetch = function() {
@@ -320,7 +320,7 @@ myApp.controller('MuseumController', ['$scope', '$rootScope', '$http',
 			  console.log($rootScope.currMuseum);
 			};
 		  
-		 $scope.ajaxGet = function(data, route, successCallback, errorCallback) {
+		 $rootScope.ajaxGet = function(data, route, successCallback, errorCallback) {
         var baseUrl = "";
         var fullRoute = $scope.baseUrl + route;
        	$http.get(fullRoute, data).then(successCallback, errorCallback);
@@ -328,7 +328,7 @@ myApp.controller('MuseumController', ['$scope', '$rootScope', '$http',
 
 
 
-    $scope.ajaxPost = function(data, route, successCallback, errorCallback) {
+    $rootScope.ajaxPost = function(data, route, successCallback, errorCallback) {
         var baseUrl = "";
         var fullRoute = $scope.baseUrl + route;
        	$http.post(fullRoute, data).then(successCallback, errorCallback);
