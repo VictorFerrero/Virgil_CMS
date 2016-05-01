@@ -216,22 +216,17 @@ myApp.controller('MuseumController', ['$scope', '$rootScope', '$http',  '$timeou
 		                	if(obj.id == updateMuseum.id) {
 		                		console.log("Museums before");
 		                		console.log($scope.Museums);
-
 			                		$scope.Museums.splice(i,1);
 			                		$scope.Museums.splice(i,0,updateMuseum);
 		                		console.log($scope.Museums);
 		                		break;
 		                	}
 		                }
-		                var tmp = $scope.Museums.slice();
-		                $scope.Museums = null;
-		                $scope.Museums = [];
-		                for(i = 0; i < tmp.length; i++) {
-		                	$scope.Museums.push(tmp[i]);
-		                }
 		                $scope.Museums.myMuseums = updateMuseum;
 		                console.log($scope.Museums.myMuseums);
 		                $rootScope.currMuseum = updateMuseum;
+		                $scope.Museums.myMuseums.museumName.trim();
+		                $scope.Museums.myMuseums.museumName = $scope.Museums.myMuseums.museumName + " ";
 		               }
 		            else {
 		                // server did not return error, but something
