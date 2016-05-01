@@ -243,13 +243,13 @@ $scope.tmpExhibits = [
             // must select a museum in the Museum panel
             console.log("museum is null");
           //  $scope.Exhibit = $scope.tmpExhibits[0];
-            $scope.currExhibit = null;
+            $rootScope.currExhibit = null;
             console.log($rootScope.currExhibit);
           }
           }
        $scope.onExhibitSelectChange = function() {
-          $scope.currExhibit = $scope.Exhibit;
-          console.log($scope.currExhibit);
+          $rootScope.currExhibit = $scope.Exhibit;
+          console.log($rootScope.currExhibit);
        };
 
         $scope.ajaxGet = function(data, route, successCallback, errorCallback) {
