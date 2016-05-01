@@ -150,6 +150,7 @@ myApp.controller('GalleryController', ['$scope', '$rootScope', '$http',
 				                // we send back the newly created account to the front end
 				                console.log(response.data);
 				                var gallery = response.data.record;
+				                console.log(gallery);
 				                var profileJSON = angular.fromJson(gallery.galleryProfileJSON);
 				                gallery.galleryDescription = profileJSON.description;
 				                var arrGalleries = $scope.Galleries;
