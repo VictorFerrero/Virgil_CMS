@@ -289,16 +289,13 @@ myApp.controller('MuseumController', ['$scope', '$rootScope', '$http',
 		            if(response.data.success == true) {
 		                // we send back the newly created account to the front end
 		                var id = response.data.id; // get the id of the musuem we deleted
-		                var arrMuseums = $scope.Museums; // get the array of museums in the drop down
-		                for(i = 0; i < arrMuseums.length; i++) {
-		                	var museum = arrMuseums[i];
+		                for(i = 0; i < $scope.Museums.length; i++) {
+		                	var museum = $scope.Museums[i];
 		                	if(museum.id == $rootScope.currMuseum.id) {
-		                		arrMuseums.splice(i,1);
 		                		$scope.Museums.splice(i,1);
 		                		$rootScope.currMuseum = null;
 		                	}
 		                }
-		                $scope.Museums = arrMuseums;
 		            }
 		            else {
 		                // server did not return error, but something

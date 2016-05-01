@@ -63,14 +63,7 @@ myApp.controller('GalleryController', ['$scope', '$rootScope', '$http',
 				                var gallery = response.data.record;
 				                var profileJSON = angular.fromJson(gallery.galleryProfileJSON);
 				                gallery.galleryDescription = profileJSON.description;
-				                if($scope.Galleries == null) {
-					                var arrGalleries = [];
-					                arrGalleries.push(gallery);
-					                $scope.Galleries = arrGalleries;
-				            	}
-				            	else {
-				                	$scope.Galleries.push(gallery);
-				            	}
+				                $scope.Galleries.push(gallery);
 				            }
 				            else {
 				                // server did not return error, but something
@@ -109,11 +102,9 @@ myApp.controller('GalleryController', ['$scope', '$rootScope', '$http',
 		            if(response.data.success == true) {
 		                // we send back the newly created account to the front end
 		                var id = response.data.id; // get the id of the musuem we deleted
-		                var arrGalleries = $scope.Galleries; // get the array of museums in the drop down
-		                for(i = 0; i < arrGalleries.length; i++) {
-		                	var gallery = arrGalleries[i];
+		                for(i = 0; i < $scope.Galleries.length; i++) {
+		                	var gallery = $scope.Galleries[i];
 		                	if(gallery.id == $rootScope.currGallery.id) {
-		                		arrGalleries.splice(i,1);
 		                		$scope.Galleries.splice(i,1);
 		                		$rootScope.currGallery= null;
 		                	}
@@ -154,25 +145,15 @@ myApp.controller('GalleryController', ['$scope', '$rootScope', '$http',
 				                console.log(gallery);
 				                var profileJSON = angular.fromJson(gallery.galleryProfileJSON);
 				                gallery.galleryDescription = profileJSON.description;
-				                var arrGalleries = $scope.Galleries;
-				                for(i = 0; i < arrGalleries.length; i++) {
-				                	var tmp = arrGalleries[i];
+				                for(i = 0; i < $scope.Galleries.length; i++) {
+				                	var tmp = $scope.Galleries[i];
 				                	if(tmp.id == gallery.id) {
-				                		//arrGalleries[i] = gallery;
-				                		console.log("TRUE" + tmp.id + " " + gallery.id);
-				                		arrGalleries.splice(i, 1); // remove the old one
 				                		$scope.Galleries.splice(i,1);
-				                		arrGalleries.splice(i, 0, gallery);
-				                		console.log("arrGalleries");
-				                		console.log(arrGalleries);
-				                		console.log("$scope.Galleries");
-				                		console.log($scope.Galleries);
+				                		$scope.Galleries.splice(i,0,gallery);
 		                				break;
 				                	}
 				                }
-				                $scope.Galleries = arrGalleries;
 				                $rootScope.currGallery = gallery;
-				                $scope.Gallery.selectedGallery = gallery;
 				            }
 				            else {
 				                // server did not return error, but something

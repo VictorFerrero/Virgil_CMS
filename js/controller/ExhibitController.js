@@ -64,14 +64,7 @@ $scope.tmpExhibits = [
                         var exhibit = response.data.record;
                         var profileJSON = angular.fromJson(exhibit.exhibitProfileJSON);
                         exhibit.exhibitDescription = profileJSON.description;
-                        if($scope.Exhibits == null) {
-                          var arrExhibits = [];
-                          arrExhibits.push(exhibit);
-                          $scope.Exhibits = arrExhibits;
-                        }
-                        else {
-                          $scope.Exhibits.push(exhibit);
-                        }
+                        $scope.Exhibits.push(exhibit);
                     }
                     else {
                         // server did not return error, but something
@@ -118,17 +111,15 @@ $scope.tmpExhibits = [
                         var exhibit = response.data.record;
                         var profileJSON = angular.fromJson(exhibit.exhibitProfileJSON);
                         exhibit.exhibitDescription = profileJSON.description;
-                        var arrExhibits = $scope.Exhibits;
-                        for(i = 0; i < arrExhibits.length; i++) {
-                          var tmp = arrExhibits[i];
+                        for(i = 0; i < $scope.Exhibits.length; i++) {
+                          var tmp = $scope.Exhibits[i];
                           if(tmp.id == exhibit.id) {
-                            arrExhibits.splice(i, 1);
                             $scope.Exhibits.splice(i,1);
-                            arrExhibits.splice(i,0,exhibit);
+                            $scope.Exhibits.splice(i,0,exhibit);
                             break;
                           }
                         }
-                        $scope.Exhibits = arrExhibits;
+                        $rootScope.currExhibit = exhibit;
                     }
                     else {
                         // server did not return error, but something
@@ -169,16 +160,13 @@ $scope.tmpExhibits = [
                 // error occurred
                 if(response.data.success == true) {
                     // we send back the newly created account to the front end
-                    var arrGalleries = $scope.Galleries; // get the array of museums in the drop down
-                    for(i = 0; i < arrGalleries.length; i++) {
-                      var gallery = arrGalleries[i];
-                      if(gallery.id == $rootScope.currGallery.id) {
-                        arrGalleries.splice(i,1);
+                    for(i = 0; i < $scope.Exhibits.length; i++) {
+                      var exhibit = $scope.Exhibits[i];
+                      if(exhibit.id == $rootScope.currExhibit.id) {
                         $scope.Galleries.splice(i,1);
-                        $rootScope.currGallery= null;
+                        $rootScope.currExhibit= null;
                       }
                     }
-                    $scope.Galleries = arrGalleries;
                 }
                 else {
                     // server did not return error, but something
