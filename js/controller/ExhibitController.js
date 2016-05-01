@@ -165,6 +165,7 @@ $scope.tmpExhibits = [
                       if(exhibit.id == $rootScope.currExhibit.id) {
                         $scope.Exhibits.splice(i,1);
                         $rootScope.currExhibit= null;
+                        break;
                       }
                     }
                 }
