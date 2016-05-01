@@ -211,16 +211,13 @@ myApp.controller('MuseumController', ['$scope', '$rootScope', '$http',
 		                var updateMuseum = response.data.record;
 		                console.log(updateMuseum);
 		                var arr = $scope.Museums;
-		                for(i = 0; i < arr.length; i++) {
-		                	var obj = arr[i];
+		                for(i = 0; i < $scope.Museums.length; i++) {
+		                	var obj = $scope.Museums[i];
 		                	if(obj.id == updateMuseum.id) {
-		                		arr.splice(i, 1);
-		                		$scope.Museums.splice(i,1);
-		                		arr.splice(i,0,updateMuseum);
+		                		$scope.Museums.splice(i,1, updateMuseum);
 		                		break;
 		                	}
 		                }
-		                $scope.Museums = arr;
 		                $scope.Museums.myMuseums = updateMuseum;
 		                $rootScope.currMuseum = updateMuseum;
 		               }
