@@ -225,6 +225,7 @@ myApp.controller('MuseumController', ['$scope', '$rootScope', '$http',  '$timeou
 		                }
 		                var tmp = $scope.Museums.slice();
 		                $scope.Museums = null;
+		                $scope.Museums = [];
 		                for(i = 0; i < tmp.length; i++) {
 		                	$scope.Museums.push(tmp[i]);
 		                }
