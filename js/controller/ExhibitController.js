@@ -109,6 +109,7 @@ $scope.tmpExhibits = [
                         // we send back the newly created account to the front end
                         console.log(response.data);
                         var exhibit = response.data.record;
+                        console.log(exhibit);
                         var profileJSON = angular.fromJson(exhibit.exhibitProfileJSON);
                         exhibit.exhibitDescription = profileJSON.description;
                         for(i = 0; i < $scope.Exhibits.length; i++) {
@@ -116,6 +117,8 @@ $scope.tmpExhibits = [
                           if(tmp.id == exhibit.id) {
                             $scope.Exhibits.splice(i,1);
                             $scope.Exhibits.splice(i,0,exhibit);
+                            console.log("exhibits !");
+                            console.log($scope.Exhibits);
                             break;
                           }
                         }
