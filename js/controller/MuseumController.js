@@ -74,6 +74,7 @@ myApp.controller('MuseumController', ['$scope', '$rootScope', '$http',
 		        }
 		        
 		        var data = new Object();
+		        $rootScope.currMuseum = null;
 		      $scope.ajaxGet(data, "getAllMuseumsForCms", successCallback, errorCallback);
  
 		  } 
