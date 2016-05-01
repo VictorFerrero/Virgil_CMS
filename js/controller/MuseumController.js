@@ -322,8 +322,7 @@ myApp.controller('MuseumController', ['$scope', '$rootScope', '$http',  '$timeou
 		  
 		  // keep our $rootScope.currMuseum variable up to date
 		  $scope.onMuseumSelectChange = function() {
-			  
-			  for(i = 0; i < $)
+			
 			  $rootScope.currMuseum = $scope.Museum.myMuseums;	
 			  console.log($rootScope.currMuseum);
 			};
