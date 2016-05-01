@@ -117,12 +117,12 @@ $scope.tmpExhibits = [
                           if(tmp.id == exhibit.id) {
                             $scope.Exhibits.splice(i,1);
                             $scope.Exhibits.splice(i,0,exhibit);
-                            console.log("exhibits !");
-                            console.log($scope.Exhibits);
                             break;
                           }
                         }
                         $rootScope.currExhibit = exhibit;
+                        $scope.Exhibit.exhibitName.trim();
+                        $scope.Exhibit.exhibitName = $scope.Exhibit.exhibitName + " ";
                     }
                     else {
                         // server did not return error, but something

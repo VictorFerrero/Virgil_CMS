@@ -225,6 +225,7 @@ myApp.controller('MuseumController', ['$scope', '$rootScope', '$http',  '$timeou
 		                $scope.Museums.myMuseums = updateMuseum;
 		                console.log($scope.Museums.myMuseums);
 		                $rootScope.currMuseum = updateMuseum;
+		                // this will force the model to update
 		                $scope.Museums.myMuseums.museumName.trim();
 		                $scope.Museums.myMuseums.museumName = $scope.Museums.myMuseums.museumName + " ";
 		               }

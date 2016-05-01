@@ -155,6 +155,9 @@ myApp.controller('GalleryController', ['$scope', '$rootScope', '$http',
 				                	}
 				                }
 				                $rootScope.currGallery = gallery;
+				                // this should force the model in the drop down to update
+				                $scope.Gallery.selectedGallery.galleryName.trim();
+		               			$scope.Gallery.selectedGallery.galleryName = $scope.Gallery.selectedGallery.galleryName + " ";
 				            }
 				            else {
 				                // server did not return error, but something
