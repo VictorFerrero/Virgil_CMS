@@ -219,10 +219,14 @@ myApp.controller('MuseumController', ['$scope', '$rootScope', '$http',  '$timeou
 
 			                		$scope.Museums.splice(i,1);
 			                		$scope.Museums.splice(i,0,updateMuseum);
-			                		$scope.$apply();
 		                		console.log($scope.Museums);
 		                		break;
 		                	}
+		                }
+		                var tmp = $scope.Museums.slice();
+		                $scope.Museums = null;
+		                for(i = 0; i < tmp.length; i++) {
+		                	$scope.Museums.push(tmp[i]);
 		                }
 		                $scope.Museums.myMuseums = updateMuseum;
 		                console.log($scope.Museums.myMuseums);
