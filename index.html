@@ -279,16 +279,16 @@
 
 								
                               <input class="btn" type="submit" ng-disabled="museumForm.$invalid"
-									 ng-click="add()" value="Add Museum">
+									 ng-click="$scope.add()" value="Add Museum">
 							
 							  <input class="btn" type="submit" ng-disable="museumForm.$invalid"
-									 ng-click="update()" value="Update Museum">
+									 ng-click="$scope.update()" value="Update Museum">
 								
 							  <input class="btn" type="submit" ng-disabled="museumForm.$invalid" value="Delete museum"
-                                     ng-click="delete()">
+                                     ng-click="$scope.delete()">
 
                 <input class="btn" type="submit" ng-disabled="museumForm.$invalid" value="Add museum map or thumbnail"
-                                     ng-click="addContent()" >
+                                     ng-click="$scope.addContent()" >
                  
                             </div> <!--End of General Museum Hours -->
                           </form> <!--End of Form-->

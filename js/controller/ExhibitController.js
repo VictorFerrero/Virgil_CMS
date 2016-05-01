@@ -256,14 +256,10 @@ $scope.tmpExhibits = [
         $http.get(fullRoute, data).then(successCallback, errorCallback);
       };
 
-
-
     $scope.ajaxPost = function(data, route, successCallback, errorCallback) {
         var baseUrl = "";
         var fullRoute = $scope.baseUrl + route;
         $http.post(fullRoute, data).then(successCallback, errorCallback);
       };
-
-
 
       }]);
