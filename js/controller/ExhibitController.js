@@ -1,8 +1,13 @@
 myApp.controller('ExhibitController', ['$scope', '$rootScope', '$http',
       function($scope, $rootScope, $http) {
-          $scope.baseUrl = "http://52.24.10.104/Virgil_Backend_Stage/Virgil_Backend/index.php/";
+        $scope.baseUrl = "http://52.24.10.104/Virgil_Backend_Stage/Virgil_Backend/index.php/";
         $rootScope.currExhibit;  
         $scope.allExhibits = null;
+
+        $scope.initialize = function(){
+          $scope.Exhibits = [];
+          $rootScope.currExhibit = null;
+        }
 /*
         $scope.Exhibits = [
           {

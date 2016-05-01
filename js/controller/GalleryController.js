@@ -3,6 +3,10 @@ myApp.controller('GalleryController', ['$scope', '$rootScope', '$http',
           $scope.baseUrl = "http://52.24.10.104/Virgil_Backend_Stage/Virgil_Backend/index.php/";
           $rootScope.currGallery;
 
+          $scope.initializeGallery = function() {
+			  $rootScope.currGallery = null;
+		  }
+
 		 /* $scope.Galleries = [
 				  {
 				   id:-1,
@@ -232,10 +236,6 @@ myApp.controller('GalleryController', ['$scope', '$rootScope', '$http',
 		  			console.log($rootScope.currGallery);
 		  		}
 		  };
-
-		  $scope.initializeGallery = function() {
-			  $rootScope.currGallery = null;
-		  }
 
 		$scope.ajaxGet = function(data, route, successCallback, errorCallback) {
         var baseUrl = "";
