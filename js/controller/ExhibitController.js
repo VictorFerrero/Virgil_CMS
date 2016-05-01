@@ -2,7 +2,6 @@ myApp.controller('ExhibitController', ['$scope', '$rootScope', '$http',
       function($scope, $rootScope, $http) {
         $scope.baseUrl = "http://52.24.10.104/Virgil_Backend_Stage/Virgil_Backend/index.php/";
         $rootScope.currExhibit;  
-        $scope.allExhibits = null;
 
         $scope.initialize = function(){
           $scope.Exhibits = [];
@@ -65,8 +64,9 @@ $scope.tmpExhibits = [
                         var exhibit = response.data.record;
                         var profileJSON = angular.fromJson(exhibit.exhibitProfileJSON);
                         exhibit.exhibitDescription = profileJSON.description;
-                        $scope.Exhibits.push(exhibit);
-                        $scope.allExhibits.push(exhibit);
+                        var arrExhibits = [];
+                        arrExhibits.push(exhibit);
+                        $scope.Exhibits = arrExhibits;
                     }
                     else {
                         // server did not return error, but something
@@ -79,7 +79,7 @@ $scope.tmpExhibits = [
                      var data = new Object();
                      data.museumId = $rootScope.currMuseum.id;
                      data.galleryId = $rootScope.currGallery.id;
-                     data.exhibitName = $scope.Exhibit.exhibitName;
+                     data.exhibitName = $scope.Exhibits.exhibitName;
                      var profileJSONobject = Object();
                      profileJSONobject.description = $scope.Exhibit.exhibitDescription;
                      data.exhibitProfileJSON = angular.toJson(profileJSONobject);
@@ -190,7 +190,7 @@ $scope.tmpExhibits = [
           $scope.sync = function() {
             // grab exhibits based on museum and gallery
             
-      if($rootScope.currMuseum != null) {
+      if($rootScope.currMuseum != null && $rootScope.currGallery != null) {
           // need to make network call 
             errorCallback = function(response) {
                    // var error = response.data.errors; // this is an array 
@@ -222,7 +222,6 @@ $scope.tmpExhibits = [
                             }
                           }
                         }
-                        $scope.allExhibits = arrExhibitObjects;
                         $scope.Exhibits = exhibitsInThisGallery;
                     }
                     else {
@@ -235,28 +234,11 @@ $scope.tmpExhibits = [
                    var data = new Object();
                     $scope.ajaxGet(data, "getEntireMuseum/" + $rootScope.currMuseum.id, successCallback, errorCallback); 
                 } 
-                else if($scope.allExhibits != null) {
-                  // just update without making server call
-                   var arrExhibitObjects = $scope.allExhibits;
-                        var exhibitsInThisGallery = [];
-                        for(i = 0; i < arrExhibitObjects.length; i++) {
-                          var exhibit = arrExhibitObjects[i];
-                          var profileJSON = angular.fromJson(exhibit.exhibitProfileJSON);
-                          exhibit.exhibitDescription = profileJSON.description;
-                          //$scope.Galleries.push(gallery);
-                          arrExhibitObjects[i] = exhibit;
-                          // only add the exhibits that correspond to the selected gallery AND museum
-                          if(exhibit.galleryId == $rootScope.currGallery.id && exhibit.museumId == $rootScope.currMuseum.id) {
-                            exhibitsInThisGallery.push(exhibit);
-                          }
-                        }
-                        $scope.Exhibits = exhibitsInThisGallery;
-                }
         else {
             // must select a museum in the Museum panel
             console.log("museum is null");
-            $scope.Exhibit = $scope.tmpExhibits[0];
-            $scope.currExhibit = $scope.tmpExhibits[0];
+          //  $scope.Exhibit = $scope.tmpExhibits[0];
+            $scope.currExhibit = null;
             console.log($rootScope.currExhibit);
           }
           }
