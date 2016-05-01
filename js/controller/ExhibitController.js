@@ -163,7 +163,7 @@ $scope.tmpExhibits = [
                     for(i = 0; i < $scope.Exhibits.length; i++) {
                       var exhibit = $scope.Exhibits[i];
                       if(exhibit.id == $rootScope.currExhibit.id) {
-                        $scope.Galleries.splice(i,1);
+                        $scope.Exhibits.splice(i,1);
                         $rootScope.currExhibit= null;
                       }
                     }
