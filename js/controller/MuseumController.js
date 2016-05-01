@@ -214,6 +214,7 @@ myApp.controller('MuseumController', ['$scope', '$rootScope', '$http',
 		                	var obj = $scope.Museums[i];
 		                	if(obj.id == updateMuseum.id) {
 		                		$scope.Museums.splice(i,1);
+		                		$scope.Museums.splice(i,1,updateMuseum);
 		                		break;
 		                	}
 		                }
