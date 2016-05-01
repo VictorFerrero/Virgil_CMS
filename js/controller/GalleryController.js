@@ -150,6 +150,7 @@ myApp.controller('GalleryController', ['$scope', '$rootScope', '$http',
 				                	}
 				                }
 				                $scope.Galleries = arrGalleries;
+				                $rootScope.currGallery = gallery;
 				            }
 				            else {
 				                // server did not return error, but something
