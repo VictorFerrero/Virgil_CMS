@@ -58,7 +58,7 @@ $scope.tmpExhibits = [
                         // we send back the newly created account to the front end
                         console.log(response.data);
                         var exhibit = response.data.record;
-                        var profileJSON = angular.fromJson(exhibit.galleryProfileJSON);
+                        var profileJSON = angular.fromJson(exhibit.exhibitProfileJSON);
                         exhibit.exhibitDescription = profileJSON.description;
                         $scope.Exhibits.push(exhibit);
                         $scope.allExhibits.push(exhibit);
