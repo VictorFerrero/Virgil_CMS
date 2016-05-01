@@ -224,7 +224,7 @@ myApp.controller('MuseumController', ['$scope', '$rootScope', '$http',
 		                }
 		                $scope.Museums.myMuseums = updateMuseum;
 		                $rootScope.currMuseum = updateMuseum;
-		                $scope.apply();
+		                $scope.$apply();
 		               }
 		            else {
 		                // server did not return error, but something
