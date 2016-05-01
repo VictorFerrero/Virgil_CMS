@@ -220,6 +220,7 @@ myApp.controller('MuseumController', ['$scope', '$rootScope', '$http',
 		                	}
 		                }
 		                $scope.Museums = arr;
+		                $scope.Museums.myMuseums = updateMuseum;
 		                $rootScope.currMuseum = updateMuseum;
 		               }
 		            else {
