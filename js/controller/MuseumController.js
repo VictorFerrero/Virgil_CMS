@@ -228,7 +228,6 @@ myApp.controller('MuseumController', ['$scope', '$rootScope', '$http',  '$timeou
 		                }
 		                $scope.Museums.myMuseums = updateMuseum;
 		                $rootScope.currMuseum = updateMuseum;
-		                $scope.$apply();
 		               }
 		            else {
 		                // server did not return error, but something
