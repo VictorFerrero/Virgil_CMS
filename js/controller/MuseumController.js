@@ -103,7 +103,6 @@ myApp.controller('MuseumController', ['$scope', '$rootScope', '$http',  '$timeou
 		          //  console.log(error); // see if we have any errors from php script
 		            // also log status codes from server
 		            console.log(response);
-		            $scope.$apply();
 		            // TODO: display error message to the user
 		        }
 
@@ -115,7 +114,6 @@ myApp.controller('MuseumController', ['$scope', '$rootScope', '$http',  '$timeou
 		                var newMuseum = response.data.record;
 		                console.log(newMuseum);
 		                $scope.Museums.push(newMuseum);
-		                $scope.$apply();
 		            }
 		            else {
 		                // server did not return error, but something
@@ -164,14 +162,8 @@ myApp.controller('MuseumController', ['$scope', '$rootScope', '$http',  '$timeou
 			 console.log(data);
 			// console.log($scope.formdata);
 			  console.log($rootScope.currMuseum);
+			  console.log($scope.Museum.myMuseums.museumMap);
 			 // $rootScope.ajaxPost(data, "museum/createMuseum", successCallback, errorCallback);
-
-			  $.ajax($scope.baseUrl+"record", {
-				method: "POST",
-				data: $.param(data),
-				success: successCallback,
-				error: errorCallback)}
-			});
           };
 
           $scope.addContent = function() {
