@@ -8,7 +8,7 @@ myApp.controller('MuseumController', ['$scope', '$rootScope', '$http',  '$timeou
 
 		  $scope.baseUrl = "http://52.24.10.104/Virgil_Backend_Stage/Virgil_Backend/index.php/";
 
-		   $scope.setFile = function(element) {
+			$scope.uploadMap = function(element) {
 			  $scope.currentFile = element.files[0];
 			   var reader = new FileReader();
 

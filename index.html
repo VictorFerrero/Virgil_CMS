@@ -266,8 +266,9 @@
 
 
                               <div class="picture">
-                               <img ng-src="{{image_source}}">
-                              <input type="file" id="trigger" class="ng-hide" onchange="angular.element(this).scope().setFile(this)" accept="image/*">
+                                <input id="musuemMap" name="museumMap" type="file" accept="image/*"
+                                ng-model="Museum.myMuseums.museumMap"
+                                 onchange="uploadMap(this)">
                               </div>
 
 								
