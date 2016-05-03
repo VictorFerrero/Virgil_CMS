@@ -28,6 +28,7 @@ myApp.controller('MuseumController', ['$scope', '$rootScope', '$http',  '$timeou
 
 	$scope.mapChange = function(image) {
 		console.log(image);
+		console.log('hello');
 	};
 		 /* $scope.Museums = [
 				  {
