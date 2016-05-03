@@ -1,3 +1,5 @@
+
+
 myApp.controller('MuseumController', ['$scope', '$rootScope', '$http',  '$timeout',
       function($scope, $rootScope, $http, $timeout) {
       		$http.defaults.headers.post['Content-Type'] = 'application/x-www-form-urlencoded;charset=utf-8';
@@ -169,6 +171,7 @@ myApp.controller('MuseumController', ['$scope', '$rootScope', '$http',  '$timeou
 			  console.log($rootScope.currMuseum);
 			  console.log($scope.Museum.myMuseums.museumMap);
 			 // $rootScope.ajaxPost(data, "museum/createMuseum", successCallback, errorCallback);
+			 console.log($scope.my_image_model);
           };
 
           $scope.addContent = function() {

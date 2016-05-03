@@ -267,9 +267,7 @@
 
 
                               <div class="picture">
-                                <input id="musuemMap" name="museumMap" type="file" accept="image/*"
-                                ng-model="Museum.myMuseums.museumMap"
-                                ng-change="mapChange(Museum.myMuseums.museumMap)">
+                               <input data-file id="id_image" name="image" ng-model="my_image_model" type="file">
                               </div>
 
 								
@@ -278,7 +276,7 @@
                                 ng-model="Museum.myMuseums.museumThumbnail">
                               </div>
 
-								
+                                
                               <input class="btn" type="submit" ng-disabled="museumForm.$invalid"
 									 ng-click="addMuseum()" value="Add Museum">
 							
