@@ -8,6 +8,23 @@ myApp.controller('MuseumController', ['$scope', '$rootScope', '$http',  '$timeou
 
 		  $scope.baseUrl = "http://52.24.10.104/Virgil_Backend_Stage/Virgil_Backend/index.php/";
 
+		   $scope.setFile = function(element) {
+			  $scope.currentFile = element.files[0];
+			   var reader = new FileReader();
+
+			  reader.onload = function(event) {
+			    $scope.image_source = event.target.result
+			    $scope.$apply()
+
+			  }
+			  // when the file is read it triggers the onload event above.
+			  reader.readAsDataURL(element.files[0]);
+			  console.log(reader);
+			  console.log($scope.currentFile);
+			  console.log($scope.image_source);
+			}
+
+
 		 /* $scope.Museums = [
 				  {
 				   id:-1,

@@ -266,9 +266,8 @@
 
 
                               <div class="picture">
-                                <input id="musuemMap" name="museumMap" type="file" accept="image/*"
-                                ng-model="Museum.myMuseums.museumMap"
-                                 onchange="angular.element(this).scope().uploadFile(this)">
+                               <img ng-src="{{image_source}}">
+                              <input type="file" id="trigger" class="ng-hide" onchange="angular.element(this).scope().setFile(this)" accept="image/*">
                               </div>
 
 								
@@ -555,34 +554,20 @@
 
 
                   <div class="hours">
-                    <p>Hours: </p><br>
-                    <input name="startTime" type="time"
-                    ng-model="Event.startTime"
-                    ng-required="true">
+                               <p>Sunday hours: </p><br>
+                                <input name="EventStartHours" type="text"
+                                ng-model="Event.startHours"
+                  id="museumSundayHoursOpen" class="first">
+                              
+                                <input name="EventEndHours" type="text"
+                                ng-model="Event.endHours"
+                                id="museumSundayHoursClose" class="second">
 
-                    <input name="endTime" type="time" ng-model="Event.endTime"
-                    ng-required="true">
-
-                    <p
-                    class="error validationerror"
-                    ng-show="eventForm.startTime.$invalid &&
-                     eventForm.startTime.$touched && eventFrom.endTime.$invalid
-                     && eventForm.endTime.$touched">
-                     Must enter both a start and stop time.</p>
-                  </div>
-
-                  <div class="hours">
-                    <p>Date: </p><br>
-                    <input name="date" type="date"
-                    ng-model="Event.date"
-                    ng-required="true">
-
-                    <p
-                    class="error validationerror"
-                    ng-show="eventForm.date.$invalid &&
-                     eventForm.date.$touched">
-                     Must enter a date.</p>
-                  </div>
+                                <p class="error validationerror"
+                                ng-show="museumForm.museumSundayHoursOpen.$dirty &&
+                                museumForm.museumSundayHoursClose.$untouched">
+                                  Enter both a start and stop time.</p> 
+                              </div>
 
                   <div class="group">
                     <input name="eventDescription" type="text"
