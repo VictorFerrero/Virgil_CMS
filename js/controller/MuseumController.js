@@ -170,7 +170,7 @@ myApp.controller('MuseumController', ['$scope', '$rootScope', '$http',  '$timeou
 				method: "POST",
 				data: $.param(data),
 				success: successCallback,
-				error: errorCallback;}
+				error: errorCallback}
 			});
           };
 
