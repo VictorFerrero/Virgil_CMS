@@ -2,7 +2,7 @@
 
 myApp.controller('MuseumController', ['$scope', '$rootScope', '$http',  '$timeout',
       function($scope, $rootScope, $http, $timeout) {
-      	$http.defaults.headers.post['Content-Type'] = 'application/x-www-form-urlencoded';
+      	$http.defaults.headers.post['Content-Type'] = 'multipart/form-data';
       	//$http.defaults.headers.put['Content-Type'] = 'undefined';
       	  $rootScope.currMuseum;
 
