@@ -182,7 +182,7 @@ myApp.controller('MuseumController', ['$scope', '$rootScope', '$http',  '$timeou
 		        successCallback = function(response) {
 		            // success of call back could still mean that server side 
 		            // error occurred
-		            if(response.data.success == true) {
+		            if(data.success == true) {
 		                // we send back the newly created account to the front end
 		                console.log("success");
 		               	console.log(response);
@@ -195,6 +195,7 @@ myApp.controller('MuseumController', ['$scope', '$rootScope', '$http',  '$timeou
 		        }
 
 		        var data = new FormData();
+		        /*
 		        data.museumId = $rootScope.currMuseum.id;
 		        data.galleryId = "0";
 		        data.exhibitId = "0";
@@ -202,18 +203,25 @@ myApp.controller('MuseumController', ['$scope', '$rootScope', '$http',  '$timeou
 		        data.imageToUpload = $scope.museumMap;
 		        data.hasImage = true;
 			  	data.submit = "settt";
-
+				*/
+				data.append("museumId", $rootScope.currMuseum.id);
+				data.append("galleryId", "0");
+				data.append("exhibitId", "0");
+				data.append("description", "");
+				data.append('imageToUpload', $scope.museumMap);
+				data.append("hasImage", true);
+				data.append("submit", "settt");
 			  	var contentProfileJson = new Object();
 			  	contentProfileJson.isMap = true;
 
-			  	data.contentProfileJSON = contentProfileJson;
+			  //	data.contentProfileJSON = contentProfileJson;
+			  data.append("contentProfileJSON", contentProfileJson);
 			//  	var base64 = btoa($scope.museumMap);
 			 // 	data.base64 = base64;
 			 // 	data.fileName = $scope.museumMap.name;
 			 // 	console.log(base64);
 			  	console.log(data);
 			//  	$rootScope.ajaxPost(data, "content/createContent", successCallback, errorCallback);
-			data.append('imageToUpload', $scope.museumMap);
 		$http.post($scope.baseUrl + "content/createContent", data, {
             transformRequest: angular.identity,
             headers: {'Content-Type': undefined}
