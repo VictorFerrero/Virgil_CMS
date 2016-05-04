@@ -196,8 +196,8 @@ myApp.controller('MuseumController', ['$scope', '$rootScope', '$http',  '$timeou
 
 		        var data = Object();
 		        data.museumId = $rootScope.currMuseum.id;
-		        data.galleryId = 0;
-		        data.exhibitId = 0;
+		        data.galleryId = "0";
+		        data.exhibitId = "0";
 		        data.description = "";
 		        data.imageToUpload = $scope.museumMap;
 		        data.hasImage = true;
