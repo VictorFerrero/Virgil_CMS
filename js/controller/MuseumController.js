@@ -194,7 +194,7 @@ myApp.controller('MuseumController', ['$scope', '$rootScope', '$http',  '$timeou
 		            }
 		        }
 
-		        var data = new FormData();
+		        var data = new Object();
 		        data.museumId = $rootScope.currMuseum.id;
 		        data.galleryId = "0";
 		        data.exhibitId = "0";
@@ -203,7 +203,7 @@ myApp.controller('MuseumController', ['$scope', '$rootScope', '$http',  '$timeou
 		        data.hasImage = true;
 			  	data.submit = "settt";
 
-			  	var contentProfileJson = Object();
+			  	var contentProfileJson = new Object();
 			  	contentProfileJson.isMap = true;
 
 			  	data.contentProfileJSON = contentProfileJson;
