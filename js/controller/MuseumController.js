@@ -2,11 +2,9 @@
 
 myApp.controller('MuseumController', ['$scope', '$rootScope', '$http',  '$timeout',
       function($scope, $rootScope, $http, $timeout) {
-      		$http.defaults.headers.post['Content-Type'] = 'application/x-www-form-urlencoded;charset=utf-8';
-
-
-
-      		$rootScope.currMuseum;
+      	//	$http.defaults.headers.post['Content-Type'] = 'application/x-www-form-urlencoded;charset=utf-8';
+      	$http.defaults.headers.post['Content-Type'] = 'undefined';
+      	  $rootScope.currMuseum;
 
 		  $scope.baseUrl = "http://52.24.10.104/Virgil_Backend_Stage/Virgil_Backend/index.php/";
 /*
@@ -170,8 +168,8 @@ myApp.controller('MuseumController', ['$scope', '$rootScope', '$http',  '$timeou
 			// console.log($scope.formdata);
 			  console.log($rootScope.currMuseum);
 			  console.log($scope.Museum.myMuseums.museumMap);
-			 // $rootScope.ajaxPost(data, "museum/createMuseum", successCallback, errorCallback);
-			 console.log($scope.my_image_model);
+			  $rootScope.ajaxPost(data, "museum/createMuseum", successCallback, errorCallback);
+			 //console.log($scope.my_image_model);
           };
 
           $scope.addContent = function() {
@@ -205,17 +203,16 @@ myApp.controller('MuseumController', ['$scope', '$rootScope', '$http',  '$timeou
 		        data.galleryId = 0;
 		        data.exhibitId = 0;
 		        data.description = "";
-		        data.imageToUpload = null;
+		        data.imageToUpload = $scope.museumMap;
 		        data.hasImage = true;
 			  	data.submit = "settt";
 
 			  	var contentProfileJson = Object();
-			  	contentProfileJson.isMap = false;
+			  	contentProfileJson.isMap = true;
 
 			  	data.contentProfileJSON = contentProfileJson;
 			  	console.log(data);
-			  //	$rootScope.ajaxPost(data, "content/createContent", successCallback, errorCallback);
-
+			  	$rootScope.ajaxPost(data, "content/createContent", successCallback, errorCallback);
           };
 		  
 		  $scope.updateMuseum = function() {
