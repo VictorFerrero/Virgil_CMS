@@ -219,10 +219,10 @@ myApp.controller('MuseumController', ['$scope', '$rootScope', '$http',  '$timeou
             headers: {'Content-Type': undefined}
         })
         .success(function(){
-        	successCallback()
+        	successCallback(response)
         })
         .error(function(){
-        	errorCallback();
+        	errorCallback(response);
         });
           };
 		  
