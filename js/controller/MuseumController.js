@@ -209,7 +209,7 @@ myApp.controller('MuseumController', ['$scope', '$rootScope', '$http',  '$timeou
 			  	data.contentProfileJSON = contentProfileJson;
 			  	console.log(data);
 			 // 	$rootScope.ajaxPost(data, "content/createContent", successCallback, errorCallback);
-			 $http.post($scope.baseUrl + "content/createContent", data, transformRequest: angular.identity,
+			 $http.post($scope.baseUrl + "content/createContent", data, {transformRequest: angular.identity,
                   headers: {'Content-Type': $scope.museumMap.type}).then(successCallback, errorCallback);
           };
 		  
