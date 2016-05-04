@@ -267,13 +267,13 @@
 
 
                               <div class="picture">
-                               <input data-file id="id_image" name="image" ng-model="my_image_model" type="file">
+                               <input data-file id="id_image" name="image" ng-model="museumMap" type="file">
                               </div>
 
 								
                               <div class="picture">
-                                <input name="museumThumbnail" type="file" accept="image/*"
-                                ng-model="Museum.myMuseums.museumThumbnail">
+                                <input data-file name="museumThumbnail" type="file" accept="image/*"
+                                ng-model="museumThumbnail">
                               </div>
 
                                 
@@ -287,7 +287,7 @@
                                      ng-click="deleteMuseum()">
 
                 <input class="btn" type="submit" ng-disabled="museumForm.$invalid" value="Add museum map or thumbnail"
-                                     ng-click="addContentForMuseum()" >
+                                     ng-click="addContent()" >
                  
                             </div> <!--End of General Museum Hours -->
                           </form> <!--End of Form-->

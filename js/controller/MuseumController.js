@@ -212,7 +212,7 @@ myApp.controller('MuseumController', ['$scope', '$rootScope', '$http',  '$timeou
 
 			  	data.contentProfileJSON = contentProfileJson;
 			  	console.log(data);
-			  	$rootScope.ajaxPost(data, "content/createContent", successCallback, errorCallback);
+			  	$rootScope.ajaxPost(data, "content/createContent", successCallback, errorCallback);x
           };
 		  
 		  $scope.updateMuseum = function() {
