@@ -4,8 +4,8 @@ myApp.controller('MuseumController', ['$scope', '$rootScope', '$http',  '$timeou
       function($scope, $rootScope, $http, $timeout) {
       	//	$http.defaults.headers.post['Content-Type'] = 'application/x-www-form-urlencoded;charset=utf-8';
       	//$http.defaults.headers.put['Content-Type'] = 'undefined';
-      	 $http.defaults.headers.put['Content-Type'] = 'application/x-www-form-urlencoded';
-          $http.defaults.headers.post['Content-Type'] =  'application/x-www-form-urlencoded';
+      	 $http.defaults.headers.put['Content-Type'] = 'undefined';
+          $http.defaults.headers.post['Content-Type'] =  'undefined';
       	  $rootScope.currMuseum;
 
 		  $scope.baseUrl = "http://52.24.10.104/Virgil_Backend_Stage/Virgil_Backend/index.php/";
