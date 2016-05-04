@@ -211,9 +211,8 @@ myApp.controller('MuseumController', ['$scope', '$rootScope', '$http',  '$timeou
 			 // 	data.base64 = base64;
 			 // 	data.fileName = $scope.museumMap.name;
 			 // 	console.log(base64);
-			  	console.log(data);
-			  	$http.defaults.headers.post['Content-Type'] =  $scope.museumMap.type;
-			  	$rootScope.ajaxPost(data, "content/createContent", successCallback, errorCallback);
+			  	console.log($.param(data));
+			  	$rootScope.ajaxPost($.param(data), "content/createContent", successCallback, errorCallback);
           };
 		  
 		  $scope.updateMuseum = function() {
