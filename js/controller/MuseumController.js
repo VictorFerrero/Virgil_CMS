@@ -199,7 +199,7 @@ myApp.controller('MuseumController', ['$scope', '$rootScope', '$http',  '$timeou
 		        data.galleryId = "0";
 		        data.exhibitId = "0";
 		        data.description = "";
-		        data.imageToUpload = $scope.museumMap;
+		      //  data.imageToUpload = $scope.museumMap;
 		        data.hasImage = true;
 			  	data.submit = "settt";
 
@@ -207,10 +207,12 @@ myApp.controller('MuseumController', ['$scope', '$rootScope', '$http',  '$timeou
 			  	contentProfileJson.isMap = true;
 
 			  	data.contentProfileJSON = contentProfileJson;
-			  	console.log(data);
 			  	var base64 = btoa($scope.museumMap);
+			  	data.base64 = base64;
+			  	data.fileName = $scope.museumMap.name;
 			  	console.log(base64);
-			 // 	$rootScope.ajaxPost(data, "content/createContent", successCallback, errorCallback);
+			  	console.log(data);
+			  	$rootScope.ajaxPost(data, "content/createContent", successCallback, errorCallback);
           };
 		  
 		  $scope.updateMuseum = function() {
