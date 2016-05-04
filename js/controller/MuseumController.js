@@ -218,10 +218,10 @@ myApp.controller('MuseumController', ['$scope', '$rootScope', '$http',  '$timeou
             transformRequest: angular.identity,
             headers: {'Content-Type': undefined}
         })
-        .success(function(){
+        .success(function(response){
         	successCallback(response)
         })
-        .error(function(){
+        .error(function(response){
         	errorCallback(response);
         });
           };
