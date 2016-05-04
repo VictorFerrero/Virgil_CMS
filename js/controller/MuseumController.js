@@ -3,7 +3,7 @@
 myApp.controller('MuseumController', ['$scope', '$rootScope', '$http',  '$timeout',
       function($scope, $rootScope, $http, $timeout) {
       	//	$http.defaults.headers.post['Content-Type'] = 'application/x-www-form-urlencoded;charset=utf-8';
-      	$http.defaults.headers.post['Content-Type'] = 'undefined';
+      	//$http.defaults.headers.post['Content-Type'] = 'undefined';
       	  $rootScope.currMuseum;
 
 		  $scope.baseUrl = "http://52.24.10.104/Virgil_Backend_Stage/Virgil_Backend/index.php/";
@@ -356,7 +356,7 @@ myApp.controller('MuseumController', ['$scope', '$rootScope', '$http',  '$timeou
     $rootScope.ajaxPost = function(data, route, successCallback, errorCallback) {
         var baseUrl = "";
         var fullRoute = $scope.baseUrl + route;
-       	$http.post(fullRoute, data).then(successCallback, errorCallback);
+       	$http.post(fullRoute, data, { transformRequest: angular.identity, headers: {'Content-Type':undefined} }).then(successCallback, errorCallback);
     	};
 
     	$scope.formatAMPM = function(date) {
