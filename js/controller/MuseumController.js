@@ -194,7 +194,7 @@ myApp.controller('MuseumController', ['$scope', '$rootScope', '$http',  '$timeou
 		            }
 		        }
 
-		        var data = Object();
+		        var data = new FormData();
 		        data.museumId = $rootScope.currMuseum.id;
 		        data.galleryId = "0";
 		        data.exhibitId = "0";
@@ -356,7 +356,7 @@ myApp.controller('MuseumController', ['$scope', '$rootScope', '$http',  '$timeou
     $rootScope.ajaxPost = function(data, route, successCallback, errorCallback) {
         var baseUrl = "";
         var fullRoute = $scope.baseUrl + route;
-       	$http.post(fullRoute, data, { transformRequest: angular.identity, headers: {'Content-Type':undefined} }).then(successCallback, errorCallback);
+       	$http.post(fullRoute, data).then(successCallback, errorCallback);
     	};
 
     	$scope.formatAMPM = function(date) {
