@@ -283,10 +283,12 @@ myApp.controller('GalleryController', ['$scope', '$rootScope', '$http',
 			            headers: {'Content-Type': undefined}
 			        })
 			        .success(function(response){
-			        	successCallback(response)
+			        	var responseInJSON = angular.fromJson(response);
+			        	successCallback(responseInJSON)
 			        })
 			        .error(function(response){
-			        	errorCallback(response);
+			        	var responseInJSON = angular.fromJson(response);
+			        	errorCallback(responseInJSON);
 			        });
 				}
 			  	console.log(data);
