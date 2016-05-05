@@ -513,7 +513,7 @@
 				   <p ng-show="message">{{ message }}</p>	 
                  </div>
 
-               <select ng-model="Events" 
+               <select ng-model="Event.selectedEvent" 
                  ng-options="Event.description for Event in Events track by Event.id"
                  ng-change="onEventSelectChange()" class="dropSelect">
                 </select>

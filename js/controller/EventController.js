@@ -133,7 +133,7 @@ myApp.controller('EventController', ['$scope', '$rootScope', '$http', function($
       };
 
           $scope.onEventSelectChange = function() {
-            $rootScope.currEvent = $scope.Events;
+            $rootScope.currEvent = $scope.Event.selectedEvent;
             console.log($rootScope.currEvent);
           };
       }]);
