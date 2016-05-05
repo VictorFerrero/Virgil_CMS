@@ -256,7 +256,7 @@ myApp.controller('GalleryController', ['$scope', '$rootScope', '$http',
 		        successCallback = function(response) {
 		            // success of call back could still mean that server side 
 		            // error occurred
-		            if(response.success == true) {
+		            if(response.data.success == true) {
 		                // we send back the newly created account to the front end
 		                console.log("success");
 		               	console.log(response);
