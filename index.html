@@ -523,11 +523,11 @@
                   <div class="hours">
                                <p>Start and End times: </p><br>
                                 <input name="EventStartHours" type="text"
-                                ng-model="Event.startHours"
+                                ng-model="Event.selectedEvent.startHours"
                   id="museumSundayHoursOpen" class="first">
                               
                                 <input name="EventEndHours" type="text"
-                                ng-model="Event.endHours"
+                                ng-model="Event.selectedEvent.endHours"
                                 id="museumSundayHoursClose" class="second">
 
                                 <p class="error validationerror"
@@ -538,7 +538,7 @@
 
                   <div class="group">
                     <input name="eventDescription" type="text"
-                    ng-model="Event.eventDescription"
+                    ng-model="Event.selectedEvent.eventDescription"
                     ng-required="true">
                       <span class="highlight"></span>
                       <span class="bar"></span>

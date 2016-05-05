@@ -31,9 +31,9 @@ myApp.controller('EventController', ['$scope', '$rootScope', '$http', function($
                   }
                   
               var data = new Object();
-              data.startTime = $scope.Event.startHours;
-              data.endTime = $scope.Event.endHours;
-              data.description = $scope.Event.eventDescription;
+              data.startTime = $scope.Event.selectedEvent.startHours;
+              data.endTime = $scope.Event.selectedEvent.endHours;
+              data.description = $scope.Event.selectedEvent.eventDescription;
               data.museumId = $rootScope.currMuseum.id;
               data.galleryId = "0";
               data.exhibitId = "0";
