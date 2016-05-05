@@ -221,8 +221,9 @@ myApp.controller('MuseumController', ['$scope', '$rootScope', '$http',  '$timeou
 			 // 	data.fileName = $scope.museumMap.name;
 			 // 	console.log(base64);
 			  	console.log(data);
+			  	console.log($scope.museumMap);
 			//  	$rootScope.ajaxPost(data, "content/createContent", successCallback, errorCallback);
-		$http.post($scope.baseUrl + "content/createContent", data, {
+	/*	$http.post($scope.baseUrl + "content/createContent", data, {
             transformRequest: angular.identity,
             headers: {'Content-Type': undefined}
         })
@@ -231,7 +232,7 @@ myApp.controller('MuseumController', ['$scope', '$rootScope', '$http',  '$timeou
         })
         .error(function(response){
         	errorCallback(response);
-        });
+        });*/
           };
 		  
 		  $scope.updateMuseum = function() {
