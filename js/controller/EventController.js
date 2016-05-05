@@ -39,7 +39,6 @@ myApp.controller('EventController', ['$scope', '$rootScope', '$http', function($
               data.exhibitId = "0";
 
               var profileJsonObject = Object();
-
               data.eventProfileJSON = angular.toJson(profileJsonObject);
 
              console.log(data);
@@ -103,7 +102,7 @@ myApp.controller('EventController', ['$scope', '$rootScope', '$http', function($
                         console.log(response.status);
                         console.log(response.statusText);
 
-                        // TODO: display error message to the user
+                        // TODO: display error message to the 
                     }
 
                     successCallback = function(response) {

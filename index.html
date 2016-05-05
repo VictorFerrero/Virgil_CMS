@@ -514,26 +514,12 @@
                  </div>
 
                <select ng-model="Events" 
-                 ng-options="Events.startTime for Event in Events track by Event.id"
+                 ng-options="Event.description for Event in Events track by Event.id"
                  ng-change="onEventSelectChange()" class="dropSelect">
                 </select>
 
              <div id="pnl_event_inner">
-               <div class="group">
-                   <input name="eventTitle" type="text"
-                   ng-model="Event.eventTitle"
-                   ng-required="true">
-
-                     <span class="highlight"></span>
-                     <span class="bar"></span>
-                     <label>Event Title</label>
-                     <p
-                     class="error validationerror"
-                     ng-show="eventForm.eventTitle.$invalid &&
-                      eventForm.eventTitle.$touched">You must enter an event title</p>
-                  </div>
-
-
+               
                   <div class="hours">
                                <p>Start and End times: </p><br>
                                 <input name="EventStartHours" type="text"
