@@ -1,7 +1,7 @@
 myApp.controller('ContentController', ['$scope', '$rootScope', '$http',
       function($scope, $rootScope, $http) {
           $scope.baseUrl = "http://52.24.10.104/Virgil_Backend_Stage/Virgil_Backend/index.php/";
-          
+
           $scope.addContent = function() {
                       
                     errorCallback = function(response) {
@@ -16,11 +16,11 @@ myApp.controller('ContentController', ['$scope', '$rootScope', '$http',
                     successCallback = function(response) {
                         // success of call back could still mean that server side 
                         // error occurred
-                        if(response.data.success == true) {
+                        if(response.success == true) {
                             // we send back the newly created account to the front end
                             console.log("success");
                             console.log(response);
-                            var newContent = response.data.record;
+                            var newContent = response.record;
                             $scope.ContentObjects.push(newContent);
                          }
                         else {
@@ -42,6 +42,7 @@ myApp.controller('ContentController', ['$scope', '$rootScope', '$http',
                     data.append('imageToUpload', $scope.contentImage);
                     var contentProfileJson = new Object();
                     data.append("contentProfileJSON", JSON.stringify(contentProfileJson));
+                    console.log(data);
                   $http.post($scope.baseUrl + "content/createContent", data, {
                           transformRequest: angular.identity,
                           headers: {'Content-Type': undefined}
@@ -63,6 +64,7 @@ myApp.controller('ContentController', ['$scope', '$rootScope', '$http',
                //   data.append("submit", "settt");
                   data.append("contentProfileJSON", "{}");
                //   data.append('imageToUpload', $scope.contentImage);
+                  console.log(data);
                   $http.post($scope.baseUrl + "content/createContent", data, {
                           transformRequest: angular.identity,
                           headers: {'Content-Type': undefined}
@@ -74,8 +76,6 @@ myApp.controller('ContentController', ['$scope', '$rootScope', '$http',
                         errorCallback(response);
                       });
                 }
-                  console.log(data);
-                  console.log($scope.contentImage);
           };
 		  
 		  $scope.update = function() {

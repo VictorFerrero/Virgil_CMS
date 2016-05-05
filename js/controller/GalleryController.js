@@ -256,7 +256,7 @@ myApp.controller('GalleryController', ['$scope', '$rootScope', '$http',
 		        successCallback = function(response) {
 		            // success of call back could still mean that server side 
 		            // error occurred
-		            if(data.success == true) {
+		            if(response.success == true) {
 		                // we send back the newly created account to the front end
 		                console.log("success");
 		               	console.log(response);
@@ -276,7 +276,6 @@ myApp.controller('GalleryController', ['$scope', '$rootScope', '$http',
 					data.append("hasImage", true);
 					data.append("submit", "settt");
 			  		var contentProfileJson = new Object();
-				  	contentProfileJson.isMap = true;
 				    data.append("contentProfileJSON", JSON.stringify(contentProfileJson));
 					data.append('imageToUpload', $scope.galleryImage);
 					$http.post($scope.baseUrl + "content/createContent", data, {
@@ -291,6 +290,5 @@ myApp.controller('GalleryController', ['$scope', '$rootScope', '$http',
 			        });
 				}
 			  	console.log(data);
-			  	console.log($scope.museumMap);
 		  };
       }]);
