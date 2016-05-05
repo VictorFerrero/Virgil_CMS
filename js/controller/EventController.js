@@ -1,5 +1,6 @@
 myApp.controller('EventController', ['$scope', '$rootScope', '$http', function($scope, $rootScope, $http) {
-          
+          $scope.baseUrl = "http://52.24.10.104/Virgil_Backend_Stage/Virgil_Backend/index.php/";
+
           $scope.addEvent = function() {
                     
                 errorCallback = function(response) {
@@ -118,7 +119,8 @@ myApp.controller('EventController', ['$scope', '$rootScope', '$http', function($
                     }
                     
                    var data = new Object();
-                  $rootScope.ajaxGet(data, "getEntireMusuem/" + $rootScope.currMuseum.id, successCallback, errorCallback);
+                   var route = $scope.baseUrl + "getEntireMuseum/" + $rootScope.currMuseum.id;
+                  $rootScope.ajaxGet(data, route, successCallback, errorCallback);
             
                 }
             else {
