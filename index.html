@@ -513,7 +513,7 @@
 				   <p ng-show="message">{{ message }}</p>	 
                  </div>
 
-               <select ng-model="Event.selectedEvent" 
+               <select ng-model="selectedEvent" 
                  ng-options="Event.description for Event in Events track by Event.id"
                  ng-change="onEventSelectChange()" class="dropSelect">
                 </select>
@@ -523,22 +523,20 @@
                   <div class="hours">
                                <p>Start and End times: </p><br>
                                 <input name="EventStartHours" type="text"
-                                ng-model="Event.selectedEvent.startHours"
+                                ng-model="selectedEvent.startTime"
                   id="museumSundayHoursOpen" class="first">
                               
                                 <input name="EventEndHours" type="text"
-                                ng-model="Event.selectedEvent.endHours"
-                                id="museumSundayHoursClose" class="second">
+                                ng-model="Event.selectedEvent.endTime"
+                                id="eventEndHours" class="second">
 
-                                <p class="error validationerror"
-                                ng-show="museumForm.museumSundayHoursOpen.$dirty &&
-                                museumForm.museumSundayHoursClose.$untouched">
+                                <p class="error validationerror">
                                   Enter both a start and stop time.</p> 
                               </div>
 
                   <div class="group">
                     <input name="eventDescription" type="text"
-                    ng-model="Event.selectedEvent.eventDescription"
+                    ng-model="Event.selectedEvent.description"
                     ng-required="true">
                       <span class="highlight"></span>
                       <span class="bar"></span>
