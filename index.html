@@ -437,7 +437,7 @@
                   </div><!--end of exhibit content-->
 
         <!--Exhibit Content-->
-      <div class="panel content" ng-controller="ContentController">
+      <div class="panel content" ng-controller="ContentController" >
         <div class="pnl_content">
           <form name="contentForm" ng-submit="add()" novalidate>
 
@@ -449,29 +449,10 @@
 
         <div class="dropdown-group">
 
-        <div id="dl_gallery_exhibit"  class="dropdown">
-          <button class="dropbtn">Select to Edit Existing Galleries</button>
-            <div class="dropdown-content">
-              <p>Select gallery to edit</p>
-              <p>Select gallery</p>
-            </div>
-        </div>
-
-        <div id="dl_exhibit" class="dropdown">
-          <button class="dropbtn">Select to Edit Existing Exhibits</button>
-              <div class="dropdown-content">
-                <p>Select Exhibit</p>
-                <p>Select exhibit</p>
-              </div>
-            </div> <!--close dropdown-->
-
-          <div id="dl_content" class="dropdown">
-                <button class="dropbtn">Select to Edit Existing Content</button>
-                  <div class="dropdown-content">
-                    <p>Select content</p>
-                    <p>Select content</p>
-                  </div>
-          </div>
+         <select ng-model="ContentObjects"
+                 ng-options="Content.pathToContent for Content in ContentObjects track by Content.id"
+                 ng-change="onContentObjectSelectChange()" class="dropSelect">
+                </select>
         </div>
 
 
@@ -514,6 +495,8 @@
           <div class="submit_btn">
            <input class="btn" type="submit" value="Add Content" ng-disabled="contentForm.$invalid">
            <input class="btn" type="submit" value="Delete Content">
+           <input class="btn" type="submit" ng-disabled="museumForm.$invalid" value="Add museum map or thumbnail"
+                                     ng-click="syncContent()" >
          </div>
         </div> <!--Closes the content-->
         </form>
@@ -530,14 +513,10 @@
 				   <p ng-show="message">{{ message }}</p>	 
                  </div>
 
-               <div class="dropdown-group">
-                 <div id="dl_gallery_event" class="dropdown">
-                   <class class="dropbtn">Select Event</button>
-                     <div class="dropdown-content">
-                       <p>Event</p>
-                     </div>
-                 </div>
-               </div>
+               <select ng-model="Events" 
+                 ng-options="Events.startTime for Event in Events track by Event.id"
+                 ng-change="onEventSelectChange()" class="dropSelect">
+                </select>
 
              <div id="pnl_event_inner">
                <div class="group">
@@ -556,7 +535,7 @@
 
 
                   <div class="hours">
-                               <p>Sunday hours: </p><br>
+                               <p>Start and End times: </p><br>
                                 <input name="EventStartHours" type="text"
                                 ng-model="Event.startHours"
                   id="museumSundayHoursOpen" class="first">
@@ -587,61 +566,10 @@
                 </div>
 
 
-             <div class="group">
-               <input name="eventStreet" type="text"
-               ng-model="Event.eventStreet"
-               ng-required="true">
-                   <span class="highlight"></span>
-                   <span class="bar"></span>
-                   <label>Street address</label>
-                   <p
-                   class="error validationerror"
-                   ng-show="eventForm.eventStreet.$invalid &&
-                   eventForm.eventStreet.$touched">You must enter a street address.</p>
-             </div>
-
-             <div class="group">
-               <input name="eventCity" type="text"
-               ng-model="Event.eventCity"
-               ng-required="true">
-                 <span class="highlight"></span>
-                 <span class="bar"></span>
-                 <label>City</label>
-                 <p
-                 class="error validationerror"
-                 ng-show="eventForm.eventCity.$invalid &&
-                 eventForm.eventCity.$touched">You must enter a city.</p>
-             </div>
-
-             <div class="group">
-               <input name="eventState" type="text"
-               ng-model="Event.eventState"
-               ng-required="true">
-                 <span class="highlight"></span>
-                 <span class="bar"></span>
-                 <label>State</label>
-                 <p
-                 class="error validationerror"
-                 ng-show="eventForm.eventState.$invalid &&
-                 eventForm.eventState.$touched">You must enter a state.</p>
-             </div>
-
-             <div class="group">
-               <input name="eventZipcode" type="text"
-               ng-model="Event.eventZipcode"
-               ng-required="true">
-               <span class="highlight"></span>
-               <span class="bar"></span>
-               <label>Zipcode</label>
-               <p
-               class="error validationerror"
-               ng-show="eventForm.eventZipcode.$invalid &&
-               eventForm.eventZipcode.$touched">You must enter a zipcode.</p>
-             </div>
-
             <div class="submit_btn">
-             <input class="btn" type="submit" value="Add Event" ng-disabled="eventForm.$invalid">
+             <input class="btn" type="submit" value="Add Event" ng-disabled="eventForm.$invalid" ng-click="addEvent()">
              <input class="btn" type="submit" value="Delete Event">
+             <input class="btn" type="submit" value="Delete Event" ng-click="syncEvents()">
             </div>
             </form>
             </div>
