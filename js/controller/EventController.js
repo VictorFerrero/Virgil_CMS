@@ -51,7 +51,7 @@ myApp.controller('EventController', ['$scope', '$rootScope', '$http', function($
               $scope.message = "Welcome " + $scope.Event.eventTitle;
           };
 		  
-          $scope.delete = function() {
+          $scope.deleteEvent = function() {
               
                errorCallback = function(response) {
                // var error = response.data.errors; // this is an array 
