@@ -182,16 +182,9 @@ myApp.controller('MuseumController', ['$scope', '$rootScope', '$http',  '$timeou
 		        successCallback = function(response) {
 		            // success of call back could still mean that server side 
 		            // error occurred
-		            if(data.success == true) {
 		                // we send back the newly created account to the front end
 		                console.log("success");
 		               	console.log(response);
-		             }
-		            else {
-		                // server did not return error, but something
-		                // went wrong in the php code
-		                errorCallback(response);
-		            }
 		        }
 
 			  	if(typeof $scope.museumMap != 'undefined') {
