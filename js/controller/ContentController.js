@@ -1,4 +1,4 @@
-myApp.controller('ContentController', ['$scope', '$rootScope', '$http'
+myApp.controller('ContentController', ['$scope', '$rootScope', '$http',
       function($scope, $rootScope, $http) {
           
           $scope.addContent = function() {
