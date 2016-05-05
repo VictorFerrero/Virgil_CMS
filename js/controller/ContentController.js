@@ -34,7 +34,7 @@ myApp.controller('ContentController', ['$scope', '$rootScope', '$http',
                     data.append("museumId", $rootScope.currMuseum.id);
                     data.append("galleryId", $rootScope.currGallery.id);
                     data.append("exhibitId", $rootScope.currExhibit.id);
-                    data.append("description", $scope.selectContent.description);
+                    data.append("description", $scope.selectedContent.description);
                     data.append("hasImage", true);
                     data.append("submit", "settt");
                     data.append("contentProfileJSON", "{}");
@@ -57,7 +57,7 @@ myApp.controller('ContentController', ['$scope', '$rootScope', '$http',
                   data.append("museumId", $rootScope.currMuseum.id);
                   data.append("galleryId", $rootScope.currGallery.id);
                   data.append("exhibitId", $rootScope.currExhibit.id);
-                  data.append("description", $scope.selectContent.description);
+                  data.append("description", $scope.selectedContent.description);
                   data.append("hasImage", false);
                //   data.append("submit", "settt");
                   data.append("contentProfileJSON", "{}");
