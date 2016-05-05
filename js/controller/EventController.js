@@ -119,8 +119,7 @@ myApp.controller('EventController', ['$scope', '$rootScope', '$http', function($
                     }
                     
                    var data = new Object();
-                   var route = $scope.baseUrl + "getEntireMuseum/" + $rootScope.currMuseum.id;
-                  $rootScope.ajaxGet(data, route, successCallback, errorCallback);
+                  $rootScope.ajaxGet(data, "getEntireMuseum/" + $rootScope.currMuseum.id, successCallback, errorCallback);
             
                 }
             else {
