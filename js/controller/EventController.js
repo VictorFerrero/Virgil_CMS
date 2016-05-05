@@ -16,9 +16,9 @@ myApp.controller('EventController', ['$scope', '$rootScope', '$http', function($
                       // error occurred
                       if(response.data.success == true) {
                           // we send back the newly created account to the front end
-                          var newMuseum = response.data.record;
-                          console.log(newMuseum);
-                          $scope.Museums.push(newMuseum);
+                          var newEvent = response.data.record;
+                          console.log(newEvent);
+                          $scope.Events.push(newEvent);
                       }
                       else {
                           // server did not return error, but something
@@ -28,9 +28,9 @@ myApp.controller('EventController', ['$scope', '$rootScope', '$http', function($
                   }
                   
               var data = new Object();
-              data.startTime = $scope.Museum.myMuseums.museumName;
-              data.endTime = 1;
-              data.description = $scope.Museum.myMuseums.address;
+              data.startTime = $scope.Event.startHours;
+              data.endTime = $scope.Event.endHours;
+              data.description = $scope.Event.eventDescription;
               data.museumId = $rootScope.currMuseum.id;
               data.galleryId = "0";
               data.exhibitId = "0";
