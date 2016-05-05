@@ -1,5 +1,6 @@
 myApp.controller('ContentController', ['$scope', '$rootScope', '$http',
       function($scope, $rootScope, $http) {
+          $scope.baseUrl = "http://52.24.10.104/Virgil_Backend_Stage/Virgil_Backend/index.php/";
           
           $scope.addContent = function() {
                       
@@ -74,7 +75,7 @@ myApp.controller('ContentController', ['$scope', '$rootScope', '$http',
                       });
                 }
                   console.log(data);
-                  console.log($scope.museumMap);
+                  console.log($scope.contentImage);
           };
 		  
 		  $scope.update = function() {
