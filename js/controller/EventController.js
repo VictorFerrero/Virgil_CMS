@@ -18,6 +18,9 @@ myApp.controller('EventController', ['$scope', '$rootScope', '$http', function($
                           // we send back the newly created account to the front end
                           var newEvent = response.data.record;
                           console.log(newEvent);
+                          if(typeof $scope.Events == 'undefined') {
+                            $scope.Events = [];
+                          }
                           $scope.Events.push(newEvent);
                       }
                       else {
