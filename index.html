@@ -449,33 +449,15 @@
 
         <div class="dropdown-group">
 
-         <select ng-model="ContentObjects"
+         <select ng-model="selectedContent"
                  ng-options="Content.pathToContent for Content in ContentObjects track by Content.id"
                  ng-change="onContentObjectSelectChange()" class="dropSelect">
                 </select>
         </div>
 
-
-        <div class="pnl_content">
-            <div class="group">
-				
-              <input name="contentTitle" type="text"
-               ng-model="Content.contentTitle"
-               ng-required="true">
-
-                <span class="highlight"></span>
-                <span class="bar"></span>
-                <label>Content Title</label>
-                <p
-                class="error validationerror"
-                ng-show="contentForm.contentTitle.$invalid &&
-                 contentForm.contentTitle.$touched">
-                 You must enter a title for the content</p>
-           </div>
-
            <div class="group">
              <input name="contentDescription" type="text"
-             ng-model="Content.contentDescription"
+             ng-model="selectedContent.description"
              ng-required="true">
                <span class="highlight"></span>
                <span class="bar"></span>
@@ -488,15 +470,14 @@
            </div>
 
           <div class="picture">
-             <input name="museum_image" type="file" accept="image/*"
-             ng-mode="Content.image">
+             <input data-file name="content_image" type="file" accept="image/*"
+             ng-model="contentImage">
            </div>
 
           <div class="submit_btn">
-           <input class="btn" type="submit" value="Add Content" ng-disabled="contentForm.$invalid">
-           <input class="btn" type="submit" value="Delete Content">
-           <input class="btn" type="submit" ng-disabled="museumForm.$invalid" value="Add museum map or thumbnail"
-                                     ng-click="syncContent()" >
+           <input class="btn" type="submit" value="Add Content" ng-disabled="contentForm.$invalid" ng-click="addContent()">
+           <input class="btn" type="submit" value="Delete Content" ng-click="deleteContent()">
+           <input class="btn" type="submit" value="Sync Content" ng-click="syncContent()" >
          </div>
         </div> <!--Closes the content-->
         </form>
@@ -535,9 +516,7 @@
                               </div>
 
                   <div class="group">
-                    <input name="eventDescription" type="text"
-                    ng-model="selectedEvent.description"
-                    ng-required="true">
+                    <input name="eventDescription" type="text" ng-model="selectedEvent.description" ng-required="true">
                       <span class="highlight"></span>
                       <span class="bar"></span>
                       <label>Event Description</label>
