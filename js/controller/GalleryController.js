@@ -7,6 +7,7 @@ myApp.controller('GalleryController', ['$scope', '$rootScope', '$http',
 			  $rootScope.currGallery = null;
 		  }
 
+
 		 /* $scope.Galleries = [
 				  {
 				   id:-1,
@@ -239,5 +240,57 @@ myApp.controller('GalleryController', ['$scope', '$rootScope', '$http',
 		  			$rootScope.currGallery = null;
 		  			console.log($rootScope.currGallery);
 		  		}
+		  };
+
+		  $scope.addGalleryThumbnail = function() {
+
+                  errorCallback = function(response) {
+		           // var error = response.data.errors; // this is an array 
+		          //  console.log(error); // see if we have any errors from php script
+		            // also log status codes from server
+		            console.log(response);
+		            console.log(response.data);
+		            // TODO: display error message to the user
+		        }
+
+		        successCallback = function(response) {
+		            // success of call back could still mean that server side 
+		            // error occurred
+		            if(data.success == true) {
+		                // we send back the newly created account to the front end
+		                console.log("success");
+		               	console.log(response);
+		             }
+		            else {
+		                // server did not return error, but something
+		                // went wrong in the php code
+		                errorCallback(response);
+		            }
+		        }
+			  	if(typeof $scope.galleryImage != 'undefined') {
+			  		var data = new FormData();
+					data.append("museumId", $rootScope.currMuseum.id);
+					data.append("galleryId", "0");
+					data.append("exhibitId", "0");
+					data.append("description", "");
+					data.append("hasImage", true);
+					data.append("submit", "settt");
+			  		var contentProfileJson = new Object();
+				  	contentProfileJson.isMap = true;
+				    data.append("contentProfileJSON", JSON.stringify(contentProfileJson));
+					data.append('imageToUpload', $scope.galleryImage);
+					$http.post($scope.baseUrl + "content/createContent", data, {
+			            transformRequest: angular.identity,
+			            headers: {'Content-Type': undefined}
+			        })
+			        .success(function(response){
+			        	successCallback(response)
+			        })
+			        .error(function(response){
+			        	errorCallback(response);
+			        });
+				}
+			  	console.log(data);
+			  	console.log($scope.museumMap);
 		  };
       }]);

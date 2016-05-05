@@ -267,11 +267,13 @@
 
 
                               <div class="picture">
+                                <p>Choose an image to be the map of the museum </p>
                                <input data-file id="id_image" name="image" ng-model="museumMap" type="file">
                               </div>
 
 								
                               <div class="picture">
+                                <p>Choose an image to be the museum thumbnail </p>
                                 <input data-file name="museumThumbnail" type="file" accept="image/*"
                                 ng-model="museumThumbnail">
                               </div>
@@ -347,8 +349,7 @@
                                   </div>
 
                                   <div class="picture">
-                                    <input name="gallery_image" type="file" accept="image/*"
-                                    ng-model="Gallery.selectedGallery.image">
+                                    <input data-file id="id_image" name="gallery_image" ng-model="galleryImage" type="file">
                                   </div>
                             </div> <!--end of gallery_panel-->
 
@@ -361,6 +362,7 @@
 								
 							  <input class="btn" type="submit" ng-disabled="galleryForm.$invalid" value="Delete Gallery" ng-click="deleteGallery()">
                  <input class="btn" type="submit" value="Sync Gallery" ng-click="syncGallery()">
+                 <input class="btn" type="submit" value="Add Gallery Thumbnail" ng-click="addGalleryThumbnail()">
                           </form>
                         </div>
                   </div><!--end of gallery content-->
@@ -656,33 +658,28 @@
 		  <p ng-show="message">{{ message }}</p>	
         </div><!--End of Form Intro-->
 
-    <div class="dropdown-group">
-        <div id="dl_gallery_beacon" class="dropdown">
-          <button class="dropbtn">Select Gallery to Edit</button>
-            <div class="dropdown-content">
-              <p>Gallery</p>
-              <p>Gallery Content</p>
-            </div>
-        </div>
-
-        <div id="dl_exhibit_beacon" class="dropdown">
-          <button class="dropbtn">Select Exhibit to Edit</button>
-            <div class="dropdown-content">
-              <p>Exhibit</p>
-              <p>Exhibit Content</p>
-          </div>
-        </div>
 
         <div id="dl_content_beacon" class="dropdown">
-          <button class="dropbtn">Select Beacon to Edit</button>
-            <div class="dropdown-content">
-              <p>Content</p>
-              <p>Content</p>
-          </div>
+          <select ng-model="Beacon.selectedBeacon" 
+                 ng-options="Beacon.title for Beacon in Beacons track by Beacon.id"
+                 ng-change="onBeaconSelectChange()" class="dropSelect">
+                </select>
         </div>
       </div>
 
-
+          <div class="pnl_content">
+              <div class="group">
+                <input name="beaconMinorValue" type="text"
+                ng-model="Beacon.minor"
+                ng-required="true">
+                  <span class="highlight"></span>
+                  <span class="bar"></span>
+                  <label>Beacon Minor Value</label>
+                  <p
+                  class="error validationerror"
+                  ng-show="beaconForm.beaconContentTitle.$invalid &&
+                  beaconForm.beaconContentTitle.$touched">You must enter a title for the content</p>
+             </div>
           <div class="pnl_content">
               <div class="group">
                 <input name="beaconContentTitle" type="text"
@@ -711,14 +708,16 @@
              </div>
 
                <div class="picture">
-               <input name="beaconImage" type="file" accept="image/*"
+               <input data-file name="beaconImage" type="file" accept="image/*"
                ng-model="Beacon.beaconImage">
              </div>
           </div> <!--Closes the content-->
 
         <div class="submit_btn">
-          <input class="btn" type="submit" value="Add Beacon" ng-disabled="beaconForm.$invalid">
+          <input class="btn" type="submit" value="Add Beacon" ng-disabled="beaconForm.$invalid" ng-click="addBeaconContent()">
           <input class="btn" type="submit" value="Delete Beacon">
+           <input class="btn" type="submit" value="Sync Beacons"
+                                     ng-click="syncBeacons()" >
           </form>
         </div><!--panels content-->
       </div><!--end of beacons content-->

@@ -186,7 +186,7 @@ myApp.controller('MuseumController', ['$scope', '$rootScope', '$http',  '$timeou
 		                // we send back the newly created account to the front end
 		                console.log("success");
 		               	console.log(response);
-		               }
+		             }
 		            else {
 		                // server did not return error, but something
 		                // went wrong in the php code
@@ -194,45 +194,52 @@ myApp.controller('MuseumController', ['$scope', '$rootScope', '$http',  '$timeou
 		            }
 		        }
 
-		        var data = new FormData();
-		        /*
-		        data.museumId = $rootScope.currMuseum.id;
-		        data.galleryId = "0";
-		        data.exhibitId = "0";
-		        data.description = "";
-		        data.imageToUpload = $scope.museumMap;
-		        data.hasImage = true;
-			  	data.submit = "settt";
-				*/
-				data.append("museumId", $rootScope.currMuseum.id);
-				data.append("galleryId", "0");
-				data.append("exhibitId", "0");
-				data.append("description", "");
-				data.append('imageToUpload', $scope.museumMap);
-				data.append("hasImage", true);
-				data.append("submit", "settt");
-			  	var contentProfileJson = new Object();
-			  	contentProfileJson.isMap = true;
-
-			  //	data.contentProfileJSON = contentProfileJson;
-			  data.append("contentProfileJSON", contentProfileJson);
-			//  	var base64 = btoa($scope.museumMap);
-			 // 	data.base64 = base64;
-			 // 	data.fileName = $scope.museumMap.name;
-			 // 	console.log(base64);
+			  	if(typeof $scope.museumMap != 'undefined') {
+			  		var data = new FormData();
+					data.append("museumId", $rootScope.currMuseum.id);
+					data.append("galleryId", "0");
+					data.append("exhibitId", "0");
+					data.append("description", "");
+					data.append("hasImage", true);
+					data.append("submit", "settt");
+			  		var contentProfileJson = new Object();
+				  	contentProfileJson.isMap = true;
+				    data.append("contentProfileJSON", JSON.stringify(contentProfileJson));
+					data.append('imageToUpload', $scope.museumMap);
+					$http.post($scope.baseUrl + "content/createContent", data, {
+			            transformRequest: angular.identity,
+			            headers: {'Content-Type': undefined}
+			        })
+			        .success(function(response){
+			        	successCallback(response)
+			        })
+			        .error(function(response){
+			        	errorCallback(response);
+			        });
+				}
+				if(typeof $scope.museumThumbnail != 'undefined') {
+					var data = new FormData();
+					data.append("museumId", $rootScope.currMuseum.id);
+					data.append("galleryId", "0");
+					data.append("exhibitId", "0");
+					data.append("description", "");
+					data.append("hasImage", true);
+					data.append("submit", "settt");
+				    data.append("contentProfileJSON", "{}");
+					data.append('imageToUpload', $scope.museumThumbnail);
+					$http.post($scope.baseUrl + "content/createContent", data, {
+			            transformRequest: angular.identity,
+			            headers: {'Content-Type': undefined}
+			        })
+			        .success(function(response){
+			        	successCallback(response)
+			        })
+			        .error(function(response){
+			        	errorCallback(response);
+			        });
+				}
 			  	console.log(data);
 			  	console.log($scope.museumMap);
-			//  	$rootScope.ajaxPost(data, "content/createContent", successCallback, errorCallback);
-	/*	$http.post($scope.baseUrl + "content/createContent", data, {
-            transformRequest: angular.identity,
-            headers: {'Content-Type': undefined}
-        })
-        .success(function(response){
-        	successCallback(response)
-        })
-        .error(function(response){
-        	errorCallback(response);
-        });*/
           };
 		  
 		  $scope.updateMuseum = function() {
