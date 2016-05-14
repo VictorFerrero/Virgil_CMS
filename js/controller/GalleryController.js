@@ -255,9 +255,16 @@ myApp.controller('GalleryController', ['$scope', '$rootScope', '$http',
 		        successCallback = function(response) {
 		            // success of call back could still mean that server side 
 		            // error occurred
+		            if(response.success == true) {
 		                // we send back the newly created account to the front end
 		                console.log("success");
 		               	console.log(response);
+		             }
+		            else {
+		                // server did not return error, but something
+		                // went wrong in the php code
+		                errorCallback(response);
+		            }
 		        }
 			  	if(typeof $scope.galleryImage != 'undefined') {
 			  		var data = new FormData();
@@ -275,10 +282,12 @@ myApp.controller('GalleryController', ['$scope', '$rootScope', '$http',
 			            headers: {'Content-Type': undefined}
 			        })
 			        .success(function(response){
-			        	successCallback(response)
+			        	var responseInJSON = angular.fromJson(response);
+			        	successCallback(responseInJSON)
 			        })
 			        .error(function(response){
-			        	errorCallback(response);
+			        	var responseInJSON = angular.fromJson(response);
+			        	errorCallback(responseInJSON);
 			        });
 				}
 			  	console.log(data);

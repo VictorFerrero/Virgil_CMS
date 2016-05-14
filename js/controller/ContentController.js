@@ -9,7 +9,6 @@ myApp.controller('ContentController', ['$scope', '$rootScope', '$http',
                       //  console.log(error); // see if we have any errors from php script
                         // also log status codes from server
                         console.log(response);
-                        console.log(response.data);
                         // TODO: display error message to the user
                     }
 
@@ -48,10 +47,12 @@ myApp.controller('ContentController', ['$scope', '$rootScope', '$http',
                           headers: {'Content-Type': undefined}
                       })
                       .success(function(response){
-                        successCallback(response)
+                        var responseInJSON = angular.fromJson(response);
+                        successCallback(responseInJSON)
                       })
                       .error(function(response){
-                        errorCallback(response);
+                        var responseInJSON = angular.fromJson(response);
+                        errorCallback(responseInJSON);
                       });
                 }
                 else  { // this is the case where we are not uploading an image
